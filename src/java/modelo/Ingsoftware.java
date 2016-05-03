@@ -11,8 +11,11 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -30,6 +33,8 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author jsnar
  */
 @Entity
+@Inheritance(strategy=InheritanceType.JOINED)
+@DiscriminatorColumn(name="tipo")
 @Table(name = "ingsoftware")
 @XmlRootElement
 @NamedQueries({
@@ -48,7 +53,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Ingsoftware.findByFechaingreso", query = "SELECT i FROM Ingsoftware i WHERE i.fechaingreso = :fechaingreso"),
     @NamedQuery(name = "Ingsoftware.findByAntiguedad", query = "SELECT i FROM Ingsoftware i WHERE i.antiguedad = :antiguedad"),
     @NamedQuery(name = "Ingsoftware.findByClave", query = "SELECT i FROM Ingsoftware i WHERE i.clave = :clave")})
-public class Ingsoftware implements Serializable {
+public abstract class Ingsoftware implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -124,12 +129,6 @@ public class Ingsoftware implements Serializable {
     private List<Ingsoftwarelenguajeprog> ingsoftwarelenguajeprogList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "ingsoftware")
     private List<Ingsoftwaresgbd> ingsoftwaresgbdList;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "ingsoftware")
-    private Jefe jefe;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "ingsoftware")
-    private Junior junior;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "ingsoftware")
-    private Senior senior;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "ingsoftware")
     private List<Seminario> seminarioList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "solicitante")
@@ -298,30 +297,6 @@ public class Ingsoftware implements Serializable {
 
     public void setIngsoftwaresgbdList(List<Ingsoftwaresgbd> ingsoftwaresgbdList) {
         this.ingsoftwaresgbdList = ingsoftwaresgbdList;
-    }
-
-    public Jefe getJefe() {
-        return jefe;
-    }
-
-    public void setJefe(Jefe jefe) {
-        this.jefe = jefe;
-    }
-
-    public Junior getJunior() {
-        return junior;
-    }
-
-    public void setJunior(Junior junior) {
-        this.junior = junior;
-    }
-
-    public Senior getSenior() {
-        return senior;
-    }
-
-    public void setSenior(Senior senior) {
-        this.senior = senior;
     }
 
     @XmlTransient

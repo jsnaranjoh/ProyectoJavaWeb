@@ -10,6 +10,7 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -27,13 +28,14 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author jsnar
  */
 @Entity
+@DiscriminatorValue("jefe")
 @Table(name = "jefe")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Jefe.findAll", query = "SELECT j FROM Jefe j"),
     @NamedQuery(name = "Jefe.findByCedula", query = "SELECT j FROM Jefe j WHERE j.cedula = :cedula"),
     @NamedQuery(name = "Jefe.findByPresupuesto", query = "SELECT j FROM Jefe j WHERE j.presupuesto = :presupuesto")})
-public class Jefe implements Serializable {
+public class Jefe extends Ingsoftware implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id

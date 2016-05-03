@@ -10,6 +10,7 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -27,13 +28,14 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author jsnar
  */
 @Entity
+@DiscriminatorValue("junior")
 @Table(name = "junior")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Junior.findAll", query = "SELECT j FROM Junior j"),
     @NamedQuery(name = "Junior.findByCedula", query = "SELECT j FROM Junior j WHERE j.cedula = :cedula"),
     @NamedQuery(name = "Junior.findByHorastrabajoxdia", query = "SELECT j FROM Junior j WHERE j.horastrabajoxdia = :horastrabajoxdia")})
-public class Junior implements Serializable {
+public class Junior extends Ingsoftware implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
