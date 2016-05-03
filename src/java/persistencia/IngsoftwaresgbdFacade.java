@@ -1,0 +1,32 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package persistencia;
+
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import modelo.Ingsoftwaresgbd;
+
+/**
+ *
+ * @author NOREÑA
+ */
+@Stateless
+public class IngsoftwaresgbdFacade extends AbstractFacade<Ingsoftwaresgbd> implements IngsoftwaresgbdFacadeLocal {
+
+    @PersistenceContext(unitName = "ProyectoJavaWebPU")
+    private EntityManager em;
+
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
+    }
+
+    public IngsoftwaresgbdFacade() {
+        super(Ingsoftwaresgbd.class);
+    }
+    
+}
