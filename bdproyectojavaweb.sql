@@ -1,6 +1,6 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Versión del servidor:         10.1.13-MariaDB - mariadb.org binary distribution
+-- Versión del servidor:         10.0.17-MariaDB - mariadb.org binary distribution
 -- SO del servidor:              Win32
 -- HeidiSQL Versión:             9.3.0.4984
 -- --------------------------------------------------------
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `gradoacademico` (
   `lugar` varchar(50) NOT NULL,
   `aniotitulacion` int(4) NOT NULL,
   `tituloobtenido` varchar(50) NOT NULL,
-  PRIMARY KEY (`numero`,`ingeniero`),
+  PRIMARY KEY (`numero`),
   KEY `FK_gradoacademico_ingsoftware` (`ingeniero`),
   CONSTRAINT `FK_gradoacademico_ingsoftware` FOREIGN KEY (`ingeniero`) REFERENCES `ingsoftware` (`cedula`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -180,7 +180,7 @@ CREATE TABLE IF NOT EXISTS `jefe` (
   CONSTRAINT `FK_jefe_ingsoftware` FOREIGN KEY (`cedula`) REFERENCES `ingsoftware` (`cedula`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla bdproyectojavaweb.jefe: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla bdproyectojavaweb.jefe: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `jefe` DISABLE KEYS */;
 INSERT INTO `jefe` (`cedula`, `presupuesto`) VALUES
 	(54117430, 100000000);
@@ -275,7 +275,7 @@ CREATE TABLE IF NOT EXISTS `proyectosistemaoperativo` (
 /*!40000 ALTER TABLE `proyectosistemaoperativo` DISABLE KEYS */;
 INSERT INTO `proyectosistemaoperativo` (`codigo`, `sistemaoperativo`) VALUES
 	(501, 'Debian'),
-	(750, 'Mac OS'),
+	(750, 'MAC OS'),
 	(750, 'Windows');
 /*!40000 ALTER TABLE `proyectosistemaoperativo` ENABLE KEYS */;
 
@@ -348,17 +348,17 @@ CREATE TABLE IF NOT EXISTS `seminario` (
   `lugar` varchar(50) NOT NULL,
   `fechainicio` date NOT NULL,
   `fechafin` date NOT NULL,
-  PRIMARY KEY (`numero`,`ingeniero`),
+  PRIMARY KEY (`numero`),
   KEY `FK_seminario_ingsoftware` (`ingeniero`),
   CONSTRAINT `FK_seminario_ingsoftware` FOREIGN KEY (`ingeniero`) REFERENCES `ingsoftware` (`cedula`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla bdproyectojavaweb.seminario: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla bdproyectojavaweb.seminario: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `seminario` DISABLE KEYS */;
 INSERT INTO `seminario` (`numero`, `ingeniero`, `nombre`, `lugar`, `fechainicio`, `fechafin`) VALUES
-	(4312, 54117430, 'Liderazgo en proyectos', 'Universidad Nacional', '2016-05-01', '2016-05-08'),
-	(41234, 84940812, 'Buenas prácticas de software', 'Universidad de los Andes', '2016-05-01', '2016-05-08'),
-	(7651801, 4760491, 'Agilismo', 'Universidad de los Llanos', '2016-05-01', '2016-05-08');
+	(4312, 54117430, 'Liderazgo en proyectos.', 'Me da igual', '2016-05-01', '2016-05-08'),
+	(41234, 84940812, 'Buenas prácticas de software.', 'Cualquier parte', '2016-05-01', '2016-05-08'),
+	(7651801, 4760491, 'Agilismo', 'Ola k ase', '2016-05-01', '2016-05-08');
 /*!40000 ALTER TABLE `seminario` ENABLE KEYS */;
 
 
@@ -370,11 +370,11 @@ CREATE TABLE IF NOT EXISTS `senior` (
   CONSTRAINT `FK_senior_ingsoftware` FOREIGN KEY (`cedula`) REFERENCES `ingsoftware` (`cedula`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla bdproyectojavaweb.senior: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla bdproyectojavaweb.senior: ~2 rows (aproximadamente)
 /*!40000 ALTER TABLE `senior` DISABLE KEYS */;
 INSERT INTO `senior` (`cedula`, `proyectosquelidera`) VALUES
-	(4760491, 1),
-	(641500199, 1);
+	(4760491, 0),
+	(641500199, 0);
 /*!40000 ALTER TABLE `senior` ENABLE KEYS */;
 
 
@@ -405,7 +405,7 @@ CREATE TABLE IF NOT EXISTS `solicitud` (
   CONSTRAINT `FK_solicitud_requisito` FOREIGN KEY (`requisito`) REFERENCES `requisito` (`codigo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla bdproyectojavaweb.solicitud: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla bdproyectojavaweb.solicitud: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `solicitud` DISABLE KEYS */;
 INSERT INTO `solicitud` (`numero`, `requisito`, `verificador`, `solicitante`, `tipo`, `titulo`, `fecha`, `origen`, `estado`, `prioridadsolicitante`, `prioridadrealizacion`, `fechaultimaactualizacion`, `release`, `esfuerzo`, `descripcion`, `comentarios`) VALUES
 	(4012, 2615, 54117430, 84940812, 'Cambio', 'Corrección del requisito', '2016-05-01', '', 'Evaluado', 1, 2, '2016-04-24', '1.0', 1, 'Posible mala redacción del requisito.', ''),

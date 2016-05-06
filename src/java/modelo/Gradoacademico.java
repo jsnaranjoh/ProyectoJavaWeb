@@ -8,8 +8,8 @@ package modelo;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -21,15 +21,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author jsnar
+ * @author NOREÑA
  */
 @Entity
 @Table(name = "gradoacademico")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Gradoacademico.findAll", query = "SELECT g FROM Gradoacademico g"),
-    @NamedQuery(name = "Gradoacademico.findByNumero", query = "SELECT g FROM Gradoacademico g WHERE g.gradoacademicoPK.numero = :numero"),
-    @NamedQuery(name = "Gradoacademico.findByIngeniero", query = "SELECT g FROM Gradoacademico g WHERE g.gradoacademicoPK.ingeniero = :ingeniero"),
+    @NamedQuery(name = "Gradoacademico.findByNumero", query = "SELECT g FROM Gradoacademico g WHERE g.numero = :numero"),
     @NamedQuery(name = "Gradoacademico.findByNivel", query = "SELECT g FROM Gradoacademico g WHERE g.nivel = :nivel"),
     @NamedQuery(name = "Gradoacademico.findByLugar", query = "SELECT g FROM Gradoacademico g WHERE g.lugar = :lugar"),
     @NamedQuery(name = "Gradoacademico.findByAniotitulacion", query = "SELECT g FROM Gradoacademico g WHERE g.aniotitulacion = :aniotitulacion"),
@@ -37,8 +36,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Gradoacademico implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected GradoacademicoPK gradoacademicoPK;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "numero")
+    private Integer numero;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
@@ -58,35 +60,31 @@ public class Gradoacademico implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "tituloobtenido")
     private String tituloobtenido;
-    @JoinColumn(name = "ingeniero", referencedColumnName = "cedula", insertable = false, updatable = false)
+    @JoinColumn(name = "ingeniero", referencedColumnName = "cedula")
     @ManyToOne(optional = false)
-    private Ingsoftware ingsoftware;
+    private Ingsoftware ingeniero;
 
     public Gradoacademico() {
     }
 
-    public Gradoacademico(GradoacademicoPK gradoacademicoPK) {
-        this.gradoacademicoPK = gradoacademicoPK;
+    public Gradoacademico(Integer numero) {
+        this.numero = numero;
     }
 
-    public Gradoacademico(GradoacademicoPK gradoacademicoPK, String nivel, String lugar, int aniotitulacion, String tituloobtenido) {
-        this.gradoacademicoPK = gradoacademicoPK;
+    public Gradoacademico(Integer numero, String nivel, String lugar, int aniotitulacion, String tituloobtenido) {
+        this.numero = numero;
         this.nivel = nivel;
         this.lugar = lugar;
         this.aniotitulacion = aniotitulacion;
         this.tituloobtenido = tituloobtenido;
     }
 
-    public Gradoacademico(int numero, int ingeniero) {
-        this.gradoacademicoPK = new GradoacademicoPK(numero, ingeniero);
+    public Integer getNumero() {
+        return numero;
     }
 
-    public GradoacademicoPK getGradoacademicoPK() {
-        return gradoacademicoPK;
-    }
-
-    public void setGradoacademicoPK(GradoacademicoPK gradoacademicoPK) {
-        this.gradoacademicoPK = gradoacademicoPK;
+    public void setNumero(Integer numero) {
+        this.numero = numero;
     }
 
     public String getNivel() {
@@ -121,18 +119,18 @@ public class Gradoacademico implements Serializable {
         this.tituloobtenido = tituloobtenido;
     }
 
-    public Ingsoftware getIngsoftware() {
-        return ingsoftware;
+    public Ingsoftware getIngeniero() {
+        return ingeniero;
     }
 
-    public void setIngsoftware(Ingsoftware ingsoftware) {
-        this.ingsoftware = ingsoftware;
+    public void setIngeniero(Ingsoftware ingeniero) {
+        this.ingeniero = ingeniero;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (gradoacademicoPK != null ? gradoacademicoPK.hashCode() : 0);
+        hash += (numero != null ? numero.hashCode() : 0);
         return hash;
     }
 
@@ -143,7 +141,7 @@ public class Gradoacademico implements Serializable {
             return false;
         }
         Gradoacademico other = (Gradoacademico) object;
-        if ((this.gradoacademicoPK == null && other.gradoacademicoPK != null) || (this.gradoacademicoPK != null && !this.gradoacademicoPK.equals(other.gradoacademicoPK))) {
+        if ((this.numero == null && other.numero != null) || (this.numero != null && !this.numero.equals(other.numero))) {
             return false;
         }
         return true;
@@ -151,7 +149,7 @@ public class Gradoacademico implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.Gradoacademico[ gradoacademicoPK=" + gradoacademicoPK + " ]";
+        return "modelo.Gradoacademico[ numero=" + numero + " ]";
     }
     
 }

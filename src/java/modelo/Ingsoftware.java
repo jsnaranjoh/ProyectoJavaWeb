@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author jsnar
+ * @author NOREÑA
  */
 @Entity
 @Table(name = "ingsoftware")
@@ -85,7 +85,7 @@ public class Ingsoftware implements Serializable {
     @Column(name = "fechanacimiento")
     @Temporal(TemporalType.DATE)
     private Date fechanacimiento;
-    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Correo electrónico no válido")//if the field contains email address consider using this annotation to enforce field validation
+    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
@@ -130,11 +130,11 @@ public class Ingsoftware implements Serializable {
     private Junior junior;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "ingsoftware")
     private Senior senior;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ingsoftware")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ingeniero")
     private List<Seminario> seminarioList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "solicitante")
     private List<Solicitud> solicitudList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ingsoftware")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ingeniero")
     private List<Gradoacademico> gradoacademicoList;
 
     public Ingsoftware() {

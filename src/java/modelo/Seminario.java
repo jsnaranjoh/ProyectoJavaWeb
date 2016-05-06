@@ -9,8 +9,8 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -24,15 +24,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author jsnar
+ * @author NOREÑA
  */
 @Entity
 @Table(name = "seminario")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Seminario.findAll", query = "SELECT s FROM Seminario s"),
-    @NamedQuery(name = "Seminario.findByNumero", query = "SELECT s FROM Seminario s WHERE s.seminarioPK.numero = :numero"),
-    @NamedQuery(name = "Seminario.findByIngeniero", query = "SELECT s FROM Seminario s WHERE s.seminarioPK.ingeniero = :ingeniero"),
+    @NamedQuery(name = "Seminario.findByNumero", query = "SELECT s FROM Seminario s WHERE s.numero = :numero"),
     @NamedQuery(name = "Seminario.findByNombre", query = "SELECT s FROM Seminario s WHERE s.nombre = :nombre"),
     @NamedQuery(name = "Seminario.findByLugar", query = "SELECT s FROM Seminario s WHERE s.lugar = :lugar"),
     @NamedQuery(name = "Seminario.findByFechainicio", query = "SELECT s FROM Seminario s WHERE s.fechainicio = :fechainicio"),
@@ -40,8 +39,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Seminario implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected SeminarioPK seminarioPK;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "numero")
+    private Integer numero;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
@@ -62,35 +64,31 @@ public class Seminario implements Serializable {
     @Column(name = "fechafin")
     @Temporal(TemporalType.DATE)
     private Date fechafin;
-    @JoinColumn(name = "ingeniero", referencedColumnName = "cedula", insertable = false, updatable = false)
+    @JoinColumn(name = "ingeniero", referencedColumnName = "cedula")
     @ManyToOne(optional = false)
-    private Ingsoftware ingsoftware;
+    private Ingsoftware ingeniero;
 
     public Seminario() {
     }
 
-    public Seminario(SeminarioPK seminarioPK) {
-        this.seminarioPK = seminarioPK;
+    public Seminario(Integer numero) {
+        this.numero = numero;
     }
 
-    public Seminario(SeminarioPK seminarioPK, String nombre, String lugar, Date fechainicio, Date fechafin) {
-        this.seminarioPK = seminarioPK;
+    public Seminario(Integer numero, String nombre, String lugar, Date fechainicio, Date fechafin) {
+        this.numero = numero;
         this.nombre = nombre;
         this.lugar = lugar;
         this.fechainicio = fechainicio;
         this.fechafin = fechafin;
     }
 
-    public Seminario(int numero, int ingeniero) {
-        this.seminarioPK = new SeminarioPK(numero, ingeniero);
+    public Integer getNumero() {
+        return numero;
     }
 
-    public SeminarioPK getSeminarioPK() {
-        return seminarioPK;
-    }
-
-    public void setSeminarioPK(SeminarioPK seminarioPK) {
-        this.seminarioPK = seminarioPK;
+    public void setNumero(Integer numero) {
+        this.numero = numero;
     }
 
     public String getNombre() {
@@ -125,18 +123,18 @@ public class Seminario implements Serializable {
         this.fechafin = fechafin;
     }
 
-    public Ingsoftware getIngsoftware() {
-        return ingsoftware;
+    public Ingsoftware getIngeniero() {
+        return ingeniero;
     }
 
-    public void setIngsoftware(Ingsoftware ingsoftware) {
-        this.ingsoftware = ingsoftware;
+    public void setIngeniero(Ingsoftware ingeniero) {
+        this.ingeniero = ingeniero;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (seminarioPK != null ? seminarioPK.hashCode() : 0);
+        hash += (numero != null ? numero.hashCode() : 0);
         return hash;
     }
 
@@ -147,7 +145,7 @@ public class Seminario implements Serializable {
             return false;
         }
         Seminario other = (Seminario) object;
-        if ((this.seminarioPK == null && other.seminarioPK != null) || (this.seminarioPK != null && !this.seminarioPK.equals(other.seminarioPK))) {
+        if ((this.numero == null && other.numero != null) || (this.numero != null && !this.numero.equals(other.numero))) {
             return false;
         }
         return true;
@@ -155,7 +153,7 @@ public class Seminario implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.Seminario[ seminarioPK=" + seminarioPK + " ]";
+        return "modelo.Seminario[ numero=" + numero + " ]";
     }
     
 }

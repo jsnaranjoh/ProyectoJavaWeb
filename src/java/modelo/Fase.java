@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author jsnar
+ * @author NOREÑA
  */
 @Entity
 @Table(name = "fase")
