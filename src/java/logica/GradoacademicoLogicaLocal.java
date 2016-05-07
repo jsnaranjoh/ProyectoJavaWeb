@@ -18,6 +18,6 @@ public interface GradoacademicoLogicaLocal {
     
     public void registrarGradoacademico(Gradoacademico ga) throws Exception;
     public void modificarGradoacademico(Gradoacademico ga) throws Exception;
-    public void eliminarGradoacadeico(Gradoacademico ga) throws Exception;
+    public void eliminarGradoacademico(Gradoacademico ga) throws Exception;
     public List<Gradoacademico> consultarTodos() throws Exception;
 }
