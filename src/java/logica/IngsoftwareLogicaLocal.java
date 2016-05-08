@@ -5,7 +5,9 @@
  */
 package logica;
 
+import java.util.List;
 import javax.ejb.Local;
+import modelo.Ingsoftware;
 
 /**
  *
@@ -13,5 +15,10 @@ import javax.ejb.Local;
  */
 @Local
 public interface IngsoftwareLogicaLocal {
+
+    public void registrarIngsoftware(Ingsoftware ingsoftware) throws Exception;
+    public void modificarIngsoftware(Ingsoftware ingsoftware) throws Exception;
+    public void eliminarIngsoftware(Ingsoftware ingsoftware) throws Exception;
+    public List<Ingsoftware> consultarTodos() throws Exception;
     
 }
