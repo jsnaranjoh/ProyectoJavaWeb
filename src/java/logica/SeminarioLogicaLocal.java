@@ -17,6 +17,6 @@ import modelo.Seminario;
 public interface SeminarioLogicaLocal {
     public void registrarSeminario(Seminario seminario) throws Exception;
     public void modificarSeminario(Seminario seminario) throws Exception;
-    public void eliminarGradoacadeico(Seminario seminario) throws Exception;
+    public void eliminarSeminario(Seminario seminario) throws Exception;
     public List<Seminario> consultarTodos() throws Exception;
 }

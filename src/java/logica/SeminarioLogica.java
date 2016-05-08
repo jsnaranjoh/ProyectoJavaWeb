@@ -80,7 +80,7 @@ public class SeminarioLogica implements SeminarioLogicaLocal {
     }
 
     @Override
-    public void eliminarGradoacadeico(Seminario seminario) throws Exception {
+    public void eliminarSeminario(Seminario seminario) throws Exception {
         Seminario objSeminario = seminarioDAO.find(seminario.getNumero());
         if(objSeminario == null){
             throw new Exception("Seminario a eliminar no existe.");
