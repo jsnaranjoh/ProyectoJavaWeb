@@ -5,7 +5,9 @@
  */
 package logica;
 
+import java.util.List;
 import javax.ejb.Local;
+import modelo.Jefe;
 
 /**
  *
@@ -13,5 +15,10 @@ import javax.ejb.Local;
  */
 @Local
 public interface JefeLogicaLocal {
+
+    public void registrarJefe(Jefe jefe) throws Exception;
+    public void modificarJefe(Jefe jefe) throws Exception;
+    public void eliminarJefe(Jefe jefe) throws Exception;
+    public List<Jefe> consultarTodos() throws Exception;
     
 }

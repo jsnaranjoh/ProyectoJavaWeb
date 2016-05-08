@@ -5,7 +5,9 @@
  */
 package logica;
 
+import java.util.List;
 import javax.ejb.Local;
+import modelo.Junior;
 
 /**
  *
@@ -13,5 +15,10 @@ import javax.ejb.Local;
  */
 @Local
 public interface JuniorLogicaLocal {
+
+    public void registrarJunior(Junior junior) throws Exception;
+    public void modificarJunior(Junior junior) throws Exception;
+    public void eliminarJunior(Junior junior) throws Exception;
+    public List<Junior> consultarTodos() throws Exception;    
     
 }
