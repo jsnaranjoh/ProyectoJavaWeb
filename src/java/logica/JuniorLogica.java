@@ -23,8 +23,8 @@ public class JuniorLogica implements JuniorLogicaLocal {
     
     @Override
     public void registrarJunior(Junior junior) throws Exception {
-        if(junior.getIngsoftware() == null){
-            throw new Exception("Ingeniero de Software No Registrado.");
+        if(junior.getIngsoftware().getCedula() == null){
+            throw new Exception("Debes seleccionar un Ingeniero de Software.");
         }
         
         Junior objJunior = juniorDAO.find(junior);

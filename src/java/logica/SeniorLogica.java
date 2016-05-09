@@ -23,8 +23,8 @@ public class SeniorLogica implements SeniorLogicaLocal {
     
     @Override
     public void registrarSenior(Senior senior) throws Exception {
-        if(senior.getIngsoftware() == null){
-            throw new Exception("Ingeniero de Software No Registrado.");
+        if(senior.getIngsoftware().getCedula() == null){
+            throw new Exception("Debes seleccionar un Ingeniero de Software.");
         }
         
         Senior objSenior = seniorDAO.find(senior);

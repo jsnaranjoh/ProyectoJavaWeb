@@ -23,8 +23,8 @@ public class JefeLogica implements JefeLogicaLocal {
     
     @Override
     public void registrarJefe(Jefe jefe) throws Exception {
-        if(jefe.getIngsoftware() == null){
-            throw new Exception("Ingeniero de Software No Registrado.");
+        if(jefe.getIngsoftware().getCedula() == null){
+            throw new Exception("No se ha seleccionado ningún Ingeniero de Software.");
         }
         
         Jefe objJefe = jefeDAO.find(jefe);

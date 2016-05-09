@@ -5,7 +5,9 @@
  */
 package logica;
 
+import java.util.List;
 import javax.ejb.Local;
+import modelo.Ingsoftwarelenguajeprog;
 
 /**
  *
@@ -13,5 +15,10 @@ import javax.ejb.Local;
  */
 @Local
 public interface IngsoftwarelenguajeprogLogicaLocal {
-    
+
+    public void registrarLenguajeprog(Ingsoftwarelenguajeprog lenguajeprog) throws Exception;
+    public void modificarLenguajeprog(Ingsoftwarelenguajeprog lenguajeprog) throws Exception;
+    public void eliminarLenguajeprog(Ingsoftwarelenguajeprog lenguajeprog) throws Exception;
+    public List<Ingsoftwarelenguajeprog> consultarTodos() throws Exception;
+        
 }

@@ -5,7 +5,9 @@
  */
 package logica;
 
+import java.util.List;
 import javax.ejb.Local;
+import modelo.Ingsoftwaresistemaoperativo;
 
 /**
  *
@@ -13,5 +15,10 @@ import javax.ejb.Local;
  */
 @Local
 public interface IngsoftwaresistemaoperativoLogicaLocal {
+
+    public void registrarSistemaoperativo(Ingsoftwaresistemaoperativo sistemaoperativo) throws Exception;
+    public void modificarSistemaoperativo(Ingsoftwaresistemaoperativo sistemaoperativo) throws Exception;
+    public void eliminarSistemaoperativo(Ingsoftwaresistemaoperativo sistemaoperativo) throws Exception;
+    public List<Ingsoftwaresistemaoperativo> consultarTodos() throws Exception;
     
 }
