@@ -27,12 +27,12 @@ public class IngsoftwaresgbdLogica implements IngsoftwaresgbdLogicaLocal {
             throw new Exception("Debes seleccionar un Ingeniero Software.");
         }
         if(sgbd.getIngsoftwaresgbdPK().getSgbd().equals("")){
-            throw new Exception("Campo Lenguaje Programación Obligatorio.");
+            throw new Exception("Campo Sistema Gestor de Base de Datos Obligatorio.");
         }
         
         Ingsoftwaresgbd objSgbd = sgbdDAO.find(sgbd);
         if(objSgbd != null){
-            throw new Exception("Lenguaje de Programación de Ingeniero Software ya existe.");
+            throw new Exception("Sistema Gestor de Base de Datos de Ingeniero Software ya existe.");
         }
         else{
             sgbdDAO.create(sgbd);
@@ -45,12 +45,12 @@ public class IngsoftwaresgbdLogica implements IngsoftwaresgbdLogicaLocal {
             throw new Exception("Debes seleccionar un Ingeniero Software.");
         }
         if(sgbd.getIngsoftwaresgbdPK().getSgbd().equals("")){
-            throw new Exception("Campo Lenguaje Programación Obligatorio.");
+            throw new Exception("Campo Sistema Gestor de Base de Datos Obligatorio.");
         }
         
         Ingsoftwaresgbd objSgbd = sgbdDAO.find(sgbd);
         if(objSgbd == null){
-            throw new Exception("Lenguaje de Programación de Ingeniero Software a modificar no existe.");
+            throw new Exception("Sistema Gestor de Base de Datos de Ingeniero Software a modificar no existe.");
         }
         else{
             sgbdDAO.edit(sgbd);
@@ -62,7 +62,7 @@ public class IngsoftwaresgbdLogica implements IngsoftwaresgbdLogicaLocal {
         Ingsoftwaresgbd objSgbd = sgbdDAO.find(sgbd.getIngsoftwaresgbdPK());
         
         if(objSgbd == null){
-            throw new Exception("Lenguaje de Programación de Ingeniero Software a eliminar no existe.");
+            throw new Exception("Sistema Gestor de Base de Datos de Ingeniero Software a eliminar no existe.");
         }
         else{
             sgbdDAO.remove(sgbd);

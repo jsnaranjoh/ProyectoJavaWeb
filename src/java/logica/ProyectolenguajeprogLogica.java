@@ -6,8 +6,10 @@
 package logica;
 
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import modelo.Proyectolenguajeprog;
+import persistencia.ProyectolenguajeprogFacadeLocal;
 
 /**
  *
@@ -16,24 +18,60 @@ import modelo.Proyectolenguajeprog;
 @Stateless
 public class ProyectolenguajeprogLogica implements ProyectolenguajeprogLogicaLocal {
 
+    @EJB
+    ProyectolenguajeprogFacadeLocal lenguajeprogDAO;
+    
     @Override
     public void registrarLenguajeprog(Proyectolenguajeprog lenguajeprog) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(lenguajeprog.getProyecto().getCodigo() == null){
+            throw new Exception("Debes seleccionar un Proyecto.");
+        }
+        if(lenguajeprog.getProyectolenguajeprogPK().getLenguajeprog().equals("")){
+            throw new Exception("Campo Lenguaje Programación Obligatorio.");
+        }
+        
+        Proyectolenguajeprog objLenguajeprog = lenguajeprogDAO.find(lenguajeprog);
+        if(objLenguajeprog != null){
+            throw new Exception("Lenguaje de Programación del Proyecto ya existe.");
+        }
+        else{
+            lenguajeprogDAO.create(lenguajeprog);
+        }
     }
 
     @Override
     public void modificarLenguajeprog(Proyectolenguajeprog lenguajeprog) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(lenguajeprog.getProyecto().getCodigo() == null){
+            throw new Exception("Debes seleccionar un Proyecto.");
+        }
+        if(lenguajeprog.getProyectolenguajeprogPK().getLenguajeprog().equals("")){
+            throw new Exception("Campo Lenguaje Programación Obligatorio.");
+        }
+        
+        Proyectolenguajeprog objLenguajeprog = lenguajeprogDAO.find(lenguajeprog);
+        if(objLenguajeprog == null){
+            throw new Exception("Lenguaje de Programación del Proyecto a modificar no existe.");
+        }
+        else{
+            lenguajeprogDAO.edit(lenguajeprog);
+        }
     }
 
     @Override
     public void eliminarLenguajeprog(Proyectolenguajeprog lenguajeprog) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Proyectolenguajeprog objLenguajeprog = lenguajeprogDAO.find(lenguajeprog.getProyectolenguajeprogPK());
+        
+        if(objLenguajeprog == null){
+            throw new Exception("Lenguaje de Programación del Proyecto a eliminar no existe.");
+        }
+        else{
+            lenguajeprogDAO.remove(lenguajeprog);
+        }
     }
 
     @Override
     public List<Proyectolenguajeprog> consultarTodos() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return lenguajeprogDAO.findAll();
     }
 
     // Add business logic below. (Right-click in editor and choose

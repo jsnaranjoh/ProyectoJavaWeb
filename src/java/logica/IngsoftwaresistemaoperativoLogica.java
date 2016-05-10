@@ -27,12 +27,12 @@ public class IngsoftwaresistemaoperativoLogica implements Ingsoftwaresistemaoper
             throw new Exception("Debes seleccionar un Ingeniero Software.");
         }
         if(sistemaoperativo.getIngsoftwaresistemaoperativoPK().getSistemaoperativo().equals("")){
-            throw new Exception("Campo Lenguaje Programación Obligatorio.");
+            throw new Exception("Campo Sistema Operativo Obligatorio.");
         }
         
-        Ingsoftwaresistemaoperativo objLenguajeprog = sistemaoperativoDAO.find(sistemaoperativo);
-        if(objLenguajeprog != null){
-            throw new Exception("Lenguaje de Programación de Ingeniero Software ya existe.");
+        Ingsoftwaresistemaoperativo objSistemaoperativo = sistemaoperativoDAO.find(sistemaoperativo);
+        if(objSistemaoperativo != null){
+            throw new Exception("Sistema Operativo de Ingeniero Software ya existe.");
         }
         else{
             sistemaoperativoDAO.create(sistemaoperativo);
@@ -45,12 +45,12 @@ public class IngsoftwaresistemaoperativoLogica implements Ingsoftwaresistemaoper
             throw new Exception("Debes seleccionar un Ingeniero Software.");
         }
         if(sistemaoperativo.getIngsoftwaresistemaoperativoPK().getSistemaoperativo().equals("")){
-            throw new Exception("Campo Lenguaje Programación Obligatorio.");
+            throw new Exception("Campo Sistema Operativo Obligatorio.");
         }
         
-        Ingsoftwaresistemaoperativo objLenguajeprog = sistemaoperativoDAO.find(sistemaoperativo);
-        if(objLenguajeprog == null){
-            throw new Exception("Lenguaje de Programación de Ingeniero Software a modificar no existe.");
+        Ingsoftwaresistemaoperativo objSistemaoperativo = sistemaoperativoDAO.find(sistemaoperativo);
+        if(objSistemaoperativo == null){
+            throw new Exception("Sistema Operativo de Ingeniero Software a modificar no existe.");
         }
         else{
             sistemaoperativoDAO.edit(sistemaoperativo);
@@ -59,10 +59,10 @@ public class IngsoftwaresistemaoperativoLogica implements Ingsoftwaresistemaoper
 
     @Override
     public void eliminarSistemaoperativo(Ingsoftwaresistemaoperativo sistemaoperativo) throws Exception {
-        Ingsoftwaresistemaoperativo objLenguajeprog = sistemaoperativoDAO.find(sistemaoperativo.getIngsoftwaresistemaoperativoPK());
+        Ingsoftwaresistemaoperativo objSistemaoperativo = sistemaoperativoDAO.find(sistemaoperativo.getIngsoftwaresistemaoperativoPK());
         
-        if(objLenguajeprog == null){
-            throw new Exception("Lenguaje de Programación de Ingeniero Software a eliminar no existe.");
+        if(objSistemaoperativo == null){
+            throw new Exception("Sistema Operativo de Ingeniero Software a eliminar no existe.");
         }
         else{
             sistemaoperativoDAO.remove(sistemaoperativo);

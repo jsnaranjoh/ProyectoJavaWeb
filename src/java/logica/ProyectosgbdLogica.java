@@ -6,8 +6,10 @@
 package logica;
 
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import modelo.Proyectosgbd;
+import persistencia.ProyectosgbdFacadeLocal;
 
 /**
  *
@@ -16,24 +18,60 @@ import modelo.Proyectosgbd;
 @Stateless
 public class ProyectosgbdLogica implements ProyectosgbdLogicaLocal {
 
+    @EJB
+    ProyectosgbdFacadeLocal sgbdDAO;
+    
     @Override
     public void registrarSGBD(Proyectosgbd sgbd) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(sgbd.getProyecto().getCodigo() == null){
+            throw new Exception("Debes seleccionar un Proyecto.");
+        }
+        if(sgbd.getProyectosgbdPK().getSgbd().equals("")){
+            throw new Exception("Campo Sistema Gestor de Base de Datos Obligatorio.");
+        }
+        
+        Proyectosgbd objSgbd = sgbdDAO.find(sgbd);
+        if(objSgbd != null){
+            throw new Exception("Sistema Gestor de Base de Datos del Proyecto ya existe.");
+        }
+        else{
+            sgbdDAO.create(sgbd);
+        }
     }
 
     @Override
     public void modificarSGBD(Proyectosgbd sgbd) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(sgbd.getProyecto().getCodigo() == null){
+            throw new Exception("Debes seleccionar un Proyecto.");
+        }
+        if(sgbd.getProyectosgbdPK().getSgbd().equals("")){
+            throw new Exception("Campo Sistema Gestor de Base de Datos Obligatorio.");
+        }
+        
+        Proyectosgbd objSgbd = sgbdDAO.find(sgbd);
+        if(objSgbd == null){
+            throw new Exception("Sistema Gestor de Base de Datos del Proyecto a modificar no existe.");
+        }
+        else{
+            sgbdDAO.edit(sgbd);
+        }
     }
 
     @Override
     public void eliminarSGBD(Proyectosgbd sgbd) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Proyectosgbd objSgbd = sgbdDAO.find(sgbd.getProyectosgbdPK());
+        
+        if(objSgbd == null){
+            throw new Exception("Sistema Gestor de Base de Datos del Proyecto a eliminar no existe.");
+        }
+        else{
+            sgbdDAO.remove(sgbd);
+        }
     }
 
     @Override
     public List<Proyectosgbd> consultarTodos() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return sgbdDAO.findAll();
     }
 
     // Add business logic below. (Right-click in editor and choose

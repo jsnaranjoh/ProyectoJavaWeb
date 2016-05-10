@@ -6,8 +6,10 @@
 package logica;
 
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import modelo.Proyectosistemaoperativo;
+import persistencia.ProyectosistemaoperativoFacadeLocal;
 
 /**
  *
@@ -16,24 +18,60 @@ import modelo.Proyectosistemaoperativo;
 @Stateless
 public class ProyectosistemaoperativoLogica implements ProyectosistemaoperativoLogicaLocal {
 
+    @EJB
+    ProyectosistemaoperativoFacadeLocal sistemaoperativoDAO;
+    
     @Override
     public void registrarSistemaoperativo(Proyectosistemaoperativo sistemaoperativo) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(sistemaoperativo.getProyecto().getCodigo() == null){
+            throw new Exception("Debes seleccionar un Proyecto.");
+        }
+        if(sistemaoperativo.getProyectosistemaoperativoPK().getSistemaoperativo().equals("")){
+            throw new Exception("Campo Sistema Operativo Obligatorio.");
+        }
+        
+        Proyectosistemaoperativo objSistemaoperativo = sistemaoperativoDAO.find(sistemaoperativo);
+        if(objSistemaoperativo != null){
+            throw new Exception("Sistema Operativo del Proyecto ya existe.");
+        }
+        else{
+            sistemaoperativoDAO.create(sistemaoperativo);
+        }
     }
 
     @Override
     public void modificarSistemaoperativo(Proyectosistemaoperativo sistemaoperativo) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(sistemaoperativo.getProyecto().getCodigo() == null){
+            throw new Exception("Debes seleccionar un Proyecto.");
+        }
+        if(sistemaoperativo.getProyectosistemaoperativoPK().getSistemaoperativo().equals("")){
+            throw new Exception("Campo Sistema Operativo Obligatorio.");
+        }
+        
+        Proyectosistemaoperativo objSistemaoperativo = sistemaoperativoDAO.find(sistemaoperativo);
+        if(objSistemaoperativo == null){
+            throw new Exception("Sistema Operativo del Proyecto a modificar no existe.");
+        }
+        else{
+            sistemaoperativoDAO.edit(sistemaoperativo);
+        }
     }
 
     @Override
     public void eliminarSistemaoperativo(Proyectosistemaoperativo sistemaoperativo) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Proyectosistemaoperativo objSistemaoperativo = sistemaoperativoDAO.find(sistemaoperativo.getProyectosistemaoperativoPK());
+        
+        if(objSistemaoperativo == null){
+            throw new Exception("Sistema Operativo del Proyecto a eliminar no existe.");
+        }
+        else{
+            sistemaoperativoDAO.remove(sistemaoperativo);
+        }
     }
 
     @Override
     public List<Proyectosistemaoperativo> consultarTodos() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return sistemaoperativoDAO.findAll();
     }
 
     // Add business logic below. (Right-click in editor and choose
