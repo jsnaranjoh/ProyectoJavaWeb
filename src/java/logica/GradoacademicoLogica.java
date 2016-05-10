@@ -23,7 +23,7 @@ public class GradoacademicoLogica implements GradoacademicoLogicaLocal {
     
     @Override
     public void registrarGradoacademico(Gradoacademico gradoacademico) throws Exception {
-        if(gradoacademico.getIngeniero() == null){
+        if(gradoacademico.getIngeniero().getCedula() == null){
             throw new Exception("Campo Ingeniero Software Obligatorio.");
         }
         if(gradoacademico.getNivel().equals("")){
@@ -47,7 +47,7 @@ public class GradoacademicoLogica implements GradoacademicoLogicaLocal {
 
     @Override
     public void modificarGradoacademico(Gradoacademico gradoacademico) throws Exception {
-        if(gradoacademico.getIngeniero() == null){
+        if(gradoacademico.getIngeniero().getCedula() == null){
             throw new Exception("Campo Ingeniero Software Obligatorio.");
         }
         if(gradoacademico.getNivel().equals("")){

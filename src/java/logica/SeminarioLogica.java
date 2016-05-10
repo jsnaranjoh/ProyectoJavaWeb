@@ -23,7 +23,7 @@ public class SeminarioLogica implements SeminarioLogicaLocal {
     
     @Override
     public void registrarSeminario(Seminario seminario) throws Exception {
-        if(seminario.getIngeniero() == null){
+        if(seminario.getIngeniero().getCedula() == null){
             throw new Exception("Campo Ingeniero Software Obligatorio.");
         }
         if(seminario.getNombre().equals("")){
@@ -50,7 +50,7 @@ public class SeminarioLogica implements SeminarioLogicaLocal {
 
     @Override
     public void modificarSeminario(Seminario seminario) throws Exception {
-        if(seminario.getIngeniero() == null){
+        if(seminario.getIngeniero().getCedula() == null){
             throw new Exception("Campo Ingeniero Software Obligatorio.");
         }
         if(seminario.getNombre().equals("")){
