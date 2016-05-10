@@ -30,7 +30,7 @@ public class GradoacademicoLogica implements GradoacademicoLogicaLocal {
             throw new Exception("Campo Nivel Académico Obligatorio.");
         }
         if(gradoacademico.getLugar().equals("")){
-            throw new Exception("Campo Lugradoacademicor de Graduación Obligatorio.");
+            throw new Exception("Campo Lugar de Graduación Obligatorio.");
         }
         if(gradoacademico.getTituloobtenido().equals("")){
             throw new Exception("Campo Título Obtenido Obligatorio.");
@@ -54,7 +54,7 @@ public class GradoacademicoLogica implements GradoacademicoLogicaLocal {
             throw new Exception("Campo Nivel Académico Obligatorio.");
         }
         if(gradoacademico.getLugar().equals("")){
-            throw new Exception("Campo Lugradoacademicor de Graduación Obligatorio.");
+            throw new Exception("Campo Lugar de Graduación Obligatorio.");
         }
         if(gradoacademico.getTituloobtenido().equals("")){
             throw new Exception("Campo Título Obtenido Obligatorio.");
