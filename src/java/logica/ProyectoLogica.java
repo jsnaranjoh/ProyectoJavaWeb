@@ -83,6 +83,14 @@ public class ProyectoLogica implements ProyectoLogicaLocal {
             throw new Exception("Proyecto a modificar no existe.");
         }
         else{
+            objProyecto.setLider(proyecto.getLider());
+            objProyecto.setNombre(proyecto.getNombre());
+            objProyecto.setAreaaplicacion(proyecto.getAreaaplicacion());
+            objProyecto.setFechaingreso(proyecto.getFechaingreso());
+            objProyecto.setFechaasignacion(proyecto.getFechaasignacion());
+            objProyecto.setFechaprevistaliberacion(proyecto.getFechaprevistaliberacion());
+            objProyecto.setVersionprograma(proyecto.getVersionprograma());
+            objProyecto.setCostototal(proyecto.getCostototal());
             proyectoDAO.edit(proyecto);
         }
     }

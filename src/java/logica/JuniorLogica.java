@@ -47,7 +47,6 @@ public class JuniorLogica implements JuniorLogicaLocal {
             throw new Exception("Junior a modificar no existe.");
         }
         else{
-            objJunior.setIngsoftware(junior.getIngsoftware());
             objJunior.setHorastrabajoxdia(junior.getHorastrabajoxdia());
             juniorDAO.edit(junior);
         }

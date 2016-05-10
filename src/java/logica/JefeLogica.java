@@ -47,7 +47,6 @@ public class JefeLogica implements JefeLogicaLocal {
             throw new Exception("Jefe a modificar no existe.");
         }
         else{
-            objJefe.setIngsoftware(jefe.getIngsoftware());
             objJefe.setPresupuesto(jefe.getPresupuesto());
             jefeDAO.edit(jefe);
         }

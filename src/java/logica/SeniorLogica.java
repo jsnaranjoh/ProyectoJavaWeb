@@ -47,7 +47,6 @@ public class SeniorLogica implements SeniorLogicaLocal {
             throw new Exception("Senior a modificar no existe.");
         }
         else{
-            objSenior.setIngsoftware(senior.getIngsoftware());
             objSenior.setProyectosquelidera(senior.getProyectosquelidera());
             seniorDAO.edit(senior);
         }
