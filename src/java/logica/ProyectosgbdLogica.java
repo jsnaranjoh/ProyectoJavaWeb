@@ -53,6 +53,7 @@ public class ProyectosgbdLogica implements ProyectosgbdLogicaLocal {
             throw new Exception("Sistema Gestor de Base de Datos del Proyecto a modificar no existe.");
         }
         else{
+            objSgbd.getProyectosgbdPK().setSgbd(sgbd.getProyectosgbdPK().getSgbd());
             sgbdDAO.edit(sgbd);
         }
     }

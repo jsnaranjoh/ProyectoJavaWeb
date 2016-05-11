@@ -53,6 +53,7 @@ public class IngsoftwaresgbdLogica implements IngsoftwaresgbdLogicaLocal {
             throw new Exception("Sistema Gestor de Base de Datos de Ingeniero Software a modificar no existe.");
         }
         else{
+            objSgbd.getIngsoftwaresgbdPK().setSgbd(sgbd.getIngsoftwaresgbdPK().getSgbd());
             sgbdDAO.edit(sgbd);
         }
     }

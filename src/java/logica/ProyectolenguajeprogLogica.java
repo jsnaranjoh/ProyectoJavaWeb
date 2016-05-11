@@ -53,6 +53,7 @@ public class ProyectolenguajeprogLogica implements ProyectolenguajeprogLogicaLoc
             throw new Exception("Lenguaje de Programación del Proyecto a modificar no existe.");
         }
         else{
+            objLenguajeprog.getProyectolenguajeprogPK().setLenguajeprog(lenguajeprog.getProyectolenguajeprogPK().getLenguajeprog());
             lenguajeprogDAO.edit(lenguajeprog);
         }
     }

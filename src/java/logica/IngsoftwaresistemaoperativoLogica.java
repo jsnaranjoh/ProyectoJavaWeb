@@ -53,6 +53,7 @@ public class IngsoftwaresistemaoperativoLogica implements Ingsoftwaresistemaoper
             throw new Exception("Sistema Operativo de Ingeniero Software a modificar no existe.");
         }
         else{
+            objSistemaoperativo.getIngsoftwaresistemaoperativoPK().setSistemaoperativo(sistemaoperativo.getIngsoftwaresistemaoperativoPK().getSistemaoperativo());
             sistemaoperativoDAO.edit(sistemaoperativo);
         }
     }

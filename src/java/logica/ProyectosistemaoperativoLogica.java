@@ -53,6 +53,7 @@ public class ProyectosistemaoperativoLogica implements ProyectosistemaoperativoL
             throw new Exception("Sistema Operativo del Proyecto a modificar no existe.");
         }
         else{
+            objSistemaoperativo.getProyectosistemaoperativoPK().setSistemaoperativo(sistemaoperativo.getProyectosistemaoperativoPK().getSistemaoperativo());            
             sistemaoperativoDAO.edit(sistemaoperativo);
         }
     }

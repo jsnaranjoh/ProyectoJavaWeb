@@ -53,6 +53,7 @@ public class IngsoftwarelenguajeprogLogica implements IngsoftwarelenguajeprogLog
             throw new Exception("Lenguaje de Programación de Ingeniero Software a modificar no existe.");
         }
         else{
+            objLenguajeprog.getIngsoftwarelenguajeprogPK().setLenguajeprog(lenguajeprog.getIngsoftwarelenguajeprogPK().getLenguajeprog());
             lenguajeprogDAO.edit(lenguajeprog);
         }
     }
