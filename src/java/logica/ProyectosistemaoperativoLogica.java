@@ -30,7 +30,7 @@ public class ProyectosistemaoperativoLogica implements ProyectosistemaoperativoL
             throw new Exception("Campo Sistema Operativo Obligatorio.");
         }
         
-        Proyectosistemaoperativo objSistemaoperativo = sistemaoperativoDAO.find(sistemaoperativo);
+        Proyectosistemaoperativo objSistemaoperativo = sistemaoperativoDAO.find(sistemaoperativo.getProyectosistemaoperativoPK());
         if(objSistemaoperativo != null){
             throw new Exception("Sistema Operativo del Proyecto ya existe.");
         }
@@ -48,7 +48,7 @@ public class ProyectosistemaoperativoLogica implements ProyectosistemaoperativoL
             throw new Exception("Campo Sistema Operativo Obligatorio.");
         }
         
-        Proyectosistemaoperativo objSistemaoperativo = sistemaoperativoDAO.find(sistemaoperativo);
+        Proyectosistemaoperativo objSistemaoperativo = sistemaoperativoDAO.find(sistemaoperativo.getProyectosistemaoperativoPK());
         if(objSistemaoperativo == null){
             throw new Exception("Sistema Operativo del Proyecto a modificar no existe.");
         }

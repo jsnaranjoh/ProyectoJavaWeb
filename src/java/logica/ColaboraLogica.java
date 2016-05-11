@@ -36,7 +36,7 @@ public class ColaboraLogica implements ColaboraLogicaLocal {
             throw new Exception("Campo Fecha Fin Colaboración Obligatorio.");
         }
         
-        Colabora objColabora = colaboraDAO.find(colabora);
+        Colabora objColabora = colaboraDAO.find(colabora.getColaboraPK());
         if(objColabora != null){
             throw new Exception("Colaboración ya existe.");
         }
@@ -60,7 +60,7 @@ public class ColaboraLogica implements ColaboraLogicaLocal {
             throw new Exception("Campo Fecha Fin Colaboración Obligatorio.");
         }
         
-        Colabora objColabora = colaboraDAO.find(colabora);
+        Colabora objColabora = colaboraDAO.find(colabora.getColaboraPK());
         if(objColabora == null){
             throw new Exception("Colaboración a modificar no existe.");
         }

@@ -27,7 +27,7 @@ public class JefeLogica implements JefeLogicaLocal {
             throw new Exception("No se ha seleccionado ningún Ingeniero de Software.");
         }
         
-        Jefe objJefe = jefeDAO.find(jefe);
+        Jefe objJefe = jefeDAO.find(jefe.getIngsoftware().getCedula());
         if(objJefe != null){
             throw new Exception("Jefe ya existe.");
         }
@@ -42,7 +42,7 @@ public class JefeLogica implements JefeLogicaLocal {
             throw new Exception("Ingeniero de Software No Registrado.");
         }
         
-        Jefe objJefe = jefeDAO.find(jefe);
+        Jefe objJefe = jefeDAO.find(jefe.getIngsoftware().getCedula());
         if(objJefe == null){
             throw new Exception("Jefe a modificar no existe.");
         }

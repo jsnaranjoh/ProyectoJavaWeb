@@ -30,7 +30,7 @@ public class ProyectolenguajeprogLogica implements ProyectolenguajeprogLogicaLoc
             throw new Exception("Campo Lenguaje Programación Obligatorio.");
         }
         
-        Proyectolenguajeprog objLenguajeprog = lenguajeprogDAO.find(lenguajeprog);
+        Proyectolenguajeprog objLenguajeprog = lenguajeprogDAO.find(lenguajeprog.getProyectolenguajeprogPK());
         if(objLenguajeprog != null){
             throw new Exception("Lenguaje de Programación del Proyecto ya existe.");
         }
@@ -48,7 +48,7 @@ public class ProyectolenguajeprogLogica implements ProyectolenguajeprogLogicaLoc
             throw new Exception("Campo Lenguaje Programación Obligatorio.");
         }
         
-        Proyectolenguajeprog objLenguajeprog = lenguajeprogDAO.find(lenguajeprog);
+        Proyectolenguajeprog objLenguajeprog = lenguajeprogDAO.find(lenguajeprog.getProyectolenguajeprogPK());
         if(objLenguajeprog == null){
             throw new Exception("Lenguaje de Programación del Proyecto a modificar no existe.");
         }

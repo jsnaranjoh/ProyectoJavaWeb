@@ -30,7 +30,7 @@ public class IngsoftwaresgbdLogica implements IngsoftwaresgbdLogicaLocal {
             throw new Exception("Campo Sistema Gestor de Base de Datos Obligatorio.");
         }
         
-        Ingsoftwaresgbd objSgbd = sgbdDAO.find(sgbd);
+        Ingsoftwaresgbd objSgbd = sgbdDAO.find(sgbd.getIngsoftwaresgbdPK());
         if(objSgbd != null){
             throw new Exception("Sistema Gestor de Base de Datos de Ingeniero Software ya existe.");
         }
@@ -48,7 +48,7 @@ public class IngsoftwaresgbdLogica implements IngsoftwaresgbdLogicaLocal {
             throw new Exception("Campo Sistema Gestor de Base de Datos Obligatorio.");
         }
         
-        Ingsoftwaresgbd objSgbd = sgbdDAO.find(sgbd);
+        Ingsoftwaresgbd objSgbd = sgbdDAO.find(sgbd.getIngsoftwaresgbdPK());
         if(objSgbd == null){
             throw new Exception("Sistema Gestor de Base de Datos de Ingeniero Software a modificar no existe.");
         }

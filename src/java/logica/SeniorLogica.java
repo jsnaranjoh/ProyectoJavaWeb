@@ -27,7 +27,7 @@ public class SeniorLogica implements SeniorLogicaLocal {
             throw new Exception("Debes seleccionar un Ingeniero de Software.");
         }
         
-        Senior objSenior = seniorDAO.find(senior);
+        Senior objSenior = seniorDAO.find(senior.getIngsoftware().getCedula());
         if(objSenior != null){
             throw new Exception("Senior ya existe.");
         }
@@ -42,7 +42,7 @@ public class SeniorLogica implements SeniorLogicaLocal {
             throw new Exception("Ingeniero de Software No Registrado.");
         }
         
-        Senior objSenior = seniorDAO.find(senior);
+        Senior objSenior = seniorDAO.find(senior.getIngsoftware().getCedula());
         if(objSenior == null){
             throw new Exception("Senior a modificar no existe.");
         }

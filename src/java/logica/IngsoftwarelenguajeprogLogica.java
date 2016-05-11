@@ -30,7 +30,7 @@ public class IngsoftwarelenguajeprogLogica implements IngsoftwarelenguajeprogLog
             throw new Exception("Campo Lenguaje Programación Obligatorio.");
         }
         
-        Ingsoftwarelenguajeprog objLenguajeprog = lenguajeprogDAO.find(lenguajeprog);
+        Ingsoftwarelenguajeprog objLenguajeprog = lenguajeprogDAO.find(lenguajeprog.getIngsoftwarelenguajeprogPK());
         if(objLenguajeprog != null){
             throw new Exception("Lenguaje de Programación de Ingeniero Software ya existe.");
         }
@@ -48,7 +48,7 @@ public class IngsoftwarelenguajeprogLogica implements IngsoftwarelenguajeprogLog
             throw new Exception("Campo Lenguaje Programación Obligatorio.");
         }
         
-        Ingsoftwarelenguajeprog objLenguajeprog = lenguajeprogDAO.find(lenguajeprog);
+        Ingsoftwarelenguajeprog objLenguajeprog = lenguajeprogDAO.find(lenguajeprog.getIngsoftwarelenguajeprogPK());
         if(objLenguajeprog == null){
             throw new Exception("Lenguaje de Programación de Ingeniero Software a modificar no existe.");
         }

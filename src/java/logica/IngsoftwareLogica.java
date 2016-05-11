@@ -63,7 +63,7 @@ public class IngsoftwareLogica implements IngsoftwareLogicaLocal {
             throw new Exception("Tu Clave Ingeniero Software debe contener 10 caracteres o más.");
         }
         
-        Ingsoftware objIngsoftware = ingsoftwareDAO.find(ingsoftware);
+        Ingsoftware objIngsoftware = ingsoftwareDAO.find(ingsoftware.getCedula());
         if(objIngsoftware != null){
             throw new Exception("Ingeniero Software ya existe.");
         }
@@ -114,7 +114,7 @@ public class IngsoftwareLogica implements IngsoftwareLogicaLocal {
             throw new Exception("Tu Clave Ingeniero Software debe contener 10 caracteres o más.");
         }
 
-        Ingsoftware objIngsoftware = ingsoftwareDAO.find(ingsoftware);
+        Ingsoftware objIngsoftware = ingsoftwareDAO.find(ingsoftware.getCedula());
         if(objIngsoftware == null){
             throw new Exception("Ingeniero Software a modificar no existe.");
         }

@@ -39,7 +39,7 @@ public class SeminarioLogica implements SeminarioLogicaLocal {
             throw new Exception("Campo Fecha de fin de Seminario Obligatorio.");
         }
         
-        Seminario objSeminario = seminarioDAO.find(seminario);
+        Seminario objSeminario = seminarioDAO.find(seminario.getNumero());
         if(objSeminario != null){
             throw new Exception("Seminario ya existe.");
         }
@@ -66,7 +66,7 @@ public class SeminarioLogica implements SeminarioLogicaLocal {
             throw new Exception("Campo Fecha de fin de Seminario Obligatorio.");
         }
         
-        Seminario objSeminario = seminarioDAO.find(seminario);
+        Seminario objSeminario = seminarioDAO.find(seminario.getNumero());
         if(objSeminario == null){
             throw new Exception("Seminario a modificar no existe.");
         }

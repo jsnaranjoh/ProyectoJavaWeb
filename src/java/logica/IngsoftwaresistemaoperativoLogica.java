@@ -30,7 +30,7 @@ public class IngsoftwaresistemaoperativoLogica implements Ingsoftwaresistemaoper
             throw new Exception("Campo Sistema Operativo Obligatorio.");
         }
         
-        Ingsoftwaresistemaoperativo objSistemaoperativo = sistemaoperativoDAO.find(sistemaoperativo);
+        Ingsoftwaresistemaoperativo objSistemaoperativo = sistemaoperativoDAO.find(sistemaoperativo.getIngsoftwaresistemaoperativoPK());
         if(objSistemaoperativo != null){
             throw new Exception("Sistema Operativo de Ingeniero Software ya existe.");
         }
@@ -48,7 +48,7 @@ public class IngsoftwaresistemaoperativoLogica implements Ingsoftwaresistemaoper
             throw new Exception("Campo Sistema Operativo Obligatorio.");
         }
         
-        Ingsoftwaresistemaoperativo objSistemaoperativo = sistemaoperativoDAO.find(sistemaoperativo);
+        Ingsoftwaresistemaoperativo objSistemaoperativo = sistemaoperativoDAO.find(sistemaoperativo.getIngsoftwaresistemaoperativoPK());
         if(objSistemaoperativo == null){
             throw new Exception("Sistema Operativo de Ingeniero Software a modificar no existe.");
         }

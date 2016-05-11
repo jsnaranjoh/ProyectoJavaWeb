@@ -45,7 +45,7 @@ public class ProyectoLogica implements ProyectoLogicaLocal {
             throw new Exception("Campo Versión Programa Proyecto Obligatorio.");
         }
         
-        Proyecto objProyecto = proyectoDAO.find(proyecto);
+        Proyecto objProyecto = proyectoDAO.find(proyecto.getCodigo());
         if(objProyecto != null){
             throw new Exception("Proyecto ya existe.");
         }
@@ -78,7 +78,7 @@ public class ProyectoLogica implements ProyectoLogicaLocal {
             throw new Exception("Campo Versión Programa Proyecto Obligatorio.");
         }
         
-        Proyecto objProyecto = proyectoDAO.find(proyecto);
+        Proyecto objProyecto = proyectoDAO.find(proyecto.getCodigo());
         if(objProyecto == null){
             throw new Exception("Proyecto a modificar no existe.");
         }

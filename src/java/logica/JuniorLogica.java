@@ -27,7 +27,7 @@ public class JuniorLogica implements JuniorLogicaLocal {
             throw new Exception("Debes seleccionar un Ingeniero de Software.");
         }
         
-        Junior objJunior = juniorDAO.find(junior);
+        Junior objJunior = juniorDAO.find(junior.getIngsoftware().getCedula());
         if(objJunior != null){
             throw new Exception("Junior ya existe.");
         }
@@ -42,7 +42,7 @@ public class JuniorLogica implements JuniorLogicaLocal {
             throw new Exception("Ingeniero de Software No Registrado.");
         }
         
-        Junior objJunior = juniorDAO.find(junior);
+        Junior objJunior = juniorDAO.find(junior.getIngsoftware().getCedula());
         if(objJunior == null){
             throw new Exception("Junior a modificar no existe.");
         }

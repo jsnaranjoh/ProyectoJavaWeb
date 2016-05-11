@@ -30,7 +30,7 @@ public class ProyectosgbdLogica implements ProyectosgbdLogicaLocal {
             throw new Exception("Campo Sistema Gestor de Base de Datos Obligatorio.");
         }
         
-        Proyectosgbd objSgbd = sgbdDAO.find(sgbd);
+        Proyectosgbd objSgbd = sgbdDAO.find(sgbd.getProyectosgbdPK());
         if(objSgbd != null){
             throw new Exception("Sistema Gestor de Base de Datos del Proyecto ya existe.");
         }
@@ -48,7 +48,7 @@ public class ProyectosgbdLogica implements ProyectosgbdLogicaLocal {
             throw new Exception("Campo Sistema Gestor de Base de Datos Obligatorio.");
         }
         
-        Proyectosgbd objSgbd = sgbdDAO.find(sgbd);
+        Proyectosgbd objSgbd = sgbdDAO.find(sgbd.getProyectosgbdPK());
         if(objSgbd == null){
             throw new Exception("Sistema Gestor de Base de Datos del Proyecto a modificar no existe.");
         }

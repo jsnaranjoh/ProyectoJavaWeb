@@ -36,7 +36,7 @@ public class GradoacademicoLogica implements GradoacademicoLogicaLocal {
             throw new Exception("Campo Título Obtenido Obligatorio.");
         }
         
-        Gradoacademico objGradoacademico = gradoacademicoDAO.find(gradoacademico);
+        Gradoacademico objGradoacademico = gradoacademicoDAO.find(gradoacademico.getNumero());
         if(objGradoacademico != null){
             throw new Exception("Grado académico ya existe.");
         }
@@ -60,7 +60,7 @@ public class GradoacademicoLogica implements GradoacademicoLogicaLocal {
             throw new Exception("Campo Título Obtenido Obligatorio.");
         }
         
-        Gradoacademico objGradoacademico = gradoacademicoDAO.find(gradoacademico);
+        Gradoacademico objGradoacademico = gradoacademicoDAO.find(gradoacademico.getNumero());
         if(objGradoacademico == null){
             throw new Exception("Grado académico a modificar no existe.");
         }
