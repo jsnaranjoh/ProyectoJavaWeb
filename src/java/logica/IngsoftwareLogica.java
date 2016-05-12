@@ -144,6 +144,27 @@ public class IngsoftwareLogica implements IngsoftwareLogicaLocal {
             throw new Exception("Ingeniero Software a eliminar no existe.");
         }
         else{
+            if(objIngsoftware.getGradoacademicoList().size() > 0){
+                throw new Exception("El Ingeniero Software tiene grados académicos asociados. Elimínelos primero.");
+            }
+            if(objIngsoftware.getIngsoftwarelenguajeprogList().size() > 0){
+                throw new Exception("El Ingeniero Software tiene aptitudes asociadas. " + 
+                        "Por lo tanto, elimine primero los lenguajes de programación que él o ella sabe.");
+            }
+            if(objIngsoftware.getIngsoftwaresgbdList().size() > 0){
+                throw new Exception("El Ingeniero Software tiene aptitudes asociadas. " + 
+                        "Por lo tanto, elimine primero los sistemas gestores de bases de datos que él o ella sabe.");
+            }
+            if(objIngsoftware.getIngsoftwaresistemaoperativoList().size() > 0){
+                throw new Exception("El Ingeniero Software tiene aptitudes asociadas. " +
+                        "Por lo tanto, elimine primero los sistemas operativos que él o ella sabe.");
+            }
+            if(objIngsoftware.getSeminarioList().size() > 0){
+                throw new Exception("El Ingeniero Software tiene seminarios asociados. Elimínelos primero.");
+            }
+            if(objIngsoftware.getSolicitudList().size() > 0){
+                throw new Exception("El Ingeniero Software tiene solicitudes realizadas. Elimínelas primero.");
+            }
             ingsoftwareDAO.remove(ingsoftware);
         }
     }

@@ -59,6 +59,9 @@ public class JefeLogica implements JefeLogicaLocal {
             throw new Exception("Jefe a eliminar no existe.");
         }
         else{
+            if(objJefe.getSolicitudList().size() > 0){
+                throw new Exception("El Ingeniero Jefe tiene solicitudes verificadas. Elimínelas primero.");
+            }
             jefeDAO.remove(jefe);
         }
     }

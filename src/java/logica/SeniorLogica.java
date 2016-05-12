@@ -59,6 +59,9 @@ public class SeniorLogica implements SeniorLogicaLocal {
             throw new Exception("Senior a eliminar no existe.");
         }
         else{
+            if(objSenior.getProyectoList().size() > 0){
+                throw new Exception("El Ingeniero Senior tiene proyectos liderados. Elimínelos primero.");
+            }
             seniorDAO.remove(senior);
         }
     }

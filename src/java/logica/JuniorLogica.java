@@ -59,6 +59,9 @@ public class JuniorLogica implements JuniorLogicaLocal {
             throw new Exception("Junior a eliminar no existe.");
         }
         else{
+            if(objJunior.getColaboraList().size() > 0){
+                throw new Exception("El Ingeniero Junior tiene colaboraciones realizadas. Elimínelas primero.");
+            }
             juniorDAO.remove(junior);
         }
     }

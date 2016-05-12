@@ -103,6 +103,27 @@ public class ProyectoLogica implements ProyectoLogicaLocal {
             throw new Exception("Proyecto a eliminar no existe.");
         }
         else{
+            if(objProyecto.getColaboraList().size() > 0){
+                throw new Exception("El Proyecto tiene colaboraciones asociadas. Elimínelas primero.");
+            }
+            if(objProyecto.getProyectolenguajeprogList().size() > 0){
+                throw new Exception("El Proyecto tiene características asociadas." + 
+                        " Por lo tanto, elimine primero los lenguajes de programación en que se tienen implementado el proyecto.");
+            }
+            if(objProyecto.getProyectosgbdList().size() > 0){
+                throw new Exception("El Proyecto tiene características asociadas." + 
+                        " Por lo tanto, elimine primero los sistemas gestores de bases de datos en que se tienen implementado el proyecto.");                
+            }
+            if(objProyecto.getProyectosistemaoperativoList().size() > 0){
+                throw new Exception("El Proyecto tiene características asociadas." + 
+                        " Por lo tanto, elimine primero los sistemas operativos en que se pueden ejecutar el proyecto.");
+            }
+            if(objProyecto.getRequisitoList().size() > 0){
+                throw new Exception("El Proyecto contiene requisitos. Elimínelos primero.");
+            }
+            if(objProyecto.getSeencuentraenList().size() > 0){
+                throw new Exception("El Proyecto tiene fases de desarrollo asociados. Elíminelos primero.");
+            }
             proyectoDAO.remove(proyecto);
         }
     }
