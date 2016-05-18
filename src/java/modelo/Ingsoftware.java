@@ -35,7 +35,6 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Ingsoftware.findAll", query = "SELECT i FROM Ingsoftware i"),
     @NamedQuery(name = "Ingsoftware.findByCedula", query = "SELECT i FROM Ingsoftware i WHERE i.cedula = :cedula"),
-    @NamedQuery(name = "Ingsoftware.findByTipo", query = "SELECT i FROM Ingsoftware i WHERE i.tipo = :tipo"),
     @NamedQuery(name = "Ingsoftware.findByNombres", query = "SELECT i FROM Ingsoftware i WHERE i.nombres = :nombres"),
     @NamedQuery(name = "Ingsoftware.findByApellidos", query = "SELECT i FROM Ingsoftware i WHERE i.apellidos = :apellidos"),
     @NamedQuery(name = "Ingsoftware.findByEdad", query = "SELECT i FROM Ingsoftware i WHERE i.edad = :edad"),
@@ -56,11 +55,6 @@ public class Ingsoftware implements Serializable {
     @NotNull
     @Column(name = "cedula")
     private Integer cedula;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 6)
-    @Column(name = "tipo")
-    private String tipo;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
@@ -144,9 +138,8 @@ public class Ingsoftware implements Serializable {
         this.cedula = cedula;
     }
 
-    public Ingsoftware(Integer cedula, String tipo, String nombres, String apellidos, int edad, String sexo, Date fechanacimiento, String email, int telefono, int celular, String direccion, Date fechaingreso, int antiguedad, String clave) {
+    public Ingsoftware(Integer cedula, String nombres, String apellidos, int edad, String sexo, Date fechanacimiento, String email, int telefono, int celular, String direccion, Date fechaingreso, int antiguedad, String clave) {
         this.cedula = cedula;
-        this.tipo = tipo;
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.edad = edad;
@@ -167,14 +160,6 @@ public class Ingsoftware implements Serializable {
 
     public void setCedula(Integer cedula) {
         this.cedula = cedula;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
     }
 
     public String getNombres() {

@@ -23,9 +23,6 @@ public class IngsoftwareLogica implements IngsoftwareLogicaLocal {
     
     @Override
     public void registrarIngsoftware(Ingsoftware ingsoftware) throws Exception {
-        if(ingsoftware.getTipo().equals("")){
-            throw new Exception("Campo Tipo Ingeniero Software Obligatorio.");
-        }
         if(ingsoftware.getNombres().equals("")){
             throw new Exception("Campo Nombres Ingeniero Software Obligatorio.");
         }
@@ -74,9 +71,6 @@ public class IngsoftwareLogica implements IngsoftwareLogicaLocal {
 
     @Override
     public void modificarIngsoftware(Ingsoftware ingsoftware) throws Exception {
-        if(ingsoftware.getTipo().equals("")){
-            throw new Exception("Campo Tipo Ingeniero Software Obligatorio.");
-        }
         if(ingsoftware.getNombres().equals("")){
             throw new Exception("Campo Nombres Ingeniero Software Obligatorio.");
         }
@@ -119,7 +113,6 @@ public class IngsoftwareLogica implements IngsoftwareLogicaLocal {
             throw new Exception("Ingeniero Software a modificar no existe.");
         }
         else{
-            objIngsoftware.setTipo(ingsoftware.getTipo());
             objIngsoftware.setNombres(ingsoftware.getNombres());
             objIngsoftware.setApellidos(ingsoftware.getApellidos());
             objIngsoftware.setEdad(ingsoftware.getEdad());
