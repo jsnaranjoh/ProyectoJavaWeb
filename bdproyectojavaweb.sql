@@ -83,7 +83,6 @@ INSERT INTO `gradoacademico` (`numero`, `ingeniero`, `nivel`, `lugar`, `aniotitu
 -- Volcando estructura para tabla bdproyectojavaweb.ingsoftware
 CREATE TABLE IF NOT EXISTS `ingsoftware` (
   `cedula` int(11) NOT NULL,
-  `tipo` varchar(6) NOT NULL,
   `nombres` varchar(50) NOT NULL,
   `apellidos` varchar(50) NOT NULL,
   `edad` int(3) NOT NULL,
@@ -101,12 +100,12 @@ CREATE TABLE IF NOT EXISTS `ingsoftware` (
 
 -- Volcando datos para la tabla bdproyectojavaweb.ingsoftware: ~5 rows (aproximadamente)
 /*!40000 ALTER TABLE `ingsoftware` DISABLE KEYS */;
-INSERT INTO `ingsoftware` (`cedula`, `tipo`, `nombres`, `apellidos`, `edad`, `sexo`, `fechanacimiento`, `email`, `telefono`, `celular`, `direccion`, `fechaingreso`, `antiguedad`, `clave`) VALUES
-	(4760491, 'senior', 'Alberto', 'Sandoval', 37, 'm', '1979-03-15', 'alberto.sandoval@java.com', 3098390, 319685172, 'Cra 45 # 12-22', '2012-02-29', 4, 'b1f37ec94d5ce01b55b89cec07183cef'),
-	(54117430, 'jefe', 'Andres', 'Perez', 45, 'm', '1971-01-23', 'andres.perez@java.com', 6369321, 317019515, 'Cll 1 # 70-87', '2011-07-01', 4, 'b1f37ec94d5ce01b55b89cec07183cef'),
-	(84940812, 'junior', 'Lina', 'Arce', 23, 'f', '1993-04-29', 'lina.arce@java.com', 6754304, 311715702, 'Cll 6 # 15-09', '2013-01-13', 3, 'b1f37ec94d5ce01b55b89cec07183cef'),
-	(596518122, 'junior', 'Pablo', 'Martinez', 26, 'm', '1990-02-20', 'pablo.martinez@java.com', 8909437, 312392827, 'Cra 30 # 13-47', '2012-01-17', 4, 'b1f37ec94d5ce01b55b89cec07183cef'),
-	(641500199, 'senior', 'Ximena', 'Gomez', 33, 'f', '1983-01-01', 'ximena.gomez@java.com', 9016356, 319751406, 'Cll 97 # 45-65', '2013-05-23', 2, 'b1f37ec94d5ce01b55b89cec07183cef');
+INSERT INTO `ingsoftware` (`cedula`, `nombres`, `apellidos`, `edad`, `sexo`, `fechanacimiento`, `email`, `telefono`, `celular`, `direccion`, `fechaingreso`, `antiguedad`, `clave`) VALUES
+	(4760491, 'Alberto', 'Sandoval', 37, 'M', '1979-03-15', 'alberto.sandoval@java.com', 3098390, 319685172, 'Cra 45 # 12-22', '2012-02-29', 4, 'b1f37ec94d5ce01b55b89cec07183cef'),
+	(54117430, 'Andres', 'Perez', 45, 'M', '1971-01-23', 'andres.perez@java.com', 6369321, 317019515, 'Cll 1 # 70-87', '2011-07-01', 4, 'b1f37ec94d5ce01b55b89cec07183cef'),
+	(84940812, 'Lina', 'Arce', 23, 'F', '1993-04-29', 'lina.arce@java.com', 6754304, 311715702, 'Cll 6 # 15-09', '2013-01-13', 3, 'b1f37ec94d5ce01b55b89cec07183cef'),
+	(596518122, 'Pablo', 'Martinez', 26, 'M', '1990-02-20', 'pablo.martinez@java.com', 8909437, 312392827, 'Cra 30 # 13-47', '2012-01-17', 4, 'b1f37ec94d5ce01b55b89cec07183cef'),
+	(641500199, 'Ximena', 'Gomez', 33, 'F', '1983-01-01', 'ximena.gomez@java.com', 9016356, 319751406, 'Cll 97 # 45-65', '2013-05-23', 2, 'b1f37ec94d5ce01b55b89cec07183cef');
 /*!40000 ALTER TABLE `ingsoftware` ENABLE KEYS */;
 
 

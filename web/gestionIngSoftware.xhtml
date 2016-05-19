@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Ingenieros Software</title>
+            </f:facet>
+            <script>
+                PrimeFaces.locales["es"] = {
+                    closeText: "Cerrar",
+                    prevText: "Anterior",
+                    nextText: "Siguiente",
+                    monthNames: ["Enero","Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+                    monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+                    dayNames: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
+                    dayNamesShort: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
+                    dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
+                    weekHeader: "Semana",
+                    firstDay: 0,
+                    isRTL: false,
+                    showMonthAfterYear: false,
+                    yearSuffix: "",
+                    timeOnlyTitle: "Solo hora",
+                    timeText: "Tiempo",
+                    hourText: "Hora",
+                    minuteText: "Minuto",
+                    secondText: "Segundo",
+                    currentText: "Fecha actual",
+                    ampm: false,
+                    month: "Mes",
+                    week: "Semana",
+                    day: "Día",
+                    allDayText : "Todo el día"
+                };                
+            </script>            
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="80" resizable="true" closable="true" collapsible="true">
+                    INGENIEROS DE SOFTWARE
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="80" closable="true" collapsible="true">
+                    CHRISTIAN DAVID NOREÑA VALENCIA<p></p>
+                    UVTULUA 2016
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                    <h:form>
+                        <p:menu>
+                            <p:submenu label="Menú">
+                                <p:menuitem value="Demo" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
+                                <p:menuitem value="Documentation" url="http://www.primefaces.org/documentation.html" />
+                                <p:menuitem value="Forum" url="http://forum.primefaces.org/" />
+                                <p:menuitem value="Themes" url="http://www.primefaces.org/themes.html" />
+                            </p:submenu>
+                        </p:menu>                        
+                    </h:form>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <h:form id="formulario">
+                        <p:growl id="growl" showDetail="true" sticky="true" escape="false"/>
+                        <p:panelGrid columns="6">
+                            <h:outputText value="Cédula"/>
+                            <p:inputText id="txtCedula" binding="#{ingsoftwareVista.txtCedula}"/>
+                            <h:outputText value="Nombres"/>
+                            <p:inputText id="txtNombres" binding="#{ingsoftwareVista.txtNombres}"/>
+                            <h:outputText value="Apellidos"/>
+                            <p:inputText id="txtApellidos" binding="#{ingsoftwareVista.txtApellidos}"/>
+                            <h:outputText value="Edad"/>
+                            <p:inputText id="txtEdad" binding="#{ingsoftwareVista.txtEdad}"/>
+                            <h:outputText value="Sexo"/>
+                            <p:selectOneMenu id="cmbSexos" binding="#{ingsoftwareVista.cmbSexos}">
+                                <f:selectItem itemValue="0" itemLabel="Seleccione"/>
+                                <f:selectItem itemValue="M" itemLabel="M"/>
+                                <f:selectItem itemValue="F" itemLabel="F"/>
+                            </p:selectOneMenu>
+                            <h:outputText value="Fecha de Nacimiento"/>
+                            <p:calendar id="txtFechaNacimiento" value="#{ingsoftwareVista.txtFechaNacimiento}" pattern="yyyy-MM-dd" locale="es" navigator="true"/>
+                            <h:outputText value="Correo Electrónico"/>
+                            <p:inputText id="txtEmail" binding="#{ingsoftwareVista.txtEmail}"/>                            
+                            <h:outputText value="Teléfono"/>
+                            <p:inputText id="txtTelefono" binding="#{ingsoftwareVista.txtTelefono}"/>                            
+                            <h:outputText value="Celular"/>
+                            <p:inputText id="txtCelular" binding="#{ingsoftwareVista.txtCelular}"/>                            
+                            <h:outputText value="Dirección"/>
+                            <p:inputText id="txtDireccion" binding="#{ingsoftwareVista.txtDireccion}"/>                            
+                            <h:outputText value="Fecha de Ingreso"/>
+                            <p:calendar id="txtFechaIngreso" value="#{ingsoftwareVista.txtFechaIngreso}" pattern="yyyy-MM-dd" locale="es" navigator="true"/>                            
+                            <h:outputText value="Antigüedad"/>
+                            <p:inputText id="txtAntiguedad" binding="#{ingsoftwareVista.txtAntiguedad}"/>                            
+                            <h:outputText value="Clave"/>
+                            <p:password id="txtClave" value="#{ingsoftwareVista.txtClave}"/>                            
+                        </p:panelGrid>
+                        <p:panelGrid columns="4">
+                            <p:commandButton value="Registrar" binding="#{ingsoftwareVista.btnRegistrar}" action="#{ingsoftwareVista.action_registrar()}" update=":formulario"/> 
+                            <p:commandButton value="Modificar" binding="#{ingsoftwareVista.btnModificar}" action="#{ingsoftwareVista.action_modificar()}" update=":formulario"/>
+                            <p:commandButton value="Eliminar" binding="#{ingsoftwareVista.btnEliminar}" action="#{ingsoftwareVista.action_eliminar()}" update=":formulario"/>
+                            <p:commandButton value="Limpiar" binding="#{ingsoftwareVista.btnLimpiar}" action="#{ingsoftwareVista.limpiar()}" update=":formulario"/>
+                        </p:panelGrid>
+                        <p:dataTable id="eventsDT" var="ingsoftware" value="#{ingsoftwareVista.listaIngsSoftware}" selectionMode="single" selection="#{ingsoftwareVista.selectedIngsoftware}" rowKey="#{ingsoftware.cedula}">
+                            <f:facet name="header">
+                                Ingenieros de Software
+                            </f:facet>
+                            <p:ajax event="rowSelect" listener="#{ingsoftwareVista.onRowSelect}" update=":formulario" />
+
+                            <p:column headerText="Cédula">
+                                <h:outputText value="#{ingsoftware.cedula}" />
+                            </p:column>                            
+                            <p:column headerText="Nombres">
+                                <h:outputText value="#{ingsoftware.nombres}" />
+                            </p:column>
+                             <p:column headerText="Apellidos">
+                                 <h:outputText value="#{ingsoftware.apellidos}" />
+                            </p:column>
+                             <p:column headerText="Edad">
+                                 <h:outputText value="#{ingsoftware.edad}" />
+                            </p:column>
+                             <p:column headerText="Sexo">
+                                 <h:outputText value="#{ingsoftware.sexo}" />
+                            </p:column>
+                             <p:column headerText="Fecha Nacimiento">
+                                 <h:outputText value="#{ingsoftware.fechanacimiento}" />
+                            </p:column>                            
+                             <p:column headerText="Correo Electrónico">
+                                 <h:outputText value="#{ingsoftware.email}" />
+                            </p:column>
+                             <p:column headerText="Teléfono">
+                                 <h:outputText value="#{ingsoftware.telefono}" />
+                            </p:column>
+                             <p:column headerText="Celular">
+                                 <h:outputText value="#{ingsoftware.celular}" />
+                            </p:column>
+                             <p:column headerText="Dirección">
+                                 <h:outputText value="#{ingsoftware.direccion}" />
+                            </p:column>
+                             <p:column headerText="Fecha Ingreso">
+                                 <h:outputText value="#{ingsoftware.fechaingreso}" />
+                            </p:column>
+                             <p:column headerText="Antigüedad (años)">
+                                 <h:outputText value="#{ingsoftware.antiguedad}" />
+                            </p:column>                            
+                        </p:dataTable>                    
+                    </h:form>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+
