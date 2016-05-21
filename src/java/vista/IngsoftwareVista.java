@@ -12,6 +12,8 @@ import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import logica.IngsoftwareLogicaLocal;
 import modelo.Ingsoftware;
 import org.primefaces.component.commandbutton.CommandButton;
@@ -225,7 +227,6 @@ public class IngsoftwareVista {
         this.txtDireccion.setValue(this.selectedIngsoftware.getDireccion());
         this.txtFechaIngreso = this.selectedIngsoftware.getFechaingreso();
         this.txtAntiguedad.setValue(this.selectedIngsoftware.getAntiguedad());
-        this.txtClave = this.selectedIngsoftware.getClave();
         
         this.btnRegistrar.setDisabled(true);
         this.btnModificar.setDisabled(false);
@@ -246,7 +247,6 @@ public class IngsoftwareVista {
         this.txtDireccion.setValue("");
         this.txtFechaIngreso = null;        
         this.txtAntiguedad.setValue("");
-        this.txtClave = "";
         
         this.txtCedula.setDisabled(false);
         this.btnRegistrar.setDisabled(false);
@@ -255,15 +255,87 @@ public class IngsoftwareVista {
     }
     
     public void action_registrar(){
-        
+        try{
+            Ingsoftware objIngsoftware = new Ingsoftware();
+            
+            try{ objIngsoftware.setCedula(Integer.parseInt(this.txtCedula.getValue().toString()));} catch(Exception ex){}
+            objIngsoftware.setNombres(this.txtNombres.getValue().toString());
+            objIngsoftware.setApellidos(this.txtApellidos.getValue().toString());
+            try{ objIngsoftware.setEdad(Integer.parseInt(this.txtEdad.getValue().toString())); } catch(Exception ex){}
+            objIngsoftware.setSexo(this.txtEdad.getValue().toString());
+            objIngsoftware.setFechanacimiento(this.txtFechaNacimiento);
+            objIngsoftware.setEmail(this.txtEmail.getValue().toString());
+            try{ objIngsoftware.setTelefono(Integer.parseInt(this.txtTelefono.toString())); } catch(Exception ex){}
+            try{ objIngsoftware.setCelular(Integer.parseInt(this.txtCelular.toString())); } catch(Exception ex){}
+            objIngsoftware.setDireccion(this.txtDireccion.getValue().toString());
+            objIngsoftware.setFechaingreso(this.txtFechaIngreso);
+            try{ objIngsoftware.setAntiguedad(Integer.parseInt(this.txtAntiguedad.getValue().toString())); } catch(Exception ex){}
+            objIngsoftware.setClave(this.txtClave);
+            
+            ingsoftwareLogica.registrarIngsoftware(objIngsoftware);
+            listaIngsSoftware = null;
+            limpiar();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
+                    "Información de creación de Ingeniero de Software", "El Ingeniero de software fue registrado con éxito."));            
+        } catch(Exception ex){
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error.", ex.getMessage()));
+        }
     }
     
     public void action_modificar(){
-        
+        try{
+            Ingsoftware objIngsoftware = new Ingsoftware();
+            
+            try{ objIngsoftware.setCedula(Integer.parseInt(this.txtCedula.getValue().toString()));} catch(Exception ex){}
+            objIngsoftware.setNombres(this.txtNombres.getValue().toString());
+            objIngsoftware.setApellidos(this.txtApellidos.getValue().toString());
+            try{ objIngsoftware.setEdad(Integer.parseInt(this.txtEdad.getValue().toString())); } catch(Exception ex){}
+            objIngsoftware.setSexo(this.txtEdad.getValue().toString());
+            objIngsoftware.setFechanacimiento(this.txtFechaNacimiento);
+            objIngsoftware.setEmail(this.txtEmail.getValue().toString());
+            try{ objIngsoftware.setTelefono(Integer.parseInt(this.txtTelefono.toString())); } catch(Exception ex){}
+            try{ objIngsoftware.setCelular(Integer.parseInt(this.txtCelular.toString())); } catch(Exception ex){}
+            objIngsoftware.setDireccion(this.txtDireccion.getValue().toString());
+            objIngsoftware.setFechaingreso(this.txtFechaIngreso);
+            try{ objIngsoftware.setAntiguedad(Integer.parseInt(this.txtAntiguedad.getValue().toString())); } catch(Exception ex){}
+            objIngsoftware.setClave(this.txtClave);
+            
+            ingsoftwareLogica.modificarIngsoftware(objIngsoftware);
+            listaIngsSoftware = null;
+            limpiar();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
+                    "Información de creación de Ingeniero de Software", "El Ingeniero de software fue registrado con éxito."));            
+        } catch(Exception ex){
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error.", ex.getMessage()));
+        }        
     }
     
     public void action_eliminar(){
-        
+        try{
+            Ingsoftware objIngsoftware = new Ingsoftware();
+            
+            try{ objIngsoftware.setCedula(Integer.parseInt(this.txtCedula.getValue().toString()));} catch(Exception ex){}
+            objIngsoftware.setNombres(this.txtNombres.getValue().toString());
+            objIngsoftware.setApellidos(this.txtApellidos.getValue().toString());
+            try{ objIngsoftware.setEdad(Integer.parseInt(this.txtEdad.getValue().toString())); } catch(Exception ex){}
+            objIngsoftware.setSexo(this.txtEdad.getValue().toString());
+            objIngsoftware.setFechanacimiento(this.txtFechaNacimiento);
+            objIngsoftware.setEmail(this.txtEmail.getValue().toString());
+            try{ objIngsoftware.setTelefono(Integer.parseInt(this.txtTelefono.toString())); } catch(Exception ex){}
+            try{ objIngsoftware.setCelular(Integer.parseInt(this.txtCelular.toString())); } catch(Exception ex){}
+            objIngsoftware.setDireccion(this.txtDireccion.getValue().toString());
+            objIngsoftware.setFechaingreso(this.txtFechaIngreso);
+            try{ objIngsoftware.setAntiguedad(Integer.parseInt(this.txtAntiguedad.getValue().toString())); } catch(Exception ex){}
+            objIngsoftware.setClave(this.txtClave);
+            
+            ingsoftwareLogica.eliminarIngsoftware(objIngsoftware);
+            listaIngsSoftware = null;
+            limpiar();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
+                    "Información de creación de Ingeniero de Software", "El Ingeniero de software fue registrado con éxito."));            
+        } catch(Exception ex){
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error.", ex.getMessage()));
+        }    
     }
     
     /**

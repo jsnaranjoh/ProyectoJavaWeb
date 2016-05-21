@@ -36,16 +36,10 @@ public class IngsoftwareLogica implements IngsoftwareLogicaLocal {
             throw new Exception("Campo Fecha Nacimiento Ingeniero Software Obligatorio.");
         }
         if(ingsoftware.getEmail().equals("")){
-            throw new Exception("Campo E-mail Obligatorio.");
+            throw new Exception("Campo E-mail Ingeniero Software Obligatorio.");
         }
-        if(!ingsoftware.getEmail().contains("@java.com") || 
-                !ingsoftware.getEmail().contains("@hotmail.com") ||
-                !ingsoftware.getEmail().contains("@gmail.com") ||
-                !ingsoftware.getEmail().contains("@outlook.com") ||
-                !ingsoftware.getEmail().contains("@yahoo.es") ||
-                !ingsoftware.getEmail().contains("@correounivalle.edu.co")){
-            throw new Exception("Ingrese un E-mail Válido. " + 
-                    "Se aceptan dominios hotmail.com, gmail.com, outlook.com, yahoo.es, correounivalle.edu.co y java.com");
+        if(!ingsoftware.getEmail().contains("@") && (!ingsoftware.getEmail().endsWith(".com") || !ingsoftware.getEmail().endsWith(".es"))){
+            throw new Exception("E-mail inválído. Ejemplos válidos: \"example@something.com\" o \"example@something.es\"");
         }
         if(ingsoftware.getDireccion().equals("")){
             throw new Exception("Campo Dirección Ingeniero Software Obligatorio.");
@@ -84,16 +78,10 @@ public class IngsoftwareLogica implements IngsoftwareLogicaLocal {
             throw new Exception("Campo Fecha Nacimiento Ingeniero Software Obligatorio.");
         }
         if(ingsoftware.getEmail().equals("")){
-            throw new Exception("Campo E-mail Obligatorio.");
+            throw new Exception("Campo E-mail Ingeniero Software Obligatorio.");
         }
-        if(!ingsoftware.getEmail().contains("@java.com") || 
-                !ingsoftware.getEmail().contains("@hotmail.com") ||
-                !ingsoftware.getEmail().contains("@gmail.com") ||
-                !ingsoftware.getEmail().contains("@outlook.com") ||
-                !ingsoftware.getEmail().contains("@yahoo.es") ||
-                !ingsoftware.getEmail().contains("@correounivalle.edu.co")){
-            throw new Exception("Ingrese un E-mail Válido. " + 
-                    "Se aceptan dominios hotmail.com, gmail.com, outlook.com, yahoo.es, correounivalle.edu.co y java.com");
+        if(!ingsoftware.getEmail().contains("@") && (!ingsoftware.getEmail().endsWith(".com") || !ingsoftware.getEmail().endsWith(".es"))){
+            throw new Exception("E-mail inválído. Ejemplos válidos: \"example@something.com\" o \"example@something.es\"");
         }
         if(ingsoftware.getDireccion().equals("")){
             throw new Exception("Campo Dirección Ingeniero Software Obligatorio.");

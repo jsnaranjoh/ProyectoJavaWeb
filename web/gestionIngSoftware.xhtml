@@ -86,7 +86,7 @@
                                 <f:selectItem itemValue="F" itemLabel="F"/>
                             </p:selectOneMenu>
                             <h:outputText value="Fecha de Nacimiento"/>
-                            <p:calendar id="txtFechaNacimiento" value="#{ingsoftwareVista.txtFechaNacimiento}" pattern="yyyy-MM-dd" locale="es" navigator="true"/>
+                            <p:calendar id="txtFechaNacimiento" value="#{ingsoftwareVista.txtFechaNacimiento}" pattern="yyyy-MM-dd" locale="es" navigator="true" readonlyInput="true"/>
                             <h:outputText value="Correo Electrónico"/>
                             <p:inputText id="txtEmail" binding="#{ingsoftwareVista.txtEmail}"/>                            
                             <h:outputText value="Teléfono"/>
@@ -96,9 +96,9 @@
                             <h:outputText value="Dirección"/>
                             <p:inputText id="txtDireccion" binding="#{ingsoftwareVista.txtDireccion}"/>                            
                             <h:outputText value="Fecha de Ingreso"/>
-                            <p:calendar id="txtFechaIngreso" value="#{ingsoftwareVista.txtFechaIngreso}" pattern="yyyy-MM-dd" locale="es" navigator="true"/>                            
+                            <p:calendar id="txtFechaIngreso" value="#{ingsoftwareVista.txtFechaIngreso}" pattern="yyyy-MM-dd" locale="es" navigator="true" readonlyInput="true"/>                            
                             <h:outputText value="Antigüedad"/>
-                            <p:inputText id="txtAntiguedad" binding="#{ingsoftwareVista.txtAntiguedad}"/>                            
+                            <p:inputText id="txtAntiguedad" binding="#{ingsoftwareVista.txtAntiguedad}"/>
                             <h:outputText value="Clave"/>
                             <p:password id="txtClave" value="#{ingsoftwareVista.txtClave}"/>                            
                         </p:panelGrid>
@@ -149,7 +149,7 @@
                             </p:column>
                              <p:column headerText="Antigüedad (años)">
                                  <h:outputText value="#{ingsoftware.antiguedad}" />
-                            </p:column>                            
+                            </p:column>                           
                         </p:dataTable>                    
                     </h:form>
                 </p:layoutUnit>
