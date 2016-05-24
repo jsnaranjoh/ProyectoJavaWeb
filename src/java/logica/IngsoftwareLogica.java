@@ -113,7 +113,7 @@ public class IngsoftwareLogica implements IngsoftwareLogicaLocal {
             objIngsoftware.setFechaingreso(ingsoftware.getFechaingreso());
             objIngsoftware.setAntiguedad(ingsoftware.getAntiguedad());
             objIngsoftware.setClave(ingsoftware.getClave());
-            ingsoftwareDAO.edit(ingsoftware);
+            ingsoftwareDAO.edit(objIngsoftware);
         }
     }
 

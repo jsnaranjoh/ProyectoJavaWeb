@@ -262,7 +262,7 @@ public class IngsoftwareVista {
             objIngsoftware.setNombres(this.txtNombres.getValue().toString());
             objIngsoftware.setApellidos(this.txtApellidos.getValue().toString());
             try{ objIngsoftware.setEdad(Integer.parseInt(this.txtEdad.getValue().toString())); } catch(Exception ex){}
-            objIngsoftware.setSexo(this.txtEdad.getValue().toString());
+            objIngsoftware.setSexo(this.cmbSexos.getValue().toString());
             objIngsoftware.setFechanacimiento(this.txtFechaNacimiento);
             objIngsoftware.setEmail(this.txtEmail.getValue().toString());
             try{ objIngsoftware.setTelefono(Integer.parseInt(this.txtTelefono.toString())); } catch(Exception ex){}
@@ -290,7 +290,7 @@ public class IngsoftwareVista {
             objIngsoftware.setNombres(this.txtNombres.getValue().toString());
             objIngsoftware.setApellidos(this.txtApellidos.getValue().toString());
             try{ objIngsoftware.setEdad(Integer.parseInt(this.txtEdad.getValue().toString())); } catch(Exception ex){}
-            objIngsoftware.setSexo(this.txtEdad.getValue().toString());
+            objIngsoftware.setSexo(this.cmbSexos.getValue().toString());
             objIngsoftware.setFechanacimiento(this.txtFechaNacimiento);
             objIngsoftware.setEmail(this.txtEmail.getValue().toString());
             try{ objIngsoftware.setTelefono(Integer.parseInt(this.txtTelefono.toString())); } catch(Exception ex){}
@@ -304,7 +304,7 @@ public class IngsoftwareVista {
             listaIngsSoftware = null;
             limpiar();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
-                    "Información de creación de Ingeniero de Software", "El Ingeniero de software fue registrado con éxito."));            
+                    "Información de modificación de Ingeniero de Software", "El Ingeniero de software fue modificado con éxito."));            
         } catch(Exception ex){
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error.", ex.getMessage()));
         }        
@@ -318,7 +318,7 @@ public class IngsoftwareVista {
             objIngsoftware.setNombres(this.txtNombres.getValue().toString());
             objIngsoftware.setApellidos(this.txtApellidos.getValue().toString());
             try{ objIngsoftware.setEdad(Integer.parseInt(this.txtEdad.getValue().toString())); } catch(Exception ex){}
-            objIngsoftware.setSexo(this.txtEdad.getValue().toString());
+            objIngsoftware.setSexo(this.cmbSexos.getValue().toString());
             objIngsoftware.setFechanacimiento(this.txtFechaNacimiento);
             objIngsoftware.setEmail(this.txtEmail.getValue().toString());
             try{ objIngsoftware.setTelefono(Integer.parseInt(this.txtTelefono.toString())); } catch(Exception ex){}
@@ -332,7 +332,7 @@ public class IngsoftwareVista {
             listaIngsSoftware = null;
             limpiar();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
-                    "Información de creación de Ingeniero de Software", "El Ingeniero de software fue registrado con éxito."));            
+                    "Información de eliminación de Ingeniero de Software", "El Ingeniero de software fue eliminado con éxito."));            
         } catch(Exception ex){
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error.", ex.getMessage()));
         }    
