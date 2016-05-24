@@ -32,6 +32,9 @@ public class IngsoftwareLogica implements IngsoftwareLogicaLocal {
         if(ingsoftware.getApellidos().equals("")){
             throw new Exception("Campo Apellidos Ingeniero Software Obligatorio.");
         }
+        if(ingsoftware.getEdad() == 0){
+            throw new Exception("Campo Edad Ingeniero Software Obligatorio.");
+        }
         if(ingsoftware.getSexo().equals("0")){
             throw new Exception("Campo Sexo Ingeniero Software Obligatorio.");
         }
@@ -44,11 +47,20 @@ public class IngsoftwareLogica implements IngsoftwareLogicaLocal {
         if(!ingsoftware.getEmail().contains("@") && (!ingsoftware.getEmail().endsWith(".com") || !ingsoftware.getEmail().endsWith(".es"))){
             throw new Exception("E-mail inválído. Ejemplos válidos: \"example@something.com\" o \"example@something.es\"");
         }
+        if(ingsoftware.getTelefono() == 0){
+            throw new Exception("Campo Teléfono Ingeniero Software Obligatorio.");
+        }
+        if(ingsoftware.getCelular() == 0){
+            throw new Exception("Campo Celular Ingeniero Software Obligatorio.");
+        }
         if(ingsoftware.getDireccion().equals("")){
             throw new Exception("Campo Dirección Ingeniero Software Obligatorio.");
         }
         if(ingsoftware.getFechaingreso() == null){
             throw new Exception("Campo Fecha Ingreso Ingeniero Software Obligatorio.");
+        }
+        if(ingsoftware.getAntiguedad() == 0){
+            throw new Exception("Campo Antigüedad Ingeniero Software Obligatorio.");
         }
         if(ingsoftware.getClave().equals("")){
             throw new Exception("Campo Clave Ingeniero Software Obligatorio.");
