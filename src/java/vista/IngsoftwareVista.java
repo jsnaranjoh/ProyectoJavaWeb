@@ -265,8 +265,8 @@ public class IngsoftwareVista {
             objIngsoftware.setSexo(this.cmbSexos.getValue().toString());
             objIngsoftware.setFechanacimiento(this.txtFechaNacimiento);
             objIngsoftware.setEmail(this.txtEmail.getValue().toString());
-            try{ objIngsoftware.setTelefono(Integer.parseInt(this.txtTelefono.toString())); } catch(Exception ex){}
-            try{ objIngsoftware.setCelular(Integer.parseInt(this.txtCelular.toString())); } catch(Exception ex){}
+            try{ objIngsoftware.setTelefono(Integer.parseInt(this.txtTelefono.getValue().toString())); } catch(Exception ex){}
+            try{ objIngsoftware.setCelular(Integer.parseInt(this.txtCelular.getValue().toString())); } catch(Exception ex){}
             objIngsoftware.setDireccion(this.txtDireccion.getValue().toString());
             objIngsoftware.setFechaingreso(this.txtFechaIngreso);
             try{ objIngsoftware.setAntiguedad(Integer.parseInt(this.txtAntiguedad.getValue().toString())); } catch(Exception ex){}
@@ -293,8 +293,8 @@ public class IngsoftwareVista {
             objIngsoftware.setSexo(this.cmbSexos.getValue().toString());
             objIngsoftware.setFechanacimiento(this.txtFechaNacimiento);
             objIngsoftware.setEmail(this.txtEmail.getValue().toString());
-            try{ objIngsoftware.setTelefono(Integer.parseInt(this.txtTelefono.toString())); } catch(Exception ex){}
-            try{ objIngsoftware.setCelular(Integer.parseInt(this.txtCelular.toString())); } catch(Exception ex){}
+            try{ objIngsoftware.setTelefono(Integer.parseInt(this.txtTelefono.getValue().toString())); } catch(Exception ex){}
+            try{ objIngsoftware.setCelular(Integer.parseInt(this.txtCelular.getValue().toString())); } catch(Exception ex){}
             objIngsoftware.setDireccion(this.txtDireccion.getValue().toString());
             objIngsoftware.setFechaingreso(this.txtFechaIngreso);
             try{ objIngsoftware.setAntiguedad(Integer.parseInt(this.txtAntiguedad.getValue().toString())); } catch(Exception ex){}
@@ -321,8 +321,8 @@ public class IngsoftwareVista {
             objIngsoftware.setSexo(this.cmbSexos.getValue().toString());
             objIngsoftware.setFechanacimiento(this.txtFechaNacimiento);
             objIngsoftware.setEmail(this.txtEmail.getValue().toString());
-            try{ objIngsoftware.setTelefono(Integer.parseInt(this.txtTelefono.toString())); } catch(Exception ex){}
-            try{ objIngsoftware.setCelular(Integer.parseInt(this.txtCelular.toString())); } catch(Exception ex){}
+            try{ objIngsoftware.setTelefono(Integer.parseInt(this.txtTelefono.getValue().toString())); } catch(Exception ex){}
+            try{ objIngsoftware.setCelular(Integer.parseInt(this.txtCelular.getValue().toString())); } catch(Exception ex){}
             objIngsoftware.setDireccion(this.txtDireccion.getValue().toString());
             objIngsoftware.setFechaingreso(this.txtFechaIngreso);
             try{ objIngsoftware.setAntiguedad(Integer.parseInt(this.txtAntiguedad.getValue().toString())); } catch(Exception ex){}
