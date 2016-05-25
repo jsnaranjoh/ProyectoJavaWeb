@@ -84,10 +84,18 @@ public class JefeVista {
     }
 
     public List<Jefe> getListaJefes() {
+        if(listaJefes == null){
+            try {
+                listaJefes = jefeLogica.consultarTodos();
+            } catch (Exception ex) {
+                Logger.getLogger(JefeVista.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
         return listaJefes;
     }
 
-    public void setListaJefes(List<Jefe> listaJefes) {
+    public void setListaJefes(List<Jefe> listaJefes) {        
         this.listaJefes = listaJefes;
     }
 
