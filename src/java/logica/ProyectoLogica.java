@@ -23,6 +23,9 @@ public class ProyectoLogica implements ProyectoLogicaLocal {
     
     @Override
     public void registrarProyecto(Proyecto proyecto) throws Exception {
+        if(proyecto.getCodigo() == null || proyecto.getCodigo() == 0){
+            throw new Exception("Campo Código Proyecto Obligatorio.");
+        }
         if(proyecto.getLider().getCedula() == null){
             throw new Exception("Debe tener un Ingeniero de Software que lidere el proyecto.");
         }
@@ -43,6 +46,9 @@ public class ProyectoLogica implements ProyectoLogicaLocal {
         }
         if(proyecto.getVersionprograma().equals("")){
             throw new Exception("Campo Versión Programa Proyecto Obligatorio.");
+        }
+        if(proyecto.getCostototal() == 0){
+            throw new Exception("Campo Costo Total Proyecto Obligatorio.");
         }
         
         Proyecto objProyecto = proyectoDAO.find(proyecto.getCodigo());
@@ -56,6 +62,9 @@ public class ProyectoLogica implements ProyectoLogicaLocal {
 
     @Override
     public void modificarProyecto(Proyecto proyecto) throws Exception {
+        if(proyecto.getCodigo() == null || proyecto.getCodigo() == 0){
+            throw new Exception("Campo Código Proyecto Obligatorio.");
+        }
         if(proyecto.getLider().getCedula() == null){
             throw new Exception("Debe tener un Ingeniero de Software que lidere el proyecto.");
         }
@@ -76,6 +85,9 @@ public class ProyectoLogica implements ProyectoLogicaLocal {
         }
         if(proyecto.getVersionprograma().equals("")){
             throw new Exception("Campo Versión Programa Proyecto Obligatorio.");
+        }
+        if(proyecto.getCostototal() == 0){
+            throw new Exception("Campo Costo Total Proyecto Obligatorio.");
         }
         
         Proyecto objProyecto = proyectoDAO.find(proyecto.getCodigo());
@@ -91,12 +103,16 @@ public class ProyectoLogica implements ProyectoLogicaLocal {
             objProyecto.setFechaprevistaliberacion(proyecto.getFechaprevistaliberacion());
             objProyecto.setVersionprograma(proyecto.getVersionprograma());
             objProyecto.setCostototal(proyecto.getCostototal());
-            proyectoDAO.edit(proyecto);
+            proyectoDAO.edit(objProyecto);
         }
     }
 
     @Override
-    public void eliminarProyecto(Proyecto proyecto) throws Exception {       
+    public void eliminarProyecto(Proyecto proyecto) throws Exception {
+        if(proyecto.getCodigo() == null || proyecto.getCodigo() == 0){
+            throw new Exception("Campo Código Proyecto Obligatorio.");
+        }
+        
         Proyecto objProyecto = proyectoDAO.find(proyecto.getCodigo());
         
         if(objProyecto == null){

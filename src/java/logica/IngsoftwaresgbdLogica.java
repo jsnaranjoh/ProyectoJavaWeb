@@ -54,7 +54,7 @@ public class IngsoftwaresgbdLogica implements IngsoftwaresgbdLogicaLocal {
         }
         else{
             objSgbd.getIngsoftwaresgbdPK().setSgbd(sgbd.getIngsoftwaresgbdPK().getSgbd());
-            sgbdDAO.edit(sgbd);
+            sgbdDAO.edit(objSgbd);
         }
     }
 

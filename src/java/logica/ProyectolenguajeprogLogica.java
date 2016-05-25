@@ -54,7 +54,7 @@ public class ProyectolenguajeprogLogica implements ProyectolenguajeprogLogicaLoc
         }
         else{
             objLenguajeprog.getProyectolenguajeprogPK().setLenguajeprog(lenguajeprog.getProyectolenguajeprogPK().getLenguajeprog());
-            lenguajeprogDAO.edit(lenguajeprog);
+            lenguajeprogDAO.edit(objLenguajeprog);
         }
     }
 

@@ -54,7 +54,7 @@ public class IngsoftwaresistemaoperativoLogica implements Ingsoftwaresistemaoper
         }
         else{
             objSistemaoperativo.getIngsoftwaresistemaoperativoPK().setSistemaoperativo(sistemaoperativo.getIngsoftwaresistemaoperativoPK().getSistemaoperativo());
-            sistemaoperativoDAO.edit(sistemaoperativo);
+            sistemaoperativoDAO.edit(objSistemaoperativo);
         }
     }
 

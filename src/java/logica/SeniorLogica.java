@@ -26,6 +26,9 @@ public class SeniorLogica implements SeniorLogicaLocal {
         if(senior.getIngsoftware().getCedula() == null){
             throw new Exception("Debes seleccionar un Ingeniero de Software.");
         }
+        if(senior.getProyectosquelidera() == 0){
+            throw new Exception("Campo Cantidad de Proyectos liderados por Senior Ingeniero Software Obligatorio.");
+        }
         
         Senior objSenior = seniorDAO.find(senior.getIngsoftware().getCedula());
         if(objSenior != null){
@@ -38,8 +41,11 @@ public class SeniorLogica implements SeniorLogicaLocal {
 
     @Override
     public void modificarSenior(Senior senior) throws Exception {
-        if(senior.getIngsoftware() == null){
+        if(senior.getIngsoftware().getCedula() == null){
             throw new Exception("Ingeniero de Software No Registrado.");
+        }
+        if(senior.getProyectosquelidera() == 0){
+            throw new Exception("Campo Cantidad de Proyectos liderados por Senior Ingeniero Software Obligatorio.");
         }
         
         Senior objSenior = seniorDAO.find(senior.getIngsoftware().getCedula());
@@ -48,12 +54,16 @@ public class SeniorLogica implements SeniorLogicaLocal {
         }
         else{
             objSenior.setProyectosquelidera(senior.getProyectosquelidera());
-            seniorDAO.edit(senior);
+            seniorDAO.edit(objSenior);
         }
     }
 
     @Override
     public void eliminarSenior(Senior senior) throws Exception {
+        if(senior.getIngsoftware().getCedula() == null){
+            throw new Exception("Ingeniero de Software No Registrado.");
+        }
+        
         Senior objSenior = seniorDAO.find(senior.getIngsoftware().getCedula());
         if(objSenior == null){
             throw new Exception("Senior a eliminar no existe.");

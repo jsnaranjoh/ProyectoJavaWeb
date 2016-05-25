@@ -54,7 +54,7 @@ public class ProyectosgbdLogica implements ProyectosgbdLogicaLocal {
         }
         else{
             objSgbd.getProyectosgbdPK().setSgbd(sgbd.getProyectosgbdPK().getSgbd());
-            sgbdDAO.edit(sgbd);
+            sgbdDAO.edit(objSgbd);
         }
     }
 

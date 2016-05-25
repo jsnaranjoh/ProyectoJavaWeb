@@ -23,6 +23,9 @@ public class SeminarioLogica implements SeminarioLogicaLocal {
     
     @Override
     public void registrarSeminario(Seminario seminario) throws Exception {
+        if(seminario.getNumero() == null || seminario.getNumero() == 0){
+            throw new Exception("Campo Número Seminario Obligatorio.");
+        }
         if(seminario.getIngeniero().getCedula() == null){
             throw new Exception("Campo Ingeniero Software Obligatorio.");
         }
@@ -50,6 +53,9 @@ public class SeminarioLogica implements SeminarioLogicaLocal {
 
     @Override
     public void modificarSeminario(Seminario seminario) throws Exception {
+        if(seminario.getNumero() == null || seminario.getNumero() == 0){
+            throw new Exception("Campo Número Seminario Obligatorio.");
+        }
         if(seminario.getIngeniero().getCedula() == null){
             throw new Exception("Campo Ingeniero Software Obligatorio.");
         }
@@ -75,12 +81,16 @@ public class SeminarioLogica implements SeminarioLogicaLocal {
             objSeminario.setLugar(seminario.getLugar());
             objSeminario.setFechainicio(seminario.getFechainicio());
             objSeminario.setFechafin(seminario.getFechafin());
-            seminarioDAO.edit(seminario);
+            seminarioDAO.edit(objSeminario);
         }
     }
 
     @Override
     public void eliminarSeminario(Seminario seminario) throws Exception {
+        if(seminario.getNumero() == null || seminario.getNumero() == 0){
+            throw new Exception("Campo Número Seminario Obligatorio.");
+        }
+        
         Seminario objSeminario = seminarioDAO.find(seminario.getNumero());
         if(objSeminario == null){
             throw new Exception("Seminario a eliminar no existe.");

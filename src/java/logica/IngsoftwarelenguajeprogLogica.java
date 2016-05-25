@@ -54,7 +54,7 @@ public class IngsoftwarelenguajeprogLogica implements IngsoftwarelenguajeprogLog
         }
         else{
             objLenguajeprog.getIngsoftwarelenguajeprogPK().setLenguajeprog(lenguajeprog.getIngsoftwarelenguajeprogPK().getLenguajeprog());
-            lenguajeprogDAO.edit(lenguajeprog);
+            lenguajeprogDAO.edit(objLenguajeprog);
         }
     }
 

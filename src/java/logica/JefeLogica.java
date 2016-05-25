@@ -26,6 +26,9 @@ public class JefeLogica implements JefeLogicaLocal {
         if(jefe.getIngsoftware().getCedula() == null){
             throw new Exception("No se ha seleccionado ningún Ingeniero de Software.");
         }
+        if(jefe.getPresupuesto() == 0){
+            throw new Exception("Campo Presupuesto Jefe Ingeniero de Software Obligatorio.");
+        }
         
         Jefe objJefe = jefeDAO.find(jefe.getIngsoftware().getCedula());
         if(objJefe != null){
@@ -38,8 +41,11 @@ public class JefeLogica implements JefeLogicaLocal {
 
     @Override
     public void modificarJefe(Jefe jefe) throws Exception {
-        if(jefe.getIngsoftware() == null){
+        if(jefe.getIngsoftware().getCedula() == null){
             throw new Exception("Ingeniero de Software No Registrado.");
+        }
+        if(jefe.getPresupuesto() == 0){
+            throw new Exception("Campo Presupuesto Jefe Ingeniero de Software Obligatorio.");
         }
         
         Jefe objJefe = jefeDAO.find(jefe.getIngsoftware().getCedula());
@@ -48,12 +54,16 @@ public class JefeLogica implements JefeLogicaLocal {
         }
         else{
             objJefe.setPresupuesto(jefe.getPresupuesto());
-            jefeDAO.edit(jefe);
+            jefeDAO.edit(objJefe);
         }
     }
 
     @Override
     public void eliminarJefe(Jefe jefe) throws Exception {
+        if(jefe.getIngsoftware().getCedula() == null){
+            throw new Exception("Ingeniero de Software No Registrado.");
+        }
+        
         Jefe objJefe = jefeDAO.find(jefe.getIngsoftware().getCedula());
         if(objJefe == null){
             throw new Exception("Jefe a eliminar no existe.");

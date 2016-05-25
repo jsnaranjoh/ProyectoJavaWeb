@@ -23,6 +23,9 @@ public class RequisitoLogica implements RequisitoLogicaLocal {
     
     @Override
     public void registrarRequisito(Requisito requisito) throws Exception {
+        if(requisito.getCodigo() == null || requisito.getCodigo() == 0){
+            throw new Exception("Campo Código Requisito Obligatorio.");
+        }
         if(requisito.getProyecto().getCodigo() == null){
             throw new Exception("Debes seleccionar un Proyecto a realizar el requisito.");
         }
@@ -47,6 +50,9 @@ public class RequisitoLogica implements RequisitoLogicaLocal {
 
     @Override
     public void modificarRequisito(Requisito requisito) throws Exception {
+        if(requisito.getCodigo() == null || requisito.getCodigo() == 0){
+            throw new Exception("Campo Código Requisito Obligatorio.");
+        }
         if(requisito.getProyecto().getCodigo() == null){
             throw new Exception("Debes seleccionar un Proyecto a realizar el requisito.");
         }
@@ -69,12 +75,16 @@ public class RequisitoLogica implements RequisitoLogicaLocal {
             objRequisito.setDescripcion(requisito.getDescripcion());
             objRequisito.setTipo(requisito.getTipo());
             objRequisito.setEstado(requisito.getEstado());
-            requisitoDAO.edit(requisito);
+            requisitoDAO.edit(objRequisito);
         }
     }
 
     @Override
     public void eliminarRequisito(Requisito requisito) throws Exception {
+        if(requisito.getCodigo() == null || requisito.getCodigo() == 0){
+            throw new Exception("Campo Código Requisito Obligatorio.");
+        }
+        
         Requisito objRequisito = requisitoDAO.find(requisito.getCodigo());
         
         if(objRequisito == null){

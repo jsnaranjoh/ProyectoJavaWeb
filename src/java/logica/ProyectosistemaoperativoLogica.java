@@ -54,7 +54,7 @@ public class ProyectosistemaoperativoLogica implements ProyectosistemaoperativoL
         }
         else{
             objSistemaoperativo.getProyectosistemaoperativoPK().setSistemaoperativo(sistemaoperativo.getProyectosistemaoperativoPK().getSistemaoperativo());            
-            sistemaoperativoDAO.edit(sistemaoperativo);
+            sistemaoperativoDAO.edit(objSistemaoperativo);
         }
     }
 

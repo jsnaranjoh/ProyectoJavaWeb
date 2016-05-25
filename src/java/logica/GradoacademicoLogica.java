@@ -23,6 +23,9 @@ public class GradoacademicoLogica implements GradoacademicoLogicaLocal {
     
     @Override
     public void registrarGradoacademico(Gradoacademico gradoacademico) throws Exception {
+        if(gradoacademico.getNumero() == null || gradoacademico.getNumero() == 0){
+            throw new Exception("Campo Número Grado Académico Obligatorio.");
+        }
         if(gradoacademico.getIngeniero().getCedula() == null){
             throw new Exception("Campo Ingeniero Software Obligatorio.");
         }
@@ -31,6 +34,9 @@ public class GradoacademicoLogica implements GradoacademicoLogicaLocal {
         }
         if(gradoacademico.getLugar().equals("")){
             throw new Exception("Campo Lugar de Graduación Obligatorio.");
+        }
+        if(gradoacademico.getAniotitulacion() == 0){
+            throw new Exception("Campo Año de Titulación Obligatorio.");
         }
         if(gradoacademico.getTituloobtenido().equals("")){
             throw new Exception("Campo Título Obtenido Obligatorio.");
@@ -47,6 +53,9 @@ public class GradoacademicoLogica implements GradoacademicoLogicaLocal {
 
     @Override
     public void modificarGradoacademico(Gradoacademico gradoacademico) throws Exception {
+        if(gradoacademico.getNumero() == null || gradoacademico.getNumero() == 0){
+            throw new Exception("Campo Número Grado Académico Obligatorio.");
+        }
         if(gradoacademico.getIngeniero().getCedula() == null){
             throw new Exception("Campo Ingeniero Software Obligatorio.");
         }
@@ -55,6 +64,9 @@ public class GradoacademicoLogica implements GradoacademicoLogicaLocal {
         }
         if(gradoacademico.getLugar().equals("")){
             throw new Exception("Campo Lugar de Graduación Obligatorio.");
+        }
+        if(gradoacademico.getAniotitulacion() == 0){
+            throw new Exception("Campo Año de Titulación Obligatorio.");
         }
         if(gradoacademico.getTituloobtenido().equals("")){
             throw new Exception("Campo Título Obtenido Obligatorio.");
@@ -69,12 +81,16 @@ public class GradoacademicoLogica implements GradoacademicoLogicaLocal {
             objGradoacademico.setLugar(gradoacademico.getLugar());
             objGradoacademico.setAniotitulacion(gradoacademico.getAniotitulacion());
             objGradoacademico.setTituloobtenido(gradoacademico.getTituloobtenido());
-            gradoacademicoDAO.edit(gradoacademico);
+            gradoacademicoDAO.edit(objGradoacademico);
         }
     }
 
     @Override
     public void eliminarGradoacademico(Gradoacademico gradoacademico) throws Exception {
+        if(gradoacademico.getNumero() == null || gradoacademico.getNumero() == 0){
+            throw new Exception("Campo Número Grado Académico Obligatorio.");
+        }
+        
         Gradoacademico objGradoacademico = gradoacademicoDAO.find(gradoacademico.getNumero());
         if(objGradoacademico == null){
             throw new Exception("Grado académico a eliminar no existe.");

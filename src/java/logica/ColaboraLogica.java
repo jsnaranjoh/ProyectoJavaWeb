@@ -29,6 +29,9 @@ public class ColaboraLogica implements ColaboraLogicaLocal {
         if(colabora.getProyecto1().getCodigo() == null){
             throw new Exception("Debes registrar un Proyecto.");
         }
+        if(colabora.getHorasdedicadas() == 0){
+            throw new Exception("Campo Horas Dedicadas a la Colaboración Obligatorio.");
+        }
         if(colabora.getFechainicio() == null){
             throw new Exception("Campo Fecha Inicio Colaboración Obligatorio.");
         }
@@ -53,6 +56,9 @@ public class ColaboraLogica implements ColaboraLogicaLocal {
         if(colabora.getProyecto1().getCodigo() == null){
             throw new Exception("Debes registrar un Proyecto.");
         }
+        if(colabora.getHorasdedicadas() == 0){
+            throw new Exception("Campo Horas Dedicadas a la Colaboración Obligatorio.");
+        }
         if(colabora.getFechainicio() == null){
             throw new Exception("Campo Fecha Inicio Colaboración Obligatorio.");
         }
@@ -68,7 +74,7 @@ public class ColaboraLogica implements ColaboraLogicaLocal {
             objColabora.setFechainicio(colabora.getFechainicio());
             objColabora.setFechafin(colabora.getFechafin());
             objColabora.setHorasdedicadas(colabora.getHorasdedicadas());
-            colaboraDAO.edit(colabora);
+            colaboraDAO.edit(objColabora);
         }
     }
 

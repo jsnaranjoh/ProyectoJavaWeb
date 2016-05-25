@@ -67,7 +67,7 @@ public class SeencuentraenLogica implements SeencuentraenLogicaLocal {
         else{
             objDesarrollo.setFechainicio(desarrollo.getFechainicio());
             objDesarrollo.setFechafin(desarrollo.getFechafin());
-            desarrolloDAO.edit(desarrollo);
+            desarrolloDAO.edit(objDesarrollo);
         }
     }
 

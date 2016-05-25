@@ -26,6 +26,9 @@ public class JuniorLogica implements JuniorLogicaLocal {
         if(junior.getIngsoftware().getCedula() == null){
             throw new Exception("Debes seleccionar un Ingeniero de Software.");
         }
+        if(junior.getHorastrabajoxdia() == 0){
+            throw new Exception("Campo Horas Trabajo al Día Junior Ingeniero de Software Obligatorio.");
+        }
         
         Junior objJunior = juniorDAO.find(junior.getIngsoftware().getCedula());
         if(objJunior != null){
@@ -38,8 +41,11 @@ public class JuniorLogica implements JuniorLogicaLocal {
 
     @Override
     public void modificarJunior(Junior junior) throws Exception {
-        if(junior.getIngsoftware() == null){
+        if(junior.getIngsoftware().getCedula() == null){
             throw new Exception("Ingeniero de Software No Registrado.");
+        }
+        if(junior.getHorastrabajoxdia() == 0){
+            throw new Exception("Campo Horas Trabajo al Día Junior Ingeniero de Software Obligatorio.");
         }
         
         Junior objJunior = juniorDAO.find(junior.getIngsoftware().getCedula());
@@ -48,12 +54,16 @@ public class JuniorLogica implements JuniorLogicaLocal {
         }
         else{
             objJunior.setHorastrabajoxdia(junior.getHorastrabajoxdia());
-            juniorDAO.edit(junior);
+            juniorDAO.edit(objJunior);
         }
     }
 
     @Override
     public void eliminarJunior(Junior junior) throws Exception {
+        if(junior.getIngsoftware().getCedula() == null){
+            throw new Exception("Ingeniero de Software No Registrado.");
+        }
+        
         Junior objJunior = juniorDAO.find(junior.getIngsoftware().getCedula());
         if(objJunior == null){
             throw new Exception("Junior a eliminar no existe.");

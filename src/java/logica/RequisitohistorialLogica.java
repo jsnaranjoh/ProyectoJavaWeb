@@ -8,7 +8,6 @@ package logica;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import modelo.Requisito;
 import modelo.Requisitohistorial;
 import persistencia.RequisitohistorialFacadeLocal;
 
