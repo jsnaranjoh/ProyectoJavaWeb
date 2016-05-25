@@ -12,6 +12,8 @@ import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import logica.IngsoftwareLogicaLocal;
 import logica.JefeLogicaLocal;
@@ -140,23 +142,82 @@ public class JefeVista {
     }
     
     public void onRowSelect(SelectEvent event){
+        this.selectedJefe = (Jefe) event.getObject();
+        this.cmbIngSoftware.setValue(this.selectedJefe.getIngsoftware().getCedula());
+        this.txtPresupuesto.setValue(this.selectedJefe.getPresupuesto());
         
+        this.btnRegistrar.setDisabled(true);
+        this.btnModificar.setDisabled(false);
+        this.btnEliminar.setDisabled(false);
     }
     
     public void limpiar(){
+        this.cmbIngSoftware.setValue("");
+        this.txtPresupuesto.setValue("");
         
+        this.btnRegistrar.setDisabled(false);
+        this.btnModificar.setDisabled(true);
+        this.btnEliminar.setDisabled(true);        
     }
     
     public void action_registrar(){
-        
+        try {
+            Ingsoftware objIngsoftware = new Ingsoftware();            
+            try { objIngsoftware.setCedula(Integer.parseInt(this.cmbIngSoftware.getValue().toString())); } catch(Exception ex){}
+            
+            Jefe objJefe = new Jefe();
+            objJefe.setCedula(objIngsoftware.getCedula());
+            try { objJefe.setPresupuesto(Integer.parseInt(this.txtPresupuesto.getValue().toString())); } catch(Exception ex){}
+            objJefe.setIngsoftware(objIngsoftware); 
+            
+            jefeLogica.registrarJefe(objJefe);
+            listaJefes = null;
+            limpiar();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
+                    "Información de creación de asignación de Jefe", "El Ingeniero de software fue asigando a Jefe con éxito.")); 
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error.", ex.getMessage()));
+        }
     }
     
     public void action_modificar(){
-        
+        try {
+            Ingsoftware objIngsoftware = new Ingsoftware();            
+            try { objIngsoftware.setCedula(Integer.parseInt(this.cmbIngSoftware.getValue().toString())); } catch(Exception ex){}
+            
+            Jefe objJefe = new Jefe();
+            objJefe.setCedula(objIngsoftware.getCedula());
+            try { objJefe.setPresupuesto(Integer.parseInt(this.txtPresupuesto.getValue().toString())); } catch(Exception ex){}
+            objJefe.setIngsoftware(objIngsoftware); 
+            
+            jefeLogica.modificarJefe(objJefe);
+            listaJefes = null;
+            limpiar();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
+                    "Información de modificación de asignación de Jefe", "La asignación de Jefe fue modificada con éxito.")); 
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error.", ex.getMessage()));
+        }        
     }
     
     public void action_eliminar(){
-        
+        try {
+            Ingsoftware objIngsoftware = new Ingsoftware();            
+            try { objIngsoftware.setCedula(Integer.parseInt(this.cmbIngSoftware.getValue().toString())); } catch(Exception ex){}
+            
+            Jefe objJefe = new Jefe();
+            objJefe.setCedula(objIngsoftware.getCedula());
+            try { objJefe.setPresupuesto(Integer.parseInt(this.txtPresupuesto.getValue().toString())); } catch(Exception ex){}
+            objJefe.setIngsoftware(objIngsoftware);            
+            
+            jefeLogica.eliminarJefe(objJefe);
+            listaJefes = null;
+            limpiar();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
+                    "Información de eliminación de asignación de Jefe", "La asignación de Jefe fue eliminada con éxito.")); 
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error.", ex.getMessage()));
+        }        
     }
     
     /**
