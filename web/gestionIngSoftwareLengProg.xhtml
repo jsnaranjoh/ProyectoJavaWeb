@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Lenguajes de Programación Ingenieros Software</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="80" resizable="true" closable="true" collapsible="true">
+                    LENGUAJES DE PROGRAMACIÓN INGENIEROS SOFTWARE
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="80" closable="true" collapsible="true">
+                    CHRISTIAN DAVID NOREÑA VALENCIA<p></p>
+                    UVTULUA 2016
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                    <h:form>
+                        <p:menu>
+                            <p:submenu label="Menú">
+                                <p:menuitem value="Demo" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
+                                <p:menuitem value="Documentation" url="http://www.primefaces.org/documentation.html" />
+                                <p:menuitem value="Forum" url="http://forum.primefaces.org/" />
+                                <p:menuitem value="Themes" url="http://www.primefaces.org/themes.html" />
+                            </p:submenu>
+                        </p:menu>                        
+                    </h:form>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <h:form id="formulario">
+                        <p:growl id="growl" showDetail="true" sticky="true" escape="false"/>
+                        <p:panelGrid columns="4">
+                            <h:outputText value="Ingeniero Software"/>
+                            <p:selectOneMenu id="cmbIngSoftware" binding="#{ingsoftwarelenguajeprogVista.cmbIngSoftware}">
+                                <f:selectItem itemValue="Seleccione" itemLabel="Seleccione"/>
+                                <f:selectItems value="#{ingsoftwarelenguajeprogVista.itemsIngsoftware}"/>
+                            </p:selectOneMenu>
+                            <h:outputText value="Sistema Operativo que conoce"/>
+                            <p:inputText id="txtLengProg" binding="#{ingsoftwarelenguajeprogVista.txtLengProg}"/>                           
+                        </p:panelGrid>
+                        <p:panelGrid columns="3">
+                            <p:commandButton value="Registrar" binding="#{ingsoftwarelenguajeprogVista.btnRegistrar}" action="#{ingsoftwarelenguajeprogVista.action_registrar()}" update=":formulario"/> 
+                            <p:commandButton value="Eliminar" binding="#{ingsoftwarelenguajeprogVista.btnEliminar}" action="#{ingsoftwarelenguajeprogVista.action_eliminar()}" update=":formulario"/>
+                            <p:commandButton value="Limpiar" binding="#{ingsoftwarelenguajeprogVista.btnLimpiar}" action="#{ingsoftwarelenguajeprogVista.limpiar()}" update=":formulario"/>
+                        </p:panelGrid>
+                        <p:panelGrid columns="1">
+                            Nota: Cuando se registran Lenguajes de Programación conocidos por los ingenieros de software, sólo se puede dar la opción 
+                            Eliminar, aunque es una forma indirecta de editar. Así, si deseas editar, se crea el nuevo registro con la misma cédula Ing. 
+                            Software y luego elimina el reemplazado.
+                        </p:panelGrid>                            
+                        <p:dataTable id="eventsDT" var="ingsoftwarelenguajeprog" value="#{ingsoftwarelenguajeprogVista.listaIngsoftwarelenguajeprogs}" selectionMode="single" selection="#{ingsoftwarelenguajeprogVista.selectedIngsoftwarelenguajeprog}" rowKey="#{ingsoftwarelenguajeprog.ingsoftwarelenguajeprogPK}">
+                            <f:facet name="header">
+                                Sistemas Operativos
+                            </f:facet>
+                            <p:ajax event="rowSelect" listener="#{ingsoftwarelenguajeprogVista.onRowSelect}" update=":formulario" />
+
+                            <p:column headerText="Cédula">
+                                <h:outputText value="#{ingsoftwarelenguajeprog.ingsoftwarelenguajeprogPK.cedula}" />
+                            </p:column>
+                            <p:column headerText="Ingeniero Software">
+                                <h:outputText value="#{ingsoftwarelenguajeprog.ingsoftware.nombres} #{ingsoftwarelenguajeprog.ingsoftware.apellidos}" />
+                            </p:column>                             
+                            <p:column headerText="Sistema Operativo">
+                                <h:outputText value="#{ingsoftwarelenguajeprog.ingsoftwarelenguajeprogPK.lenguajeprog}" />
+                            </p:column>
+                        </p:dataTable>                    
+                    </h:form>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
