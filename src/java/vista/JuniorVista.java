@@ -16,9 +16,9 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import logica.IngsoftwareLogicaLocal;
-import logica.SeniorLogicaLocal;
+import logica.JuniorLogicaLocal;
 import modelo.Ingsoftware;
-import modelo.Senior;
+import modelo.Junior;
 import org.primefaces.component.commandbutton.CommandButton;
 import org.primefaces.component.inputtext.InputText;
 import org.primefaces.component.selectonemenu.SelectOneMenu;
@@ -28,16 +28,16 @@ import org.primefaces.event.SelectEvent;
  *
  * @author NOREÑA
  */
-@Named(value = "seniorVista")
+@Named(value = "juniorVista")
 @RequestScoped
-public class SeniorVista {
+public class JuniorVista {
 
     private SelectOneMenu cmbIngSoftware;
     private ArrayList<SelectItem> itemsIngsoftware;
-    private InputText txtProyectosquelidera;
+    private InputText txtHorastrabajoxdia;
     
-    private List<Senior> listaSeniors;
-    private Senior selectedSenior;
+    private List<Junior> listaJuniors;
+    private Junior selectedJunior;
     
     private CommandButton btnRegistrar;
     private CommandButton btnModificar;
@@ -48,7 +48,7 @@ public class SeniorVista {
     private IngsoftwareLogicaLocal ingsoftwareLogica;
     
     @EJB
-    private SeniorLogicaLocal seniorLogica;
+    private JuniorLogicaLocal juniorLogica;
 
     public SelectOneMenu getCmbIngSoftware() {
         return cmbIngSoftware;
@@ -67,7 +67,7 @@ public class SeniorVista {
                 itemsIngsoftware.add(new SelectItem(ing.getCedula(), ing.getNombres() + " " + ing.getApellidos()));
             }
         } catch (Exception ex) {
-            Logger.getLogger(SeniorVista.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JuniorVista.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return itemsIngsoftware;
@@ -77,36 +77,36 @@ public class SeniorVista {
         this.itemsIngsoftware = itemsIngsoftware;
     }
 
-    public InputText getTxtProyectosquelidera() {
-        return txtProyectosquelidera;
+    public InputText getTxtHorastrabajoxdia() {
+        return txtHorastrabajoxdia;
     }
 
-    public void setTxtProyectosquelidera(InputText txtProyectosquelidera) {
-        this.txtProyectosquelidera = txtProyectosquelidera;
+    public void setTxtHorastrabajoxdia(InputText txtHorastrabajoxdia) {
+        this.txtHorastrabajoxdia = txtHorastrabajoxdia;
     }
 
-    public List<Senior> getListaSeniors() {
-        if(listaSeniors == null){
+    public List<Junior> getListaJuniors() {
+        if(listaJuniors == null){
             try {
-                listaSeniors = seniorLogica.consultarTodos();
+                listaJuniors = juniorLogica.consultarTodos();
             } catch (Exception ex) {
-                Logger.getLogger(SeniorVista.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(JuniorVista.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         
-        return listaSeniors;
+        return listaJuniors;
     }
 
-    public void setListaSeniors(List<Senior> listaSeniors) {        
-        this.listaSeniors = listaSeniors;
+    public void setListaJuniors(List<Junior> listaJuniors) {        
+        this.listaJuniors = listaJuniors;
     }
 
-    public Senior getSelectedSenior() {
-        return selectedSenior;
+    public Junior getSelectedJunior() {
+        return selectedJunior;
     }
 
-    public void setSelectedSenior(Senior selectedSenior) {
-        this.selectedSenior = selectedSenior;
+    public void setSelectedJunior(Junior selectedJunior) {
+        this.selectedJunior = selectedJunior;
     }
 
     public CommandButton getBtnRegistrar() {
@@ -142,9 +142,9 @@ public class SeniorVista {
     }    
     
     public void onRowSelect(SelectEvent event){
-        this.selectedSenior = (Senior) event.getObject();
-        this.cmbIngSoftware.setValue(this.selectedSenior.getIngsoftware().getCedula());
-        this.txtProyectosquelidera.setValue(this.selectedSenior.getProyectosquelidera());
+        this.selectedJunior = (Junior) event.getObject();
+        this.cmbIngSoftware.setValue(this.selectedJunior.getIngsoftware().getCedula());
+        this.txtHorastrabajoxdia.setValue(this.selectedJunior.getHorastrabajoxdia());
         
         this.btnRegistrar.setDisabled(true);
         this.btnModificar.setDisabled(false);
@@ -153,28 +153,28 @@ public class SeniorVista {
     
     public void limpiar(){
         this.cmbIngSoftware.setValue("");
-        this.txtProyectosquelidera.setValue("");
+        this.txtHorastrabajoxdia.setValue("");
         
         this.btnRegistrar.setDisabled(false);
         this.btnModificar.setDisabled(true);
         this.btnEliminar.setDisabled(true);        
-    }    
+    }
     
     public void action_registrar(){
         try {
             Ingsoftware objIngsoftware = new Ingsoftware();            
             try { objIngsoftware.setCedula(Integer.parseInt(this.cmbIngSoftware.getValue().toString())); } catch(Exception ex){}
             
-            Senior objSenior = new Senior();
-            objSenior.setCedula(objIngsoftware.getCedula());
-            try { objSenior.setProyectosquelidera(Integer.parseInt(this.txtProyectosquelidera.getValue().toString())); } catch(Exception ex){}
-            objSenior.setIngsoftware(objIngsoftware); 
+            Junior objJunior = new Junior();
+            objJunior.setCedula(objIngsoftware.getCedula());
+            try { objJunior.setHorastrabajoxdia(Integer.parseInt(this.txtHorastrabajoxdia.getValue().toString())); } catch(Exception ex){}
+            objJunior.setIngsoftware(objIngsoftware); 
             
-            seniorLogica.registrarSenior(objSenior);
-            listaSeniors = null;
+            juniorLogica.registrarJunior(objJunior);
+            listaJuniors = null;
             limpiar();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
-                    "Información de creación de asignación de Senior", "El Ingeniero de software fue asigando a Senior con éxito.")); 
+                    "Información de creación de asignación de Junior", "El Ingeniero de software fue asigando a Junior con éxito.")); 
         } catch (Exception ex) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error.", ex.getMessage()));
         }        
@@ -185,19 +185,19 @@ public class SeniorVista {
             Ingsoftware objIngsoftware = new Ingsoftware();            
             try { objIngsoftware.setCedula(Integer.parseInt(this.cmbIngSoftware.getValue().toString())); } catch(Exception ex){}
             
-            Senior objSenior = new Senior();
-            objSenior.setCedula(objIngsoftware.getCedula());
-            try { objSenior.setProyectosquelidera(Integer.parseInt(this.txtProyectosquelidera.getValue().toString())); } catch(Exception ex){}
-            objSenior.setIngsoftware(objIngsoftware); 
+            Junior objJunior = new Junior();
+            objJunior.setCedula(objIngsoftware.getCedula());
+            try { objJunior.setHorastrabajoxdia(Integer.parseInt(this.txtHorastrabajoxdia.getValue().toString())); } catch(Exception ex){}
+            objJunior.setIngsoftware(objIngsoftware); 
             
-            seniorLogica.modificarSenior(objSenior);
-            listaSeniors = null;
+            juniorLogica.modificarJunior(objJunior);
+            listaJuniors = null;
             limpiar();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
-                    "Información de modificación de asignación de Senior", "La asignación de Senior fue modificada con éxito.")); 
+                    "Información de modificación de asignación de Junior", "La asignación de Junior fue modificada con éxito.")); 
         } catch (Exception ex) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error.", ex.getMessage()));
-        }        
+        }         
     }
     
     public void action_eliminar(){
@@ -205,25 +205,25 @@ public class SeniorVista {
             Ingsoftware objIngsoftware = new Ingsoftware();            
             try { objIngsoftware.setCedula(Integer.parseInt(this.cmbIngSoftware.getValue().toString())); } catch(Exception ex){}
             
-            Senior objSenior = new Senior();
-            objSenior.setCedula(objIngsoftware.getCedula());
-            try { objSenior.setProyectosquelidera(Integer.parseInt(this.txtProyectosquelidera.getValue().toString())); } catch(Exception ex){}
-            objSenior.setIngsoftware(objIngsoftware); 
+            Junior objJunior = new Junior();
+            objJunior.setCedula(objIngsoftware.getCedula());
+            try { objJunior.setHorastrabajoxdia(Integer.parseInt(this.txtHorastrabajoxdia.getValue().toString())); } catch(Exception ex){}
+            objJunior.setIngsoftware(objIngsoftware); 
             
-            seniorLogica.eliminarSenior(objSenior);
-            listaSeniors = null;
+            juniorLogica.eliminarJunior(objJunior);
+            listaJuniors = null;
             limpiar();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
-                    "Información de eliminación de asignación de Senior", "La asignación de Senior fue eliminada con éxito.")); 
+                    "Información de eliminación de asignación de Junior", "La asignación de Junior fue eliminada con éxito.")); 
         } catch (Exception ex) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error.", ex.getMessage()));
-        }        
+        }          
     }
     
     /**
-     * Creates a new instance of SeniorVista
+     * Creates a new instance of JuniorVisita
      */
-    public SeniorVista() {
+    public JuniorVista() {
     }
     
 }
