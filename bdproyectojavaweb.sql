@@ -69,14 +69,13 @@ CREATE TABLE IF NOT EXISTS `gradoacademico` (
 -- Volcando datos para la tabla bdproyectojavaweb.gradoacademico: ~8 rows (aproximadamente)
 /*!40000 ALTER TABLE `gradoacademico` DISABLE KEYS */;
 INSERT INTO `gradoacademico` (`numero`, `ingeniero`, `nivel`, `lugar`, `aniotitulacion`, `tituloobtenido`) VALUES
-	(3131, 54117430, 'maestria', 'Universidad de la Sabana', 2000, 'Maestro en Diseño y Gestion de Procesos'),
-	(354353, 4760491, 'universidad', 'Universidad Santiago de Cali', 2005, 'Ing. de Sistemas'),
-	(424323, 641500199, 'universidad', 'Universidad de Medellin', 2003, 'Ing. de Software'),
-	(454353, 54117430, 'universidad', 'Universidad del Valle', 1996, 'Ing. de Sistemas'),
-	(897677, 641500199, 'maestria', 'Universidad del Valle', 2006, 'Maestro en Desarrollo de Software'),
-	(4131232, 54117430, 'secundaria', 'I. E. Tulio Enrique Tascon', 1990, 'Bachiller Comercial'),
-	(6456545, 84940812, 'secundaria', 'I. E. Carlos Arturo Cabal', 2010, 'Bachiller'),
-	(9877977, 596518122, 'secundaria', 'Colegio Gimnasio Central del Valle', 2008, 'Bachiller');
+	(3131, 54117430, 'Maestría', 'Universidad de la Sabana', 2000, 'Maestro en Diseño y Gestion de Procesos'),
+	(354353, 4760491, 'Universidad', 'Universidad Santiago de Cali', 2005, 'Ing. de Sistemas'),
+	(424323, 641500199, 'Universidad', 'Universidad de Medellin', 2003, 'Ing. de Software'),
+	(454353, 54117430, 'Universidad', 'Universidad del Valle', 1996, 'Ing. de Sistemas'),
+	(897677, 641500199, 'Maestría', 'Universidad del Valle', 2006, 'Maestro en Desarrollo de Software'),
+	(4131232, 54117430, 'Secundaria', 'I. E. Tulio Enrique Tascon', 1990, 'Bachiller Comercial'),
+	(9877977, 596518122, 'Secundaria', 'Colegio Gimnasio Central del Valle', 2008, 'Bachiller');
 /*!40000 ALTER TABLE `gradoacademico` ENABLE KEYS */;
 
 
@@ -101,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `ingsoftware` (
 -- Volcando datos para la tabla bdproyectojavaweb.ingsoftware: ~5 rows (aproximadamente)
 /*!40000 ALTER TABLE `ingsoftware` DISABLE KEYS */;
 INSERT INTO `ingsoftware` (`cedula`, `nombres`, `apellidos`, `edad`, `sexo`, `fechanacimiento`, `email`, `telefono`, `celular`, `direccion`, `fechaingreso`, `antiguedad`, `clave`) VALUES
-	(4760491, 'Alberto', 'Sandoval', 37, 'M', '1979-03-15', 'alberto.sandoval@java.com', 3098390, 319685172, 'Cra 45 # 12-22', '2012-02-29', 4, 'b1f37ec94d5ce01b55b89cec07183cef'),
+	(4760491, 'Alberto', 'Sandoval', 38, 'M', '1979-03-15', 'alberto.sandoval@java.com', 2243431, 315231009, 'Cra 45 # 12-22', '2012-02-29', 4, 'b1f37ec94d5ce01b55b89cec07183cef'),
 	(54117430, 'Andres', 'Perez', 45, 'M', '1971-01-23', 'andres.perez@java.com', 6369321, 317019515, 'Cll 1 # 70-87', '2011-07-01', 4, 'b1f37ec94d5ce01b55b89cec07183cef'),
 	(84940812, 'Lina', 'Arce', 23, 'F', '1993-04-29', 'lina.arce@java.com', 6754304, 311715702, 'Cll 6 # 15-09', '2013-01-13', 3, 'b1f37ec94d5ce01b55b89cec07183cef'),
 	(596518122, 'Pablo', 'Martinez', 26, 'M', '1990-02-20', 'pablo.martinez@java.com', 8909437, 312392827, 'Cra 30 # 13-47', '2012-01-17', 4, 'b1f37ec94d5ce01b55b89cec07183cef'),
@@ -138,7 +137,7 @@ CREATE TABLE IF NOT EXISTS `ingsoftwaresgbd` (
   CONSTRAINT `FK_ingsoftwaresgbd_ingsoftware` FOREIGN KEY (`cedula`) REFERENCES `ingsoftware` (`cedula`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla bdproyectojavaweb.ingsoftwaresgbd: ~7 rows (aproximadamente)
+-- Volcando datos para la tabla bdproyectojavaweb.ingsoftwaresgbd: ~8 rows (aproximadamente)
 /*!40000 ALTER TABLE `ingsoftwaresgbd` DISABLE KEYS */;
 INSERT INTO `ingsoftwaresgbd` (`cedula`, `sgbd`) VALUES
 	(4760491, 'MySQL'),
@@ -147,7 +146,8 @@ INSERT INTO `ingsoftwaresgbd` (`cedula`, `sgbd`) VALUES
 	(84940812, 'MySQL'),
 	(84940812, 'PostgreSQL'),
 	(596518122, 'MySQL'),
-	(641500199, 'MySQL');
+	(641500199, 'MySQL'),
+	(641500199, 'PostgreSQL');
 /*!40000 ALTER TABLE `ingsoftwaresgbd` ENABLE KEYS */;
 
 
@@ -159,7 +159,7 @@ CREATE TABLE IF NOT EXISTS `ingsoftwaresistemaoperativo` (
   CONSTRAINT `FK_ingsoftwaresistemaoperativo_ingsoftware` FOREIGN KEY (`cedula`) REFERENCES `ingsoftware` (`cedula`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla bdproyectojavaweb.ingsoftwaresistemaoperativo: ~6 rows (aproximadamente)
+-- Volcando datos para la tabla bdproyectojavaweb.ingsoftwaresistemaoperativo: ~7 rows (aproximadamente)
 /*!40000 ALTER TABLE `ingsoftwaresistemaoperativo` DISABLE KEYS */;
 INSERT INTO `ingsoftwaresistemaoperativo` (`cedula`, `sistemaoperativo`) VALUES
 	(4760491, 'Mac OS'),
@@ -167,6 +167,7 @@ INSERT INTO `ingsoftwaresistemaoperativo` (`cedula`, `sistemaoperativo`) VALUES
 	(54117430, 'Windows'),
 	(84940812, 'Windows'),
 	(596518122, 'Ubuntu'),
+	(641500199, 'Mac OS'),
 	(641500199, 'Windows');
 /*!40000 ALTER TABLE `ingsoftwaresistemaoperativo` ENABLE KEYS */;
 
@@ -179,10 +180,11 @@ CREATE TABLE IF NOT EXISTS `jefe` (
   CONSTRAINT `FK_jefe_ingsoftware` FOREIGN KEY (`cedula`) REFERENCES `ingsoftware` (`cedula`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla bdproyectojavaweb.jefe: ~1 rows (aproximadamente)
+-- Volcando datos para la tabla bdproyectojavaweb.jefe: ~2 rows (aproximadamente)
 /*!40000 ALTER TABLE `jefe` DISABLE KEYS */;
 INSERT INTO `jefe` (`cedula`, `presupuesto`) VALUES
-	(54117430, 100000000);
+	(54117430, 100000000),
+	(84940812, 300000000);
 /*!40000 ALTER TABLE `jefe` ENABLE KEYS */;
 
 
@@ -198,7 +200,7 @@ CREATE TABLE IF NOT EXISTS `junior` (
 /*!40000 ALTER TABLE `junior` DISABLE KEYS */;
 INSERT INTO `junior` (`cedula`, `horastrabajoxdia`) VALUES
 	(84940812, 8),
-	(596518122, 6);
+	(596518122, 7);
 /*!40000 ALTER TABLE `junior` ENABLE KEYS */;
 
 
@@ -373,7 +375,7 @@ CREATE TABLE IF NOT EXISTS `senior` (
 /*!40000 ALTER TABLE `senior` DISABLE KEYS */;
 INSERT INTO `senior` (`cedula`, `proyectosquelidera`) VALUES
 	(4760491, 0),
-	(641500199, 0);
+	(641500199, 1);
 /*!40000 ALTER TABLE `senior` ENABLE KEYS */;
 
 
@@ -409,7 +411,7 @@ CREATE TABLE IF NOT EXISTS `solicitud` (
 INSERT INTO `solicitud` (`numero`, `requisito`, `verificador`, `solicitante`, `tipo`, `titulo`, `fecha`, `origen`, `estado`, `prioridadsolicitante`, `prioridadrealizacion`, `fechaultimaactualizacion`, `release`, `esfuerzo`, `descripcion`, `comentarios`) VALUES
 	(4012, 2615, 54117430, 84940812, 'Cambio', 'Corrección del requisito', '2016-05-01', '', 'Evaluado', 1, 2, '2016-04-24', '1.0', 1, 'Posible mala redacción del requisito.', ''),
 	(5312, 2615, 54117430, 596518122, 'Eliminación', 'Eliminación del requisito', '2016-05-01', '', 'Verificado', 1, 1, '2016-05-01', '1.0', 2, 'Innecesario requisito.', 'ola k ase'),
-	(6123, 3127, 54117430, 84940812, 'Ampliación', 'Ampliación del requisito', '2016-05-01', '', 'Aprobado', 1, 1, '2016-04-24', '1.0', 3, 'Validación de campos.', '');
+	(6123, 3127, 54117430, 54117430, 'Ampliación', 'Ampliación del requisito', '2016-05-01', '', 'Aprobado', 1, 1, '2016-04-24', '1.0', 3, 'Validación de campos.', '');
 /*!40000 ALTER TABLE `solicitud` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

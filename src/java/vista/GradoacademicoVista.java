@@ -12,6 +12,8 @@ import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import logica.GradoacademicoLogicaLocal;
 import logica.IngsoftwareLogicaLocal;
@@ -205,15 +207,75 @@ public class GradoacademicoVista {
     }
     
     public void action_registrar(){
-        
+        try {
+            Ingsoftware objIngsoftware = new Ingsoftware();
+            try { objIngsoftware.setCedula(Integer.parseInt(this.cmbIngenieros.getValue().toString())); } catch(Exception ex){}
+            
+            Gradoacademico objGradoacademico = new Gradoacademico();
+            try{ objGradoacademico.setNumero(Integer.parseInt(this.txtNumero.getValue().toString())); } catch(Exception ex){}
+            objGradoacademico.setIngeniero(objIngsoftware);
+            objGradoacademico.setNivel(this.cmbNiveles.getValue().toString());
+            objGradoacademico.setLugar(this.txtLugar.getValue().toString());
+            try{ objGradoacademico.setAniotitulacion(Integer.parseInt(this.txtAnioTitulacion.getValue().toString())); } catch(Exception ex){}
+            objGradoacademico.setTituloobtenido(this.txtTituloObtenido.getValue().toString());
+            
+            gradoacademicoLogica.registrarGradoacademico(objGradoacademico);
+            listaGradosacademicos = null;
+            limpiar();
+            
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
+                    "Información de registro de Grado Académico", "El Grado Académico fue registrado con éxito."));            
+        } catch(Exception ex){
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error.", ex.getMessage()));
+        }
     }
     
     public void action_modificar(){
-        
+        try {
+            Ingsoftware objIngsoftware = new Ingsoftware();
+            try { objIngsoftware.setCedula(Integer.parseInt(this.cmbIngenieros.getValue().toString())); } catch(Exception ex){}
+            
+            Gradoacademico objGradoacademico = new Gradoacademico();
+            try{ objGradoacademico.setNumero(Integer.parseInt(this.txtNumero.getValue().toString())); } catch(Exception ex){}
+            objGradoacademico.setIngeniero(objIngsoftware);
+            objGradoacademico.setNivel(this.cmbNiveles.getValue().toString());
+            objGradoacademico.setLugar(this.txtLugar.getValue().toString());
+            try{ objGradoacademico.setAniotitulacion(Integer.parseInt(this.txtAnioTitulacion.getValue().toString())); } catch(Exception ex){}
+            objGradoacademico.setTituloobtenido(this.txtTituloObtenido.getValue().toString());
+            
+            gradoacademicoLogica.modificarGradoacademico(objGradoacademico);
+            listaGradosacademicos = null;
+            limpiar();
+            
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
+                    "Información de modificación de Grado Académico", "El Grado Académico fue modificado con éxito."));            
+        } catch(Exception ex){
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error.", ex.getMessage()));
+        }        
     }
 
     public void action_eliminar(){
-        
+        try {
+            Ingsoftware objIngsoftware = new Ingsoftware();
+            try { objIngsoftware.setCedula(Integer.parseInt(this.cmbIngenieros.getValue().toString())); } catch(Exception ex){}
+            
+            Gradoacademico objGradoacademico = new Gradoacademico();
+            try{ objGradoacademico.setNumero(Integer.parseInt(this.txtNumero.getValue().toString())); } catch(Exception ex){}
+            objGradoacademico.setIngeniero(objIngsoftware);
+            objGradoacademico.setNivel(this.cmbNiveles.getValue().toString());
+            objGradoacademico.setLugar(this.txtLugar.getValue().toString());
+            try{ objGradoacademico.setAniotitulacion(Integer.parseInt(this.txtAnioTitulacion.getValue().toString())); } catch(Exception ex){}
+            objGradoacademico.setTituloobtenido(this.txtTituloObtenido.getValue().toString());
+            
+            gradoacademicoLogica.eliminarGradoacademico(objGradoacademico);
+            listaGradosacademicos = null;
+            limpiar();
+            
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
+                    "Información de eliminación de Grado Académico", "El Grado Académico fue eliminado con éxito."));            
+        } catch(Exception ex){
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error.", ex.getMessage()));
+        }        
     }    
     
     /**
