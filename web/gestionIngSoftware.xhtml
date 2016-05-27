@@ -130,7 +130,9 @@
                                  <h:outputText value="#{ingsoftware.sexo}" />
                             </p:column>
                              <p:column headerText="Fecha Nacimiento">
-                                 <h:outputText value="#{ingsoftware.fechanacimiento}" />
+                                <h:outputText value="#{ingsoftware.fechanacimiento}">
+                                    <f:convertDateTime type="date" pattern="yyyy-MM-dd" />
+                                </h:outputText>
                             </p:column>                            
                              <p:column headerText="Correo Electrónico">
                                  <h:outputText value="#{ingsoftware.email}" />
@@ -145,7 +147,9 @@
                                  <h:outputText value="#{ingsoftware.direccion}" />
                             </p:column>
                              <p:column headerText="Fecha Ingreso">
-                                 <h:outputText value="#{ingsoftware.fechaingreso}" />
+                                 <h:outputText value="#{ingsoftware.fechaingreso}">
+                                     <f:convertDateTime type="date" pattern="yyyy-MM-dd" />
+                                 </h:outputText>
                             </p:column>
                              <p:column headerText="Antigüedad (años)">
                                  <h:outputText value="#{ingsoftware.antiguedad}" />
