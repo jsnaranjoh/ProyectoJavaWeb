@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Grados Académicos</title>
+            </f:facet>           
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="80" resizable="true" closable="true" collapsible="true">
+                    GRADOS ACADÉMICOS
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="80" closable="true" collapsible="true">
+                    CHRISTIAN DAVID NOREÑA VALENCIA<p></p>
+                    UVTULUA 2016
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                    <h:form>
+                        <p:menu>
+                            <p:submenu label="Menú">
+                                <p:menuitem value="Demo" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
+                                <p:menuitem value="Documentation" url="http://www.primefaces.org/documentation.html" />
+                                <p:menuitem value="Forum" url="http://forum.primefaces.org/" />
+                                <p:menuitem value="Themes" url="http://www.primefaces.org/themes.html" />
+                            </p:submenu>
+                        </p:menu>                        
+                    </h:form>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <h:form id="formulario">
+                        <p:growl id="growl" showDetail="true" sticky="true" escape="false"/>
+                        <p:panelGrid columns="6">
+                            <h:outputText value="Número"/>
+                            <p:inputText id="txtNumero" binding="#{gradoacademicoVista.txtNumero}"/>
+                            
+                            <h:outputText value="Ingeniero"/>
+                            <p:selectOneMenu id="cmbIngenieros" binding="#{gradoacademicoVista.cmbIngenieros}">
+                                <f:selectItem itemValue="Seleccione" itemLabel="Seleccione"/>
+                                <f:selectItems value="#{gradoacademicoVista.itemsIngenieros}"/>
+                            </p:selectOneMenu>
+                            
+                            <h:outputText value="Nivel Académico"/>
+                            <p:selectOneMenu id="cmbNiveles" binding="#{gradoacademicoVista.cmbNiveles}">
+                                <f:selectItem itemValue="0" itemLabel="Seleccione"/>
+                                <f:selectItem itemValue="Secundaria" itemLabel="Secundaria"/>
+                                <f:selectItem itemValue="Universidad" itemLabel="Universidad"/>
+                                <f:selectItem itemValue="Postgrado" itemLabel="Postgrado"/>
+                                <f:selectItem itemValue="Maestría" itemLabel="Maestría"/>
+                                <f:selectItem itemValue="Doctorado" itemLabel="Doctorado"/>
+                            </p:selectOneMenu>
+                            
+                            <h:outputText value="Lugar"/>
+                            <p:inputText id="txtLugar" binding="#{gradoacademicoVista.txtLugar}"/>
+                            <h:outputText value="Año Titulación"/>
+                            <p:inputText id="txtAnioTitulacion" binding="#{gradoacademicoVista.txtAnioTitulacion}"/>
+                            <h:outputText value="Título Obtenido"/>
+                            <p:inputText id="txtTituloObtenido" binding="#{gradoacademicoVista.txtTituloObtenido}"/>
+                        </p:panelGrid>
+                        <p:panelGrid columns="4">
+                            <p:commandButton value="Registrar" binding="#{gradoacademicoVista.btnRegistrar}" action="#{gradoacademicoVista.action_registrar()}" update=":formulario"/> 
+                            <p:commandButton value="Modificar" binding="#{gradoacademicoVista.btnModificar}" action="#{gradoacademicoVista.action_modificar()}" update=":formulario"/>
+                            <p:commandButton value="Eliminar" binding="#{gradoacademicoVista.btnEliminar}" action="#{gradoacademicoVista.action_eliminar()}" update=":formulario"/>
+                            <p:commandButton value="Limpiar" binding="#{gradoacademicoVista.btnLimpiar}" action="#{gradoacademicoVista.limpiar()}" update=":formulario"/>
+                        </p:panelGrid>
+                        <p:dataTable id="eventsDT" var="gradoacademico" value="#{gradoacademicoVista.listaGradosacademicos}" selectionMode="single" selection="#{gradoacademicoVista.selectedGradoacademico}" rowKey="#{gradoacademico.numero}">
+                            <f:facet name="header">
+                                Grados Académicos
+                            </f:facet>
+                            <p:ajax event="rowSelect" listener="#{gradoacademicoVista.onRowSelect}" update=":formulario" />
+
+                            <p:column headerText="Número">
+                                <h:outputText value="#{gradoacademico.numero}" />
+                            </p:column>                            
+                            <p:column headerText="Ingeniero">
+                                <h:outputText value="#{gradoacademico.ingeniero.nombres} #{gradoacademico.ingeniero.apellidos}" />
+                            </p:column>
+                             <p:column headerText="Nivel">
+                                 <h:outputText value="#{gradoacademico.nivel}" />
+                            </p:column>
+                             <p:column headerText="Lugar">
+                                 <h:outputText value="#{gradoacademico.lugar}" />
+                            </p:column>
+                             <p:column headerText="Año Titulación">
+                                 <h:outputText value="#{gradoacademico.aniotitulacion}" />
+                            </p:column>
+                             <p:column headerText="Título Obtenido">
+                                 <h:outputText value="#{gradoacademico.tituloobtenido}" />
+                            </p:column>                           
+                        </p:dataTable>                        
+                    </h:form>
+                </p:layoutUnit>
+            </p:layout>
+        </h:body>
+    </f:view>
+</html>
+
