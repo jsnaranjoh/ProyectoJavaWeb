@@ -48,7 +48,7 @@
                                 <f:selectItem itemValue="Seleccione" itemLabel="Seleccione"/>
                                 <f:selectItems value="#{ingsoftwarelenguajeprogVista.itemsIngsoftware}"/>
                             </p:selectOneMenu>
-                            <h:outputText value="Sistema Operativo que conoce"/>
+                            <h:outputText value="Lenguaje de Programación que conoce"/>
                             <p:inputText id="txtLengProg" binding="#{ingsoftwarelenguajeprogVista.txtLengProg}"/>                           
                         </p:panelGrid>
                         <p:panelGrid columns="3">
@@ -63,7 +63,7 @@
                         </p:panelGrid>                            
                         <p:dataTable id="eventsDT" var="ingsoftwarelenguajeprog" value="#{ingsoftwarelenguajeprogVista.listaIngsoftwarelenguajeprogs}" selectionMode="single" selection="#{ingsoftwarelenguajeprogVista.selectedIngsoftwarelenguajeprog}" rowKey="#{ingsoftwarelenguajeprog.ingsoftwarelenguajeprogPK}">
                             <f:facet name="header">
-                                Sistemas Operativos
+                                Lenguajes de Programación
                             </f:facet>
                             <p:ajax event="rowSelect" listener="#{ingsoftwarelenguajeprogVista.onRowSelect}" update=":formulario" />
 
@@ -73,7 +73,7 @@
                             <p:column headerText="Ingeniero Software">
                                 <h:outputText value="#{ingsoftwarelenguajeprog.ingsoftware.nombres} #{ingsoftwarelenguajeprog.ingsoftware.apellidos}" />
                             </p:column>                             
-                            <p:column headerText="Sistema Operativo">
+                            <p:column headerText="Lenguaje de Programación">
                                 <h:outputText value="#{ingsoftwarelenguajeprog.ingsoftwarelenguajeprogPK.lenguajeprog}" />
                             </p:column>
                         </p:dataTable>                    

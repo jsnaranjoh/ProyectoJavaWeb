@@ -9,7 +9,7 @@
         <h:head>
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <title>SGBD's Ingenieros Software</title>
+                <title>Lenguajes de Programación Proyectos</title>
             </f:facet>
         </h:head>
 
@@ -18,7 +18,7 @@
             <p:layout fullPage="true">
 
                 <p:layoutUnit position="north" size="80" resizable="true" closable="true" collapsible="true">
-                    SISTEMAS GESTORES DE BASES DE DATOS INGENIEROS SOFTWARE
+                    LENGUAJES DE PROGRAMACIÓN PROYECTOS
                 </p:layoutUnit>
 
                 <p:layoutUnit position="south" size="80" closable="true" collapsible="true">
@@ -43,38 +43,38 @@
                     <h:form id="formulario">
                         <p:growl id="growl" showDetail="true" sticky="true" escape="false"/>
                         <p:panelGrid columns="4">
-                            <h:outputText value="Ingeniero Software"/>
-                            <p:selectOneMenu id="cmbIngSoftware" binding="#{ingsoftwaresgbdVista.cmbIngSoftware}">
+                            <h:outputText value="Proyecto"/>
+                            <p:selectOneMenu id="cmbProyectos" binding="#{proyectolenguajeprogVista.cmbProyectos}">
                                 <f:selectItem itemValue="Seleccione" itemLabel="Seleccione"/>
-                                <f:selectItems value="#{ingsoftwaresgbdVista.itemsIngsoftware}"/>
+                                <f:selectItems value="#{proyectolenguajeprogVista.itemsProyectos}"/>
                             </p:selectOneMenu>
-                            <h:outputText value="Sistema Gestor de BD's que conoce"/>
-                            <p:inputText id="txtSGBD" binding="#{ingsoftwaresgbdVista.txtSGBD}"/>                           
+                            <h:outputText value="Lenguaje de Programación"/>
+                            <p:inputText id="txtLengProg" binding="#{proyectolenguajeprogVista.txtLengProg}"/>                           
                         </p:panelGrid>
                         <p:panelGrid columns="3">
-                            <p:commandButton value="Registrar" binding="#{ingsoftwaresgbdVista.btnRegistrar}" action="#{ingsoftwaresgbdVista.action_registrar()}" update=":formulario"/> 
-                            <p:commandButton value="Eliminar" binding="#{ingsoftwaresgbdVista.btnEliminar}" action="#{ingsoftwaresgbdVista.action_eliminar()}" update=":formulario"/>
-                            <p:commandButton value="Limpiar" binding="#{ingsoftwaresgbdVista.btnLimpiar}" action="#{ingsoftwaresgbdVista.limpiar()}" update=":formulario"/>
+                            <p:commandButton value="Registrar" binding="#{proyectolenguajeprogVista.btnRegistrar}" action="#{proyectolenguajeprogVista.action_registrar()}" update=":formulario"/> 
+                            <p:commandButton value="Eliminar" binding="#{proyectolenguajeprogVista.btnEliminar}" action="#{proyectolenguajeprogVista.action_eliminar()}" update=":formulario"/>
+                            <p:commandButton value="Limpiar" binding="#{proyectolenguajeprogVista.btnLimpiar}" action="#{proyectolenguajeprogVista.limpiar()}" update=":formulario"/>
                         </p:panelGrid>
                         <p:panelGrid columns="1">
-                            Nota: Cuando se registran SGBD's conocidos por los ingenieros de software, sólo se puede dar la opción Eliminar, 
-                            aunque es una forma indirecta de editar. Así, si deseas editar, se crea el nuevo registro con la misma cédula Ing. Software 
-                            y luego elimina el reemplazado.
+                            Nota: Cuando se registran Lenguajes de Programación realizados en los proyectos, sólo se puede dar la opción 
+                            Eliminar, aunque es una forma indirecta de editar. Así, si deseas editar, se crea el nuevo registro con el mismo código
+                            Proyecto y luego elimina el reemplazado.
                         </p:panelGrid>                            
-                        <p:dataTable id="eventsDT" var="ingsoftwaresgbd" value="#{ingsoftwaresgbdVista.listaIngsoftwaresgbds}" selectionMode="single" selection="#{ingsoftwaresgbdVista.selectedIngsoftwaresgbd}" rowKey="#{ingsoftwaresgbd.ingsoftwaresgbdPK}">
+                        <p:dataTable id="eventsDT" var="proyectolenguajeprog" value="#{proyectolenguajeprogVista.listaProyectolenguajeprogs}" selectionMode="single" selection="#{proyectolenguajeprogVista.selectedProyectolenguajeprog}" rowKey="#{proyectolenguajeprog.proyectolenguajeprogPK}">
                             <f:facet name="header">
-                                Sistemas Gestores de BD's
+                                Lenguajes de Programación
                             </f:facet>
-                            <p:ajax event="rowSelect" listener="#{ingsoftwaresgbdVista.onRowSelect}" update=":formulario" />
+                            <p:ajax event="rowSelect" listener="#{proyectolenguajeprogVista.onRowSelect}" update=":formulario" />
 
-                            <p:column headerText="Cédula">
-                                <h:outputText value="#{ingsoftwaresgbd.ingsoftwaresgbdPK.cedula}" />
+                            <p:column headerText="Código">
+                                <h:outputText value="#{proyectolenguajeprog.proyectolenguajeprogPK.codigo}" />
                             </p:column>
-                            <p:column headerText="Ingeniero Software">
-                                <h:outputText value="#{ingsoftwaresgbd.ingsoftware.nombres} #{ingsoftwaresgbd.ingsoftware.apellidos}" />
+                            <p:column headerText="Proyecto">
+                                <h:outputText value="#{proyectolenguajeprog.proyecto.nombre}" />
                             </p:column>                             
-                            <p:column headerText="SGBD">
-                                <h:outputText value="#{ingsoftwaresgbd.ingsoftwaresgbdPK.sgbd}" />
+                            <p:column headerText="Lenguaje de Programación">
+                                <h:outputText value="#{proyectolenguajeprog.proyectolenguajeprogPK.lenguajeprog}" />
                             </p:column>
                         </p:dataTable>                    
                     </h:form>
@@ -86,3 +86,4 @@
 
     </f:view>
 </html>
+
