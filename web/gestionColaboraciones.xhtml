@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Colaboraciones de Ingenieros Junior</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="80" resizable="true" closable="true" collapsible="true">
+                    COLABORACIONES INGENIEROS JUNIOR
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="80" closable="true" collapsible="true">
+                    CHRISTIAN DAVID NOREÑA VALENCIA<p></p>
+                    UVTULUA 2016
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                    <h:form>
+                        <p:menu>
+                            <p:submenu label="Menú">
+                                <p:menuitem value="Demo" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
+                                <p:menuitem value="Documentation" url="http://www.primefaces.org/documentation.html" />
+                                <p:menuitem value="Forum" url="http://forum.primefaces.org/" />
+                                <p:menuitem value="Themes" url="http://www.primefaces.org/themes.html" />
+                            </p:submenu>
+                        </p:menu>                        
+                    </h:form>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <h:form id="formulario">
+                        <p:growl id="growl" showDetail="true" sticky="true" escape="false"/>
+                        <p:panelGrid columns="4">
+                            <h:outputText value="Ingeniero Junior"/>
+                            <p:selectOneMenu id="cmbJuniors" binding="#{colaboraVista.cmbJuniors}">
+                                <f:selectItem itemValue="Seleccione" itemLabel="Seleccione"/>
+                                <f:selectItems value="#{colaboraVista.itemsJuniors}"/>
+                            </p:selectOneMenu>
+                            <h:outputText value="Proyecto"/>                            
+                            <p:selectOneMenu id="cmbProyectos" binding="#{colaboraVista.cmbProyectos}">
+                                <f:selectItem itemValue="Seleccione" itemLabel="Seleccione"/>
+                                <f:selectItems value="#{colaboraVista.itemsProyectos}"/>
+                            </p:selectOneMenu>                            
+                            <h:outputText value="Horas Dedicadas"/>
+                            <p:inputText id="txtHorasDedicadas" binding="#{colaboraVista.txtHorasDedicadas}"/>
+                            <h:outputText value="Fecha de Inicio"/>
+                            <p:calendar id="txtFechaInicio" value="#{colaboraVista.txtFechaInicio}" pattern="yyyy-MM-dd" locale="es" navigator="true" readonlyInput="true"/>
+                            <h:outputText value="Fecha de Fin"/>
+                            <p:calendar id="txtFechaFin" value="#{colaboraVista.txtFechaFin}" pattern="yyyy-MM-dd" locale="es" navigator="true" readonlyInput="true"/>                            
+                        </p:panelGrid>
+                        <p:panelGrid columns="4">
+                            <p:commandButton value="Registrar" binding="#{colaboraVista.btnRegistrar}" action="#{colaboraVista.action_registrar()}" update=":formulario"/> 
+                            <p:commandButton value="Modificar" binding="#{colaboraVista.btnModificar}" action="#{colaboraVista.action_modificar()}" update=":formulario"/>
+                            <p:commandButton value="Eliminar" binding="#{colaboraVista.btnEliminar}" action="#{colaboraVista.action_eliminar()}" update=":formulario"/>
+                            <p:commandButton value="Limpiar" binding="#{colaboraVista.btnLimpiar}" action="#{colaboraVista.limpiar()}" update=":formulario"/>
+                        </p:panelGrid>
+                        <p:dataTable id="eventsDT" var="colabora" value="#{colaboraVista.listaColaboraciones}" selectionMode="single" selection="#{colaboraVista.selectedColaboracion}" rowKey="#{colabora.colaboraPK}">
+                            <f:facet name="header">
+                                Colaboraciones
+                            </f:facet>
+                            <p:ajax event="rowSelect" listener="#{colaboraVista.onRowSelect}" update=":formulario" />
+
+                            <p:column headerText="Cédula">
+                                <h:outputText value="#{colabora.junior1.cedula}" />
+                            </p:column>                            
+                            <p:column headerText="Ingeniero Junior">
+                                <h:outputText value="#{colabora.junior1.ingsoftware.nombres} #{colabora.junior1.ingsoftware.apellidos}" />
+                            </p:column>
+                            <p:column headerText="Código">
+                                <h:outputText value="#{colabora.proyecto1.codigo}" />
+                            </p:column>                            
+                            <p:column headerText="Proyecto">
+                                <h:outputText value="#{colabora.proyecto1.nombre}" />
+                            </p:column>                            
+                            <p:column headerText="Horas Dedicadas">
+                                <h:outputText value="#{colabora.horasdedicadas}" />
+                            </p:column>
+                             <p:column headerText="Fecha Inicio">
+                                <h:outputText value="#{colabora.fechainicio}">
+                                    <f:convertDateTime type="date" pattern="yyyy-MM-dd" />
+                                </h:outputText>
+                            </p:column>
+                             <p:column headerText="Fecha Fin">
+                                <h:outputText value="#{colabora.fechafin}">
+                                    <f:convertDateTime type="date" pattern="yyyy-MM-dd" />
+                                </h:outputText>
+                            </p:column>                            
+                        </p:dataTable>                    
+                    </h:form>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
