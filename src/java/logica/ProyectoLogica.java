@@ -32,7 +32,7 @@ public class ProyectoLogica implements ProyectoLogicaLocal {
         if(proyecto.getNombre().equals("")){
             throw new Exception("Campo Nombre Proyecto Obligatorio.");
         }
-        if(proyecto.getAreaaplicacion().equals("") || proyecto.getAreaaplicacion() == null){
+        if(proyecto.getAreaaplicacion().equals("0")){
             throw new Exception("Campo Área Aplicación Proyecto Obligatorio.");
         }
         if(proyecto.getFechaingreso() == null){
@@ -71,7 +71,7 @@ public class ProyectoLogica implements ProyectoLogicaLocal {
         if(proyecto.getNombre().equals("")){
             throw new Exception("Campo Nombre Proyecto Obligatorio.");
         }
-        if(proyecto.getAreaaplicacion().equals("") || proyecto.getAreaaplicacion() == null){
+        if(proyecto.getAreaaplicacion().equals("0")){
             throw new Exception("Campo Área Aplicación Proyecto Obligatorio.");
         }
         if(proyecto.getFechaingreso() == null){

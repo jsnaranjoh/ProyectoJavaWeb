@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Proyectos</title>
+            </f:facet>
+            <script>
+                PrimeFaces.locales["es"] = {
+                    closeText: "Cerrar",
+                    prevText: "Anterior",
+                    nextText: "Siguiente",
+                    monthNames: ["Enero","Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+                    monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+                    dayNames: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
+                    dayNamesShort: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
+                    dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
+                    weekHeader: "Semana",
+                    firstDay: 0,
+                    isRTL: false,
+                    showMonthAfterYear: false,
+                    yearSuffix: "",
+                    timeOnlyTitle: "Solo hora",
+                    timeText: "Tiempo",
+                    hourText: "Hora",
+                    minuteText: "Minuto",
+                    secondText: "Segundo",
+                    currentText: "Fecha actual",
+                    ampm: false,
+                    month: "Mes",
+                    week: "Semana",
+                    day: "Día",
+                    allDayText : "Todo el día"
+                };                
+            </script>            
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="80" resizable="true" closable="true" collapsible="true">
+                    PROYECTOS
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="80" closable="true" collapsible="true">
+                    CHRISTIAN DAVID NOREÑA VALENCIA<p></p>
+                    UVTULUA 2016
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                    <h:form>
+                        <p:menu>
+                            <p:submenu label="Menú">
+                                <p:menuitem value="Demo" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
+                                <p:menuitem value="Documentation" url="http://www.primefaces.org/documentation.html" />
+                                <p:menuitem value="Forum" url="http://forum.primefaces.org/" />
+                                <p:menuitem value="Themes" url="http://www.primefaces.org/themes.html" />
+                            </p:submenu>
+                        </p:menu>                        
+                    </h:form>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <h:form id="formulario">
+                        <p:growl id="growl" showDetail="true" sticky="true" escape="false"/>
+                        <p:panelGrid columns="6">
+                            <h:outputText value="Código"/>
+                            <p:inputText id="txtCodigo" binding="#{proyectoVista.txtCodigo}"/>
+                            
+                            <h:outputText value="Líder"/>
+                            <p:selectOneMenu id="cmbLideres" binding="#{proyectoVista.cmbLideres}">
+                                <f:selectItem itemValue="Seleccione" itemLabel="Seleccione"/>
+                                <f:selectItems value="#{proyectoVista.itemsLideres}"/>
+                            </p:selectOneMenu>
+                            
+                            <h:outputText value="Nombre"/>
+                            <p:inputText id="txtNombre" binding="#{proyectoVista.txtNombre}"/>
+
+                            <h:outputText value="Área de Aplicación"/>
+                            <p:selectOneMenu id="cmbAreasAplicacion" binding="#{proyectoVista.cmbAreasAplicacion}">
+                                <f:selectItem itemValue="0" itemLabel="Seleccione"/>
+                                <f:selectItem itemValue="Manufactura" itemLabel="Manufactura"/>
+                                <f:selectItem itemValue="Finanzas" itemLabel="Finanzas"/>
+                                <f:selectItem itemValue="Recursos Humanos" itemLabel="Recursos Humanos"/>
+                                <f:selectItem itemValue="Logística" itemLabel="Logística"/>
+                                <f:selectItem itemValue="Ventas" itemLabel="Ventas"/>
+                            </p:selectOneMenu>                            
+
+                            <h:outputText value="Fecha de Ingreso"/>
+                            <p:calendar id="txtFechaIngreso" value="#{proyectoVista.txtFechaIngreso}" pattern="yyyy-MM-dd" locale="es" navigator="true" readonlyInput="true"/>
+                            <h:outputText value="Fecha de Asignación"/>
+                            <p:calendar id="txtFechaAsignacion" value="#{proyectoVista.txtFechaAsignacion}" pattern="yyyy-MM-dd" locale="es" navigator="true" readonlyInput="true"/>                            
+                            <h:outputText value="Fecha Prevista de Liberación"/>
+                            <p:calendar id="txtFechaPrevistaLiberacion" value="#{proyectoVista.txtFechaPrevistaLiberacion}" pattern="yyyy-MM-dd" locale="es" navigator="true" readonlyInput="true"/>                            
+                            <h:outputText value="Versión del Programa"/>
+                            <p:inputText id="txtVersionPrograma" binding="#{proyectoVista.txtVersionPrograma}"/>                            
+                            <h:outputText value="Costo Total (COP)"/>
+                            <p:inputText id="txtCostoTotal" binding="#{proyectoVista.txtCostoTotal}"/>                                                        
+                        </p:panelGrid>
+                        <p:panelGrid columns="4">
+                            <p:commandButton value="Registrar" binding="#{proyectoVista.btnRegistrar}" action="#{proyectoVista.action_registrar()}" update=":formulario"/> 
+                            <p:commandButton value="Modificar" binding="#{proyectoVista.btnModificar}" action="#{proyectoVista.action_modificar()}" update=":formulario"/>
+                            <p:commandButton value="Eliminar" binding="#{proyectoVista.btnEliminar}" action="#{proyectoVista.action_eliminar()}" update=":formulario"/>
+                            <p:commandButton value="Limpiar" binding="#{proyectoVista.btnLimpiar}" action="#{proyectoVista.limpiar()}" update=":formulario"/>
+                        </p:panelGrid>
+                        <p:dataTable id="eventsDT" var="proyecto" value="#{proyectoVista.listaProyectos}" selectionMode="single" selection="#{proyectoVista.selectedProyecto}" rowKey="#{proyecto.codigo}">
+                            <f:facet name="header">
+                                Proyectos
+                            </f:facet>
+                            <p:ajax event="rowSelect" listener="#{proyectoVista.onRowSelect}" update=":formulario" />
+
+                            <p:column headerText="Código">
+                                <h:outputText value="#{proyecto.codigo}" />
+                            </p:column>                            
+                            <p:column headerText="Líder">
+                                <h:outputText value="#{proyecto.lider.ingsoftware.nombres} #{proyecto.lider.ingsoftware.apellidos}" />
+                            </p:column>
+                             <p:column headerText="Nombre">
+                                 <h:outputText value="#{proyecto.nombre}" />
+                            </p:column>
+                             <p:column headerText="Área Aplicación">
+                                 <h:outputText value="#{proyecto.areaaplicacion}" />
+                            </p:column>
+                             <p:column headerText="Fecha Ingreso">
+                                <h:outputText value="#{proyecto.fechaingreso}">
+                                    <f:convertDateTime type="date" pattern="yyyy-MM-dd" />
+                                </h:outputText>
+                            </p:column>
+                             <p:column headerText="Fecha Asignación">
+                                <h:outputText value="#{proyecto.fechaasignacion}">
+                                    <f:convertDateTime type="date" pattern="yyyy-MM-dd" />
+                                </h:outputText>
+                            </p:column>
+                             <p:column headerText="Fecha Prevista Liberación">
+                                <h:outputText value="#{proyecto.fechaprevistaliberacion}">
+                                    <f:convertDateTime type="date" pattern="yyyy-MM-dd" />
+                                </h:outputText>
+                            </p:column>                            
+                             <p:column headerText="Versión Programa">
+                                 <h:outputText value="#{proyecto.versionprograma}" />
+                            </p:column>
+                             <p:column headerText="Costo Total (COP)">
+                                 <h:outputText value="#{proyecto.costototal}" />
+                            </p:column>                          
+                        </p:dataTable>                    
+                    </h:form>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
