@@ -43,57 +43,49 @@
                     <h:form id="formulario">
                         <p:growl id="growl" showDetail="true" sticky="true" escape="false"/>
                         <p:panelGrid columns="4">
-                            <h:outputText value="Ingeniero Junior"/>
-                            <p:selectOneMenu id="cmbJuniors" binding="#{colaboraVista.cmbJuniors}">
-                                <f:selectItem itemValue="Seleccione" itemLabel="Seleccione"/>
-                                <f:selectItems value="#{colaboraVista.itemsJuniors}"/>
-                            </p:selectOneMenu>
                             <h:outputText value="Proyecto"/>                            
-                            <p:selectOneMenu id="cmbProyectos" binding="#{colaboraVista.cmbProyectos}">
+                            <p:selectOneMenu id="cmbProyectos" binding="#{seencuentraenVista.cmbProyectos}">
                                 <f:selectItem itemValue="Seleccione" itemLabel="Seleccione"/>
-                                <f:selectItems value="#{colaboraVista.itemsProyectos}"/>
+                                <f:selectItems value="#{seencuentraenVista.itemsProyectos}"/>
+                            </p:selectOneMenu> 
+                            <h:outputText value="Fase"/>
+                            <p:selectOneMenu id="cmbFases" binding="#{seencuentraenVista.cmbFases}">
+                                <f:selectItem itemValue="Seleccione" itemLabel="Seleccione"/>
+                                <f:selectItems value="#{seencuentraenVista.itemsFases}"/>
                             </p:selectOneMenu>                            
-                            <h:outputText value="Horas Dedicadas"/>
-                            <p:inputText id="txtHorasDedicadas" binding="#{colaboraVista.txtHorasDedicadas}"/>
                             <h:outputText value="Fecha de Inicio"/>
-                            <p:calendar id="txtFechaInicio" value="#{colaboraVista.txtFechaInicio}" pattern="yyyy-MM-dd" locale="es" navigator="true" readonlyInput="true"/>
+                            <p:calendar id="txtFechaInicio" value="#{seencuentraenVista.txtFechaInicio}" pattern="yyyy-MM-dd" locale="es" navigator="true" readonlyInput="true"/>
                             <h:outputText value="Fecha de Fin"/>
-                            <p:calendar id="txtFechaFin" value="#{colaboraVista.txtFechaFin}" pattern="yyyy-MM-dd" locale="es" navigator="true" readonlyInput="true"/>                            
+                            <p:calendar id="txtFechaFin" value="#{seencuentraenVista.txtFechaFin}" pattern="yyyy-MM-dd" locale="es" navigator="true" readonlyInput="true"/>                            
                         </p:panelGrid>
                         <p:panelGrid columns="4">
-                            <p:commandButton value="Registrar" binding="#{colaboraVista.btnRegistrar}" action="#{colaboraVista.action_registrar()}" update=":formulario"/> 
-                            <p:commandButton value="Modificar" binding="#{colaboraVista.btnModificar}" action="#{colaboraVista.action_modificar()}" update=":formulario"/>
-                            <p:commandButton value="Eliminar" binding="#{colaboraVista.btnEliminar}" action="#{colaboraVista.action_eliminar()}" update=":formulario"/>
-                            <p:commandButton value="Limpiar" binding="#{colaboraVista.btnLimpiar}" action="#{colaboraVista.limpiar()}" update=":formulario"/>
+                            <p:commandButton value="Registrar" binding="#{seencuentraenVista.btnRegistrar}" action="#{seencuentraenVista.action_registrar()}" update=":formulario"/> 
+                            <p:commandButton value="Modificar" binding="#{seencuentraenVista.btnModificar}" action="#{seencuentraenVista.action_modificar()}" update=":formulario"/>
+                            <p:commandButton value="Eliminar" binding="#{seencuentraenVista.btnEliminar}" action="#{seencuentraenVista.action_eliminar()}" update=":formulario"/>
+                            <p:commandButton value="Limpiar" binding="#{seencuentraenVista.btnLimpiar}" action="#{seencuentraenVista.limpiar()}" update=":formulario"/>
                         </p:panelGrid>
-                        <p:dataTable id="eventsDT" var="colabora" value="#{colaboraVista.listaColaboraciones}" selectionMode="single" selection="#{colaboraVista.selectedColaboracion}" rowKey="#{colabora.colaboraPK}">
+                        <p:dataTable id="eventsDT" var="seencuentraen" value="#{seencuentraenVista.listaDesarrollos}" selectionMode="single" selection="#{seencuentraenVista.selectedDesarrollo}" rowKey="#{seencuentraen.seencuentraenPK}">
                             <f:facet name="header">
-                                Colaboraciones
+                                Desarrollos
                             </f:facet>
-                            <p:ajax event="rowSelect" listener="#{colaboraVista.onRowSelect}" update=":formulario" />
-
-                            <p:column headerText="Cédula">
-                                <h:outputText value="#{colabora.junior1.cedula}" />
-                            </p:column>                            
-                            <p:column headerText="Ingeniero Junior">
-                                <h:outputText value="#{colabora.junior1.ingsoftware.nombres} #{colabora.junior1.ingsoftware.apellidos}" />
-                            </p:column>
+                            <p:ajax event="rowSelect" listener="#{seencuentraenVista.onRowSelect}" update=":formulario" />
+                          
                             <p:column headerText="Código">
-                                <h:outputText value="#{colabora.proyecto1.codigo}" />
+                                <h:outputText value="#{seencuentraen.proyecto1.codigo}" />
                             </p:column>                            
                             <p:column headerText="Proyecto">
-                                <h:outputText value="#{colabora.proyecto1.nombre}" />
-                            </p:column>                            
-                            <p:column headerText="Horas Dedicadas">
-                                <h:outputText value="#{colabora.horasdedicadas}" />
+                                <h:outputText value="#{seencuentraen.proyecto1.nombre}" />
                             </p:column>
-                             <p:column headerText="Fecha Inicio">
-                                <h:outputText value="#{colabora.fechainicio}">
+                            <p:column headerText="Fase">
+                                <h:outputText value="#{seencuentraen.fase1.nombre}" />
+                            </p:column>                              
+                            <p:column headerText="Fecha Inicio">
+                                <h:outputText value="#{seencuentraen.fechainicio}">
                                     <f:convertDateTime type="date" pattern="yyyy-MM-dd" />
                                 </h:outputText>
                             </p:column>
-                             <p:column headerText="Fecha Fin">
-                                <h:outputText value="#{colabora.fechafin}">
+                            <p:column headerText="Fecha Fin">
+                                <h:outputText value="#{seencuentraen.fechafin}">
                                     <f:convertDateTime type="date" pattern="yyyy-MM-dd" />
                                 </h:outputText>
                             </p:column>                            
