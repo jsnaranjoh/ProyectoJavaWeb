@@ -32,10 +32,10 @@ public class RequisitoLogica implements RequisitoLogicaLocal {
         if(requisito.getDescripcion().equals("")){
             throw new Exception("Campo Descripción del Requisito Obligatorio.");
         }
-        if(requisito.getTipo().equals("")){
+        if(requisito.getTipo().equals("0")){
             throw new Exception("Campo Tipo de Requisito Obligatorio.");
         }
-        if(requisito.getEstado().equals("")){
+        if(requisito.getEstado().equals("0")){
             throw new Exception("Campo Estado de Requisito Obligatorio.");
         }
         

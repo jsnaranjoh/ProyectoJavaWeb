@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Requisitos de Proyectos</title>
+            </f:facet>           
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="80" resizable="true" closable="true" collapsible="true">
+                    REQUISITOS DE PROYECTOS
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="80" closable="true" collapsible="true">
+                    CHRISTIAN DAVID NOREÑA VALENCIA<p></p>
+                    UVTULUA 2016
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                    <h:form>
+                        <p:menu>
+                            <p:submenu label="Menú">
+                                <p:menuitem value="Demo" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
+                                <p:menuitem value="Documentation" url="http://www.primefaces.org/documentation.html" />
+                                <p:menuitem value="Forum" url="http://forum.primefaces.org/" />
+                                <p:menuitem value="Themes" url="http://www.primefaces.org/themes.html" />
+                            </p:submenu>
+                        </p:menu>                        
+                    </h:form>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <h:form id="formulario">
+                        <p:growl id="growl" showDetail="true" sticky="true" escape="false"/>
+                        <p:panelGrid columns="6">
+                            <h:outputText value="Código"/>
+                            <p:inputText id="txtCodigo" binding="#{requisitoVista.txtCodigo}"/>
+                            
+                            <h:outputText value="Proyecto"/>
+                            <p:selectOneMenu id="cmbProyectos" binding="#{requisitoVista.cmbProyectos}">
+                                <f:selectItem itemValue="Seleccione" itemLabel="Seleccione"/>
+                                <f:selectItems value="#{requisitoVista.itemsProyectos}"/>
+                            </p:selectOneMenu>
+                            
+                            <h:outputText value="Descripción"/>
+                            <p:inputTextarea id="txtDescripcion" binding="#{requisitoVista.txtDescripcion}"/>
+                            
+                            <h:outputText value="Tipo"/>
+                            <p:selectOneMenu id="cmbTipos" binding="#{requisitoVista.cmbTipos}">
+                                <f:selectItem itemValue="0" itemLabel="Seleccione"/>
+                                <f:selectItem itemValue="Funcional" itemLabel="Funcional"/>
+                                <f:selectItem itemValue="Calidad" itemLabel="Calidad"/>
+                                <f:selectItem itemValue="Restricción" itemLabel="Restricción"/>
+                            </p:selectOneMenu>
+                            
+                            <h:outputText value="Estado"/>
+                            <p:selectOneMenu id="cmbEstados" binding="#{requisitoVista.cmbEstados}">
+                                <f:selectItem itemValue="0" itemLabel="Seleccione"/>
+                                <f:selectItem itemValue="Implementado" itemLabel="Implementado"/>
+                                <f:selectItem itemValue="No implementado" itemLabel="No implementado"/>
+                            </p:selectOneMenu>
+                        </p:panelGrid>
+                        <p:panelGrid columns="4">
+                            <p:commandButton value="Registrar" binding="#{requisitoVista.btnRegistrar}" action="#{requisitoVista.action_registrar()}" update=":formulario"/>
+                            <p:commandButton value="Limpiar" binding="#{requisitoVista.btnLimpiar}" action="#{requisitoVista.limpiar()}" update=":formulario"/>
+                        </p:panelGrid>
+                        <p:dataTable id="eventsDT" var="requisito" value="#{requisitoVista.listaRequisitos}" selectionMode="single" selection="#{requisitoVista.selectedRequisito}" rowKey="#{requisito.codigo}">
+                            <f:facet name="header">
+                                Requisitos de Proyectos
+                            </f:facet>
+                            <p:ajax event="rowSelect" listener="#{requisitoVista.onRowSelect}" update=":formulario" />
+
+                            <p:column headerText="Código">
+                                <h:outputText value="#{requisito.codigo}" />
+                            </p:column>                            
+                            <p:column headerText="Proyecto">
+                                <h:outputText value="#{requisito.proyecto.nombre}" />
+                            </p:column>
+                            <p:column headerText="Descripción">
+                                 <h:outputText value="#{requisito.descripcion}" />
+                            </p:column>
+                            <p:column headerText="Tipo">
+                                 <h:outputText value="#{requisito.tipo}" />
+                            </p:column>
+                            <p:column headerText="Estado">
+                                 <h:outputText value="#{requisito.estado}" />
+                            </p:column>                          
+                        </p:dataTable>                        
+                    </h:form>
+                </p:layoutUnit>
+            </p:layout>
+        </h:body>
+    </f:view>
+</html>
