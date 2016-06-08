@@ -29,7 +29,7 @@ public class GradoacademicoLogica implements GradoacademicoLogicaLocal {
         if(gradoacademico.getIngeniero().getCedula() == null){
             throw new Exception("Campo Ingeniero Software Obligatorio.");
         }
-        if(gradoacademico.getNivel().equals("")){
+        if(gradoacademico.getNivel().equals("0")){
             throw new Exception("Campo Nivel Académico Obligatorio.");
         }
         if(gradoacademico.getLugar().equals("")){
@@ -59,7 +59,7 @@ public class GradoacademicoLogica implements GradoacademicoLogicaLocal {
         if(gradoacademico.getIngeniero().getCedula() == null){
             throw new Exception("Campo Ingeniero Software Obligatorio.");
         }
-        if(gradoacademico.getNivel().equals("")){
+        if(gradoacademico.getNivel().equals("0")){
             throw new Exception("Campo Nivel Académico Obligatorio.");
         }
         if(gradoacademico.getLugar().equals("")){
