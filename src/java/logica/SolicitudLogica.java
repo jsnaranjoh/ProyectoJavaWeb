@@ -35,7 +35,7 @@ public class SolicitudLogica implements SolicitudLogicaLocal {
         if(solicitud.getSolicitante().getCedula() == null){
             throw new Exception("Debes seleccionar el Ingeniero de Software que realiza la Solicitud.");
         }
-        if(solicitud.getTipo().equals("")){
+        if(solicitud.getTipo().equals("0")){
             throw new Exception("Campo Tipo Solicitud Obligatorio.");
         }
         if(solicitud.getTitulo().equals("")){
@@ -45,7 +45,7 @@ public class SolicitudLogica implements SolicitudLogicaLocal {
             throw new Exception("Campo Fecha Solicitud Obligatorio.");
         }
         // Campo Origen sí puede ir vacío
-        if(solicitud.getEstado().equals("")){
+        if(solicitud.getEstado().equals("0")){
             throw new Exception("Campo Estado Solicitud Obligatorio.");
         }
         if(solicitud.getPrioridadsolicitante() == 0){
@@ -91,7 +91,7 @@ public class SolicitudLogica implements SolicitudLogicaLocal {
         if(solicitud.getSolicitante().getCedula() == null){
             throw new Exception("Debes seleccionar el Ingeniero de Software que realiza la Solicitud.");
         }
-        if(solicitud.getTipo().equals("")){
+        if(solicitud.getTipo().equals("0")){
             throw new Exception("Campo Tipo Solicitud Obligatorio.");
         }
         if(solicitud.getTitulo().equals("")){
@@ -101,7 +101,7 @@ public class SolicitudLogica implements SolicitudLogicaLocal {
             throw new Exception("Campo Fecha Solicitud Obligatorio.");
         }
         // Campo Origen sí puede ir vacío
-        if(solicitud.getEstado().equals("")){
+        if(solicitud.getEstado().equals("0")){
             throw new Exception("Campo Estado Solicitud Obligatorio.");
         }
         if(solicitud.getPrioridadsolicitante() == 0){
