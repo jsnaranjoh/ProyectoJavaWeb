@@ -49,7 +49,12 @@
                                 <f:selectItems value="#{jefeVista.itemsIngsoftware}"/>
                             </p:selectOneMenu>
                             <h:outputText value="Presupuesto (COP)"/>
-                            <p:inputText id="txtPresupuesto" binding="#{jefeVista.txtPresupuesto}"/>                           
+                            <p:inputText id="txtPresupuesto" binding="#{jefeVista.txtPresupuesto}" required="true" 
+                                         requiredMessage="Campo Presupuesto Ingeniero Jefe Obligatorio."
+                                         validatorMessage="Campo Presupuesto Ingeniero Jefe debe ser entero y de mínimo 7 dígitos de longitud.">
+                                <f:validateLength minimum="7"/>
+                                <f:validateRegex pattern="^[0-9]+$"/>
+                            </p:inputText>
                         </p:panelGrid>
                         <p:panelGrid columns="4">
                             <p:commandButton value="Registrar" binding="#{jefeVista.btnRegistrar}" action="#{jefeVista.action_registrar()}" update=":formulario"/> 

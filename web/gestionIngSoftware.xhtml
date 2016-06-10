@@ -68,94 +68,145 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
-                    <h:form id="formulario">
-                        <p:growl id="growl" showDetail="true" sticky="true" escape="false"/>
-                        <p:panelGrid columns="6">
-                            <h:outputText value="Cédula"/>
-                            <p:inputText id="txtCedula" binding="#{ingsoftwareVista.txtCedula}"/>
-                            <h:outputText value="Nombres"/>
-                            <p:inputText id="txtNombres" binding="#{ingsoftwareVista.txtNombres}"/>
-                            <h:outputText value="Apellidos"/>
-                            <p:inputText id="txtApellidos" binding="#{ingsoftwareVista.txtApellidos}"/>
-                            <h:outputText value="Edad"/>
-                            <p:inputText id="txtEdad" binding="#{ingsoftwareVista.txtEdad}"/>
-                            <h:outputText value="Sexo"/>
-                            <p:selectOneMenu id="cmbSexos" binding="#{ingsoftwareVista.cmbSexos}">
-                                <f:selectItem itemValue="0" itemLabel="Seleccione"/>
-                                <f:selectItem itemValue="M" itemLabel="M"/>
-                                <f:selectItem itemValue="F" itemLabel="F"/>
-                            </p:selectOneMenu>
-                            <h:outputText value="Fecha de Nacimiento"/>
-                            <p:calendar id="txtFechaNacimiento" value="#{ingsoftwareVista.txtFechaNacimiento}" pattern="yyyy-MM-dd" locale="es" navigator="true" readonlyInput="true"/>
-                            <h:outputText value="Correo Electrónico"/>
-                            <p:inputText id="txtEmail" binding="#{ingsoftwareVista.txtEmail}"/>                            
-                            <h:outputText value="Teléfono"/>
-                            <p:inputText id="txtTelefono" binding="#{ingsoftwareVista.txtTelefono}"/>                            
-                            <h:outputText value="Celular"/>
-                            <p:inputText id="txtCelular" binding="#{ingsoftwareVista.txtCelular}"/>                            
-                            <h:outputText value="Dirección"/>
-                            <p:inputText id="txtDireccion" binding="#{ingsoftwareVista.txtDireccion}"/>                            
-                            <h:outputText value="Fecha de Ingreso"/>
-                            <p:calendar id="txtFechaIngreso" value="#{ingsoftwareVista.txtFechaIngreso}" pattern="yyyy-MM-dd" locale="es" navigator="true" readonlyInput="true"/>                            
-                            <h:outputText value="Antigüedad"/>
-                            <p:inputText id="txtAntiguedad" binding="#{ingsoftwareVista.txtAntiguedad}"/>
-                            <h:outputText value="Clave"/>
-                            <p:password id="txtClave" value="#{ingsoftwareVista.txtClave}"/>                            
-                        </p:panelGrid>
-                        <p:panelGrid columns="4">
-                            <p:commandButton value="Registrar" binding="#{ingsoftwareVista.btnRegistrar}" action="#{ingsoftwareVista.action_registrar()}" update=":formulario"/> 
-                            <p:commandButton value="Modificar" binding="#{ingsoftwareVista.btnModificar}" action="#{ingsoftwareVista.action_modificar()}" update=":formulario"/>
-                            <p:commandButton value="Eliminar" binding="#{ingsoftwareVista.btnEliminar}" action="#{ingsoftwareVista.action_eliminar()}" update=":formulario"/>
-                            <p:commandButton value="Limpiar" binding="#{ingsoftwareVista.btnLimpiar}" action="#{ingsoftwareVista.limpiar()}" update=":formulario"/>
-                        </p:panelGrid>
-                        <p:dataTable id="eventsDT" var="ingsoftware" value="#{ingsoftwareVista.listaIngsSoftware}" selectionMode="single" selection="#{ingsoftwareVista.selectedIngsoftware}" rowKey="#{ingsoftware.cedula}">
-                            <f:facet name="header">
-                                Ingenieros de Software
-                            </f:facet>
-                            <p:ajax event="rowSelect" listener="#{ingsoftwareVista.onRowSelect}" update=":formulario" />
+                    <p:scrollPanel mode="native" style="position: absolute; width: 250%;">
+                        <h:form id="formulario">
+                            <p:growl id="growl" showDetail="true" sticky="true" escape="false"/>
+                            <p:panelGrid columns="4">
+                                <h:outputText value="Cédula"/>
+                                <p:inputText id="txtCedula" binding="#{ingsoftwareVista.txtCedula}" required="true"
+                                             requiredMessage="Campo Cédula Ingeniero Software Obligatorio." 
+                                             validatorMessage="Campo Cédula debe ser entero y tener entre 8 y 11 dígitos de longitud.">
+                                    <f:validateLength minimum="8" maximum="11"/>
+                                    <f:validateRegex pattern="^[0-9]+$"/>
+                                </p:inputText>
+                                
+                                <h:outputText value="Nombres"/>
+                                <p:inputText id="txtNombres" binding="#{ingsoftwareVista.txtNombres}" required="true"
+                                             requiredMessage="Campo Nombres Ingeniero Software Obligatorio." 
+                                             validatorMessage="Campo Nombres Ingeniero Software no debe contener ni símbolos ni números.">
+                                    <f:validateRegex pattern="^[A-Za-záéíóúÁÉÍÓÚçÇÜüÑñ-]+$"/>
+                                </p:inputText>
+                                
+                                <h:outputText value="Apellidos"/>
+                                <p:inputText id="txtApellidos" binding="#{ingsoftwareVista.txtApellidos}" required="true"
+                                             requiredMessage="Campo Apellidos Ingeniero Software Obligatorio." 
+                                             validatorMessage="Campo Apellidos Ingeniero Software no debe contener ni símbolos ni números.">
+                                    <f:validateRegex pattern="^[A-Za-záéíóúÁÉÍÓÚçÇÜüÑñ-]+$"/>
+                                </p:inputText>
+                                
+                                <h:outputText value="Edad"/>
+                                <p:inputText id="txtEdad" binding="#{ingsoftwareVista.txtEdad}" required="true"
+                                             requiredMessage="Campo Edad Ingeniero Software Obligatorio."
+                                             validatorMessage="Campo Edad Ingeniero Software debe ser entero. 
+                                             Además debe ser mayor de edad." maxlength="2">
+                                    <f:validateLongRange minimum="18"/>
+                                    <f:validateRegex pattern="^[0-9]+$"/>
+                                </p:inputText>
+                                
+                                <h:outputText value="Sexo"/>
+                                <p:selectOneMenu id="cmbSexos" binding="#{ingsoftwareVista.cmbSexos}">
+                                    <f:selectItem itemValue="0" itemLabel="Seleccione"/>
+                                    <f:selectItem itemValue="M" itemLabel="M"/>
+                                    <f:selectItem itemValue="F" itemLabel="F"/>
+                                </p:selectOneMenu>
+                                
+                                <h:outputText value="Fecha de Nacimiento"/>
+                                <p:calendar id="txtFechaNacimiento" value="#{ingsoftwareVista.txtFechaNacimiento}" pattern="yyyy-MM-dd" locale="es" navigator="true" readonlyInput="true"/>
+                                
+                                <h:outputText value="Correo Electrónico"/>
+                                <p:inputText id="txtEmail" binding="#{ingsoftwareVista.txtEmail}" required="true"
+                                             requiredMessage="Campo E-mail Ingeniero Software Obligatorio."
+                                             validatorMessage="Campo E-mail Inválido">
+                                    <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
+                                </p:inputText> 
+                                
+                                <h:outputText value="Teléfono"/>
+                                <p:inputText id="txtTelefono" binding="#{ingsoftwareVista.txtTelefono}" required="true"
+                                             requiredMessage="Campo Teléfono Ingeniero Software Obligatorio."
+                                             validatorMessage="Campo Teléfono Ingeniero Software debe ser entero.">
+                                    <f:validateRegex pattern="^[0-9]+$"/>
+                                </p:inputText>
+                                
+                                <h:outputText value="Celular"/>
+                                <p:inputText id="txtCelular" binding="#{ingsoftwareVista.txtCelular}" required="true"
+                                             requiredMessage="Campo Celular Ingeniero Software Obligatorio."
+                                             validatorMessage="Campo Celular Ingeniero Software debe ser entero.">
+                                    <f:validateRegex pattern="^[0-9]+$"/>
+                                </p:inputText>   
+                                
+                                <h:outputText value="Dirección"/>
+                                <p:inputText id="txtDireccion" binding="#{ingsoftwareVista.txtDireccion}" required="true"
+                                             requiredMessage="Campo Dirección Ingeniero Software Obligatorio.">
+                                </p:inputText>      
+                                
+                                <h:outputText value="Fecha de Ingreso"/>
+                                <p:calendar id="txtFechaIngreso" value="#{ingsoftwareVista.txtFechaIngreso}" pattern="yyyy-MM-dd" locale="es" navigator="true" readonlyInput="true"/>                            
+                                
+                                <h:outputText value="Antigüedad (años)"/>
+                                <p:inputText id="txtAntiguedad" binding="#{ingsoftwareVista.txtAntiguedad}" required="true"
+                                             requiredMessage="Campo Antigüedad Ingeniero Software Obligatorio."
+                                             validatorMessage="Campo Antigüedad Ingeniero Software debe ser entero." maxlength="2">
+                                    <f:validateRegex pattern="^[0-9]+$"/>
+                                </p:inputText>
+                                
+                                <h:outputText value="Clave"/>
+                                <p:password id="txtClave" value="#{ingsoftwareVista.txtClave}"/>                            
+                            </p:panelGrid>
+                            <p:panelGrid columns="4">
+                                <p:commandButton value="Registrar" binding="#{ingsoftwareVista.btnRegistrar}" action="#{ingsoftwareVista.action_registrar()}" update=":formulario"/> 
+                                <p:commandButton value="Modificar" binding="#{ingsoftwareVista.btnModificar}" action="#{ingsoftwareVista.action_modificar()}" update=":formulario"/>
+                                <p:commandButton value="Eliminar" binding="#{ingsoftwareVista.btnEliminar}" action="#{ingsoftwareVista.action_eliminar()}" update=":formulario"/>
+                                <p:commandButton value="Limpiar" binding="#{ingsoftwareVista.btnLimpiar}" action="#{ingsoftwareVista.limpiar()}" update=":formulario"/>
+                            </p:panelGrid>
+                            <p:dataTable id="eventsDT" var="ingsoftware" value="#{ingsoftwareVista.listaIngsSoftware}" selectionMode="single" selection="#{ingsoftwareVista.selectedIngsoftware}" rowKey="#{ingsoftware.cedula}">
+                                <f:facet name="header">
+                                    Ingenieros de Software
+                                </f:facet>
+                                <p:ajax event="rowSelect" listener="#{ingsoftwareVista.onRowSelect}" update=":formulario" />
 
-                            <p:column headerText="Cédula">
-                                <h:outputText value="#{ingsoftware.cedula}" />
-                            </p:column>                            
-                            <p:column headerText="Nombres">
-                                <h:outputText value="#{ingsoftware.nombres}" />
-                            </p:column>
-                             <p:column headerText="Apellidos">
-                                 <h:outputText value="#{ingsoftware.apellidos}" />
-                            </p:column>
-                             <p:column headerText="Edad">
-                                 <h:outputText value="#{ingsoftware.edad}" />
-                            </p:column>
-                             <p:column headerText="Sexo">
-                                 <h:outputText value="#{ingsoftware.sexo}" />
-                            </p:column>
-                             <p:column headerText="Fecha Nacimiento">
-                                <h:outputText value="#{ingsoftware.fechanacimiento}">
-                                    <f:convertDateTime type="date" pattern="yyyy-MM-dd" />
-                                </h:outputText>
-                            </p:column>                            
-                             <p:column headerText="Correo Electrónico">
-                                 <h:outputText value="#{ingsoftware.email}" />
-                            </p:column>
-                             <p:column headerText="Teléfono">
-                                 <h:outputText value="#{ingsoftware.telefono}" />
-                            </p:column>
-                             <p:column headerText="Celular">
-                                 <h:outputText value="#{ingsoftware.celular}" />
-                            </p:column>
-                             <p:column headerText="Dirección">
-                                 <h:outputText value="#{ingsoftware.direccion}" />
-                            </p:column>
-                             <p:column headerText="Fecha Ingreso">
-                                 <h:outputText value="#{ingsoftware.fechaingreso}">
-                                     <f:convertDateTime type="date" pattern="yyyy-MM-dd" />
-                                 </h:outputText>
-                            </p:column>
-                             <p:column headerText="Antigüedad (años)">
-                                 <h:outputText value="#{ingsoftware.antiguedad}" />
-                            </p:column>                           
-                        </p:dataTable>                    
-                    </h:form>
+                                <p:column headerText="Cédula">
+                                    <h:outputText value="#{ingsoftware.cedula}" />
+                                </p:column>                            
+                                <p:column headerText="Nombres">
+                                    <h:outputText value="#{ingsoftware.nombres}" />
+                                </p:column>
+                                 <p:column headerText="Apellidos">
+                                     <h:outputText value="#{ingsoftware.apellidos}" />
+                                </p:column>
+                                 <p:column headerText="Edad">
+                                     <h:outputText value="#{ingsoftware.edad}" />
+                                </p:column>
+                                 <p:column headerText="Sexo">
+                                     <h:outputText value="#{ingsoftware.sexo}" />
+                                </p:column>
+                                 <p:column headerText="Fecha Nacimiento">
+                                    <h:outputText value="#{ingsoftware.fechanacimiento}">
+                                        <f:convertDateTime type="date" pattern="yyyy-MM-dd" />
+                                    </h:outputText>
+                                </p:column>                            
+                                 <p:column headerText="Correo Electrónico">
+                                     <h:outputText value="#{ingsoftware.email}" />
+                                </p:column>
+                                 <p:column headerText="Teléfono">
+                                     <h:outputText value="#{ingsoftware.telefono}" />
+                                </p:column>
+                                 <p:column headerText="Celular">
+                                     <h:outputText value="#{ingsoftware.celular}" />
+                                </p:column>
+                                 <p:column headerText="Dirección">
+                                     <h:outputText value="#{ingsoftware.direccion}" />
+                                </p:column>
+                                 <p:column headerText="Fecha Ingreso">
+                                     <h:outputText value="#{ingsoftware.fechaingreso}">
+                                         <f:convertDateTime type="date" pattern="yyyy-MM-dd" />
+                                     </h:outputText>
+                                </p:column>
+                                 <p:column headerText="Antigüedad (años)">
+                                     <h:outputText value="#{ingsoftware.antiguedad}" />
+                                </p:column>                           
+                            </p:dataTable>                    
+                        </h:form>
+                    </p:scrollPanel>
                 </p:layoutUnit>
 
             </p:layout>

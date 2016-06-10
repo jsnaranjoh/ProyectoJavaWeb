@@ -72,7 +72,12 @@
                         <p:growl id="growl" showDetail="true" sticky="true" escape="false"/>
                         <p:panelGrid columns="6">
                             <h:outputText value="Código"/>
-                            <p:inputText id="txtCodigo" binding="#{proyectoVista.txtCodigo}"/>
+                            <p:inputText id="txtCodigo" binding="#{proyectoVista.txtCodigo}" required="true"
+                                         requiredMessage="Campo Código Proyecto Obligatorio." 
+                                         validatorMessage="Campo Código Proyecto debe ser entero y tener entre 3 y 11 dígitos de longitud.">
+                                <f:validateLength minimum="3" maximum="11"/>
+                                <f:validateRegex pattern="^[0-9]+$"/>
+                            </p:inputText>
                             
                             <h:outputText value="Líder"/>
                             <p:selectOneMenu id="cmbLideres" binding="#{proyectoVista.cmbLideres}">
@@ -100,9 +105,20 @@
                             <h:outputText value="Fecha Prevista de Liberación"/>
                             <p:calendar id="txtFechaPrevistaLiberacion" value="#{proyectoVista.txtFechaPrevistaLiberacion}" pattern="yyyy-MM-dd" locale="es" navigator="true" readonlyInput="true"/>                            
                             <h:outputText value="Versión del Programa"/>
-                            <p:inputText id="txtVersionPrograma" binding="#{proyectoVista.txtVersionPrograma}"/>                            
+                            <p:inputText id="txtVersionPrograma" binding="#{proyectoVista.txtVersionPrograma}" required="true"
+                                         requiredMessage="Campo Versión Programa Proyecto Obligatorio."
+                                         validatorMessage="Campo Versión Programa inválido. Debe tener su sintaxis numero.numero. ...">
+                                <f:validateRegex pattern="^[0-9.]+$"/>
+                            </p:inputText>  
+                            
                             <h:outputText value="Costo Total (COP)"/>
-                            <p:inputText id="txtCostoTotal" binding="#{proyectoVista.txtCostoTotal}"/>                                                        
+                            <p:inputText id="txtCostoTotal" binding="#{proyectoVista.txtCostoTotal}" required="true" 
+                                         requiredMessage="Campo Costo Total Proyecto Obligatorio."
+                                         validatorMessage="Campo Costo Total Proyecto debe ser entero y de mínimo 7 dígitos de longitud.">
+                                <f:validateLength minimum="7"/>
+                                <f:validateRegex pattern="^[0-9]+$"/>
+                            </p:inputText>   
+                            
                         </p:panelGrid>
                         <p:panelGrid columns="4">
                             <p:commandButton value="Registrar" binding="#{proyectoVista.btnRegistrar}" action="#{proyectoVista.action_registrar()}" update=":formulario"/> 

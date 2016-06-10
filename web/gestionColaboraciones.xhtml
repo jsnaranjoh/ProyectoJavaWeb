@@ -54,7 +54,11 @@
                                 <f:selectItems value="#{colaboraVista.itemsProyectos}"/>
                             </p:selectOneMenu>                            
                             <h:outputText value="Horas Dedicadas"/>
-                            <p:inputText id="txtHorasDedicadas" binding="#{colaboraVista.txtHorasDedicadas}"/>
+                            <p:inputText id="txtHorasDedicadas" binding="#{colaboraVista.txtHorasDedicadas}" required="true" 
+                                         requiredMessage="Campo Horas Dedicadas a la Colaboración Obligatorio."
+                                         validatorMessage="Campo Horas dedicadas debe ser entero.">
+                                <f:validateRegex pattern="^[0-9]+$"/>
+                            </p:inputText>
                             <h:outputText value="Fecha de Inicio"/>
                             <p:calendar id="txtFechaInicio" value="#{colaboraVista.txtFechaInicio}" pattern="yyyy-MM-dd" locale="es" navigator="true" readonlyInput="true"/>
                             <h:outputText value="Fecha de Fin"/>

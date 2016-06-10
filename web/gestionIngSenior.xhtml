@@ -49,7 +49,12 @@
                                 <f:selectItems value="#{seniorVista.itemsIngsoftware}"/>
                             </p:selectOneMenu>
                             <h:outputText value="Cantidad de Proyectos"/>
-                            <p:inputText id="txtProyectosquelidera" binding="#{seniorVista.txtProyectosquelidera}"/>                           
+                            <p:inputText id="txtProyectosquelidera" binding="#{seniorVista.txtProyectosquelidera}" required="true" 
+                                         requiredMessage="Campo Proyectos Liderados por Ingeniero Senior Obligatorio."
+                                         validatorMessage="El Ingeniero Senior debe tener liderado al menos un proyecto. Dicho campo debe ser entero.">
+                                <f:validateLongRange minimum="1"/>
+                                <f:validateRegex pattern="^[0-9]+$"/>
+                            </p:inputText>
                         </p:panelGrid>
                         <p:panelGrid columns="4">
                             <p:commandButton value="Registrar" binding="#{seniorVista.btnRegistrar}" action="#{seniorVista.action_registrar()}" update=":formulario"/> 

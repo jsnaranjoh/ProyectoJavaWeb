@@ -44,7 +44,12 @@
                         <p:growl id="growl" showDetail="true" sticky="true" escape="false"/>
                         <p:panelGrid columns="6">
                             <h:outputText value="Código"/>
-                            <p:inputText id="txtCodigo" binding="#{requisitoVista.txtCodigo}"/>
+                            <p:inputText id="txtCodigo" binding="#{requisitoVista.txtCodigo}" required="true"
+                                         requiredMessage="Campo Código Requisito Obligatorio." 
+                                         validatorMessage="Campo Código Requisito debe ser entero y tener entre 4 y 11 dígitos de longitud.">
+                                <f:validateLength minimum="4" maximum="11"/>
+                                <f:validateRegex pattern="^[0-9]+$"/>
+                            </p:inputText>
                             
                             <h:outputText value="Proyecto"/>
                             <p:selectOneMenu id="cmbProyectos" binding="#{requisitoVista.cmbProyectos}">

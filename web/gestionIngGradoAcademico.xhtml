@@ -44,7 +44,12 @@
                         <p:growl id="growl" showDetail="true" sticky="true" escape="false"/>
                         <p:panelGrid columns="6">
                             <h:outputText value="Número"/>
-                            <p:inputText id="txtNumero" binding="#{gradoacademicoVista.txtNumero}"/>
+                            <p:inputText id="txtNumero" binding="#{gradoacademicoVista.txtNumero}" required="true"
+                                         requiredMessage="Campo Número Grado Académico Obligatorio." 
+                                         validatorMessage="Campo Número Grado Académico debe ser entero y tener entre 4 y 11 dígitos de longitud.">
+                                <f:validateLength minimum="4" maximum="11"/>
+                                <f:validateRegex pattern="^[0-9]+$"/>
+                            </p:inputText>
                             
                             <h:outputText value="Ingeniero"/>
                             <p:selectOneMenu id="cmbIngenieros" binding="#{gradoacademicoVista.cmbIngenieros}">
@@ -64,8 +69,15 @@
                             
                             <h:outputText value="Lugar"/>
                             <p:inputText id="txtLugar" binding="#{gradoacademicoVista.txtLugar}"/>
+                            
                             <h:outputText value="Año Titulación"/>
-                            <p:inputText id="txtAnioTitulacion" binding="#{gradoacademicoVista.txtAnioTitulacion}"/>
+                            <p:inputText id="txtAnioTitulacion" binding="#{gradoacademicoVista.txtAnioTitulacion}" required="true"
+                                         requiredMessage="Campo Año Titulación Grado Académico Obligatorio." 
+                                         validatorMessage="Campo Año Titulación Grado Académico debe ser entero y de 4 dígitos.">
+                                <f:validateLength minimum="4" maximum="4"/>
+                                <f:validateRegex pattern="^[0-9]+$"/>
+                                
+                            </p:inputText>
                             <h:outputText value="Título Obtenido"/>
                             <p:inputText id="txtTituloObtenido" binding="#{gradoacademicoVista.txtTituloObtenido}"/>
                         </p:panelGrid>

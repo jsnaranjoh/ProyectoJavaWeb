@@ -72,7 +72,12 @@
                         <p:growl id="growl" showDetail="true" sticky="true" escape="false"/>
                         <p:panelGrid columns="6">
                             <h:outputText value="Número"/>
-                            <p:inputText id="txtNumero" binding="#{seminarioVista.txtNumero}"/>
+                            <p:inputText id="txtNumero" binding="#{seminarioVista.txtNumero}" required="true"
+                                         requiredMessage="Campo Número Seminario Obligatorio." 
+                                         validatorMessage="Campo Número Seminario debe ser entero y tener entre 4 y 11 dígitos de longitud.">
+                                <f:validateLength minimum="4" maximum="11"/>
+                                <f:validateRegex pattern="^[0-9]+$"/>
+                            </p:inputText>
                             
                             <h:outputText value="Ingeniero"/>
                             <p:selectOneMenu id="cmbIngenieros" binding="#{seminarioVista.cmbIngenieros}">

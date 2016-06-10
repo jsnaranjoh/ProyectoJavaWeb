@@ -49,7 +49,12 @@
                                 <f:selectItems value="#{juniorVista.itemsIngsoftware}"/>
                             </p:selectOneMenu>
                             <h:outputText value="Horas Trabajadas al día"/>
-                            <p:inputText id="txtHorastrabajoxdia" binding="#{juniorVista.txtHorastrabajoxdia}"/>                           
+                            <p:inputText id="txtHorastrabajoxdia" binding="#{juniorVista.txtHorastrabajoxdia}" required="true" 
+                                         requiredMessage="Campo Horas diarias Ingeniero Junior Obligatorio."
+                                         validatorMessage="Campo Horas diarias Ingeniero Junior debe ser entero, mayor a cero, y de un dígito de longitud.">
+                                <f:validateLength minimum="1" maximum="1"/>
+                                <f:validateRegex pattern="^[1-9]+$"/>
+                            </p:inputText>                           
                         </p:panelGrid>
                         <p:panelGrid columns="4">
                             <p:commandButton value="Registrar" binding="#{juniorVista.btnRegistrar}" action="#{juniorVista.action_registrar()}" update=":formulario"/> 
