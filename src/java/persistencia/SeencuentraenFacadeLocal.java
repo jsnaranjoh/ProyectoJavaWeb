@@ -11,7 +11,7 @@ import modelo.Seencuentraen;
 
 /**
  *
- * @author NOREÑA
+ * @author crisd
  */
 @Local
 public interface SeencuentraenFacadeLocal {

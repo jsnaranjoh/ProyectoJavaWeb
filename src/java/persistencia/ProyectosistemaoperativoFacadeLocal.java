@@ -11,7 +11,7 @@ import modelo.Proyectosistemaoperativo;
 
 /**
  *
- * @author NOREÑA
+ * @author crisd
  */
 @Local
 public interface ProyectosistemaoperativoFacadeLocal {

@@ -12,7 +12,7 @@ import modelo.Proyectosgbd;
 
 /**
  *
- * @author NOREÑA
+ * @author crisd
  */
 @Stateless
 public class ProyectosgbdFacade extends AbstractFacade<Proyectosgbd> implements ProyectosgbdFacadeLocal {

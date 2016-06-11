@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author NOREÑA
+ * @author crisd
  */
 @Entity
 @Table(name = "ingsoftwaresistemaoperativo")

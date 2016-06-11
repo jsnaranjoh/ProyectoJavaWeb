@@ -12,7 +12,7 @@ import modelo.Seencuentraen;
 
 /**
  *
- * @author NOREÑA
+ * @author crisd
  */
 @Stateless
 public class SeencuentraenFacade extends AbstractFacade<Seencuentraen> implements SeencuentraenFacadeLocal {

@@ -12,7 +12,7 @@ import modelo.Proyectosistemaoperativo;
 
 /**
  *
- * @author NOREÑA
+ * @author crisd
  */
 @Stateless
 public class ProyectosistemaoperativoFacade extends AbstractFacade<Proyectosistemaoperativo> implements ProyectosistemaoperativoFacadeLocal {

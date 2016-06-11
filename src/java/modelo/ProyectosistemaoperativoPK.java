@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
 
 /**
  *
- * @author NOREÑA
+ * @author crisd
  */
 @Embeddable
 public class ProyectosistemaoperativoPK implements Serializable {

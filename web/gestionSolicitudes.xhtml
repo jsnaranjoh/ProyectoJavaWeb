@@ -68,139 +68,141 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
-                    <h:form id="formulario">
-                        <p:growl id="growl" showDetail="true" sticky="true" escape="false"/>
-                        <p:panelGrid columns="6">
-                            <h:outputText value="Código"/>
-                            <p:inputText id="txtNumero" binding="#{solicitudVista.txtNumero}"/>
-                            
-                            <h:outputText value="Requisito"/>
-                            <p:selectOneMenu id="cmbRequisitos" binding="#{solicitudVista.cmbRequisitos}">
-                                <f:selectItem itemValue="Seleccione" itemLabel="Seleccione"/>
-                                <f:selectItems value="#{solicitudVista.itemsRequisitos}"/>
-                            </p:selectOneMenu>
-                            
-                            <h:outputText value="Verificador"/>
-                            <p:selectOneMenu id="cmbVerificadores" binding="#{solicitudVista.cmbVerificadores}">
-                                <f:selectItem itemValue="Seleccione" itemLabel="Seleccione"/>
-                                <f:selectItems value="#{solicitudVista.itemsVerificadores}"/>
-                            </p:selectOneMenu>                            
-                            
-                            <h:outputText value="Solicitante"/>
-                            <p:selectOneMenu id="cmbSolicitantes" binding="#{solicitudVista.cmbSolicitantes}">
-                                <f:selectItem itemValue="Seleccione" itemLabel="Seleccione"/>
-                                <f:selectItems value="#{solicitudVista.itemsSolicitantes}"/>
-                            </p:selectOneMenu>                            
+                    <p:scrollPanel mode="native" style="position: absolute; width: 250%;">
+                        <h:form id="formulario">
+                            <p:growl id="growl" showDetail="true" sticky="true" escape="false"/>
+                            <p:panelGrid columns="4">
+                                <h:outputText value="Código"/>
+                                <p:inputText id="txtNumero" binding="#{solicitudVista.txtNumero}"/>
 
-                            <h:outputText value="Tipo"/>
-                            <p:selectOneMenu id="cmbAreasAplicacion" binding="#{solicitudVista.cmbTipos}">
-                                <f:selectItem itemValue="0" itemLabel="Seleccione"/>
-                                <f:selectItem itemValue="Integración" itemLabel="Integración"/>
-                                <f:selectItem itemValue="Eliminación" itemLabel="Eliminación"/>
-                                <f:selectItem itemValue="Ampliación" itemLabel="Ampliación"/>
-                                <f:selectItem itemValue="Reducción" itemLabel="Reducción"/>
-                                <f:selectItem itemValue="Cambio" itemLabel="Cambio"/>
-                            </p:selectOneMenu>                  
-                            
-                            <h:outputText value="Titulo"/>
-                            <p:inputText id="txtTitulo" binding="#{solicitudVista.txtTitulo}"/>                            
-                            <h:outputText value="Fecha"/>
-                            <p:calendar id="txtFecha" value="#{solicitudVista.txtFecha}" pattern="yyyy-MM-dd" locale="es" navigator="true" readonlyInput="true"/>
-                            <h:outputText value="Origen"/>
-                            <p:inputText id="txtOrigen" binding="#{solicitudVista.txtOrigen}"/>  
-                            
-                            <h:outputText value="Estado"/>
-                            <p:selectOneMenu id="cmbEstados" binding="#{solicitudVista.cmbEstados}">
-                                <f:selectItem itemValue="0" itemLabel="Seleccione"/>
-                                <f:selectItem itemValue="Registrado" itemLabel="Registrado"/>
-                                <f:selectItem itemValue="Evaluado" itemLabel="Evaluado"/>
-                                <f:selectItem itemValue="Rechazado" itemLabel="Rechazado"/>
-                                <f:selectItem itemValue="Aprobado" itemLabel="Aprobado"/>
-                                <f:selectItem itemValue="Verificado" itemLabel="Verificado"/>
-                                <f:selectItem itemValue="Finalizado" itemLabel="Finalizado"/>                                
-                            </p:selectOneMenu>                            
-                            
-                            <h:outputText value="Prioridad Solicitante"/>
-                            <p:inputText id="txtPrioridadSolicitante" binding="#{solicitudVista.txtPrioridadSolicitante}"/>
-                            <h:outputText value="Prioridad Realización"/>
-                            <p:inputText id="txtPrioridadRealizacion" binding="#{solicitudVista.txtPrioridadRealizacion}"/>                                                         
-                            <h:outputText value="Fecha de Última Actualización"/>
-                            <p:calendar id="txtFechaUltimaActualizacion" value="#{solicitudVista.txtFechaUltimaActualizacion}" pattern="yyyy-MM-dd" locale="es" navigator="true" readonlyInput="true"/>                                                       
-                            <h:outputText value="Release"/>
-                            <p:inputText id="txtRelease" binding="#{solicitudVista.txtRelease}"/>
-                            <h:outputText value="Esfuerzo"/>
-                            <p:inputText id="txtEsfuerzo" binding="#{solicitudVista.txtEsfuerzo}"/>
-                            <h:outputText value="Descripción"/>
-                            <p:inputTextarea id="txtDescripcion" binding="#{solicitudVista.txtDescripcion}"/>                            
-                            <h:outputText value="Comentarios"/>
-                            <p:inputTextarea id="txtComentarios" binding="#{solicitudVista.txtComentarios}"/>                                                        
-                        </p:panelGrid>
-                        <p:panelGrid columns="4">
-                            <p:commandButton value="Registrar" binding="#{solicitudVista.btnRegistrar}" action="#{solicitudVista.action_registrar()}" update=":formulario"/> 
-                            <p:commandButton value="Modificar" binding="#{solicitudVista.btnModificar}" action="#{solicitudVista.action_modificar()}" update=":formulario"/>
-                            <p:commandButton value="Eliminar" binding="#{solicitudVista.btnEliminar}" action="#{solicitudVista.action_eliminar()}" update=":formulario"/>
-                            <p:commandButton value="Limpiar" binding="#{solicitudVista.btnLimpiar}" action="#{solicitudVista.limpiar()}" update=":formulario"/>
-                        </p:panelGrid>
-                        <p:dataTable id="eventsDT" var="solicitud" value="#{solicitudVista.listaSolicitudes}" selectionMode="single" selection="#{solicitudVista.selectedSolicitud}" rowKey="#{solicitud.numero}">
-                            <f:facet name="header">
-                                Solicitudes de Cambios
-                            </f:facet>
-                            <p:ajax event="rowSelect" listener="#{solicitudVista.onRowSelect}" update=":formulario" />
+                                <h:outputText value="Requisito"/>
+                                <p:selectOneMenu id="cmbRequisitos" binding="#{solicitudVista.cmbRequisitos}">
+                                    <f:selectItem itemValue="Seleccione" itemLabel="Seleccione"/>
+                                    <f:selectItems value="#{solicitudVista.itemsRequisitos}"/>
+                                </p:selectOneMenu>
 
-                            <p:column headerText="Número">
-                                <h:outputText value="#{solicitud.numero}" />
-                            </p:column>
-                            <p:column headerText="Requisito">
-                                <h:outputText value="#{solicitud.requisito.descripcion}" />
-                            </p:column>
-                            <p:column headerText="Verificador">
-                                <h:outputText value="#{solicitud.verificador.ingsoftware.nombres} #{solicitud.verificador.ingsoftware.apellidos}" />
-                            </p:column>                            
-                            <p:column headerText="Solicitante">
-                                <h:outputText value="#{solicitud.solicitante.nombres} #{solicitud.solicitante.apellidos}" />
-                            </p:column>
-                            <p:column headerText="Tipo">
-                                 <h:outputText value="#{solicitud.tipo}" />
-                            </p:column>
-                            <p:column headerText="Título">
-                                <h:outputText value="#{solicitud.titulo}" />
-                            </p:column>
-                            <p:column headerText="Fecha">
-                                <h:outputText value="#{solicitud.fecha}">
-                                    <f:convertDateTime type="date" pattern="yyyy-MM-dd" />
-                                </h:outputText>
-                            </p:column>
-                            <p:column headerText="Origen">
-                                <h:outputText value="#{solicitud.origen}" />
-                            </p:column>
-                            <p:column headerText="Estado">
-                                <h:outputText value="#{solicitud.estado}" />
-                            </p:column>
-                            <p:column headerText="Prioridad Solicitante">
-                                <h:outputText value="#{solicitud.prioridadsolicitante}" />
-                            </p:column>                            
-                            <p:column headerText="Prioridad Realización">
-                                <h:outputText value="#{solicitud.prioridadrealizacion}" />
-                            </p:column>
-                            <p:column headerText="Fecha Última Actualización">
-                                <h:outputText value="#{solicitud.fechaultimaactualizacion}">
-                                    <f:convertDateTime type="date" pattern="yyyy-MM-dd" />
-                                </h:outputText>
-                            </p:column>                           
-                            <p:column headerText="Release">
-                                <h:outputText value="#{solicitud.release}" />
-                            </p:column>
-                            <p:column headerText="Esfuerzo">
-                                <h:outputText value="#{solicitud.esfuerzo}" />
-                            </p:column>
-                            <p:column headerText="Descripción">
-                                <h:outputText value="#{solicitud.descripcion}" />
-                            </p:column>                            
-                             <p:column headerText="Comentarios">
-                                 <h:outputText value="#{solicitud.comentarios}" />
-                            </p:column>                          
-                        </p:dataTable>                    
-                    </h:form>
+                                <h:outputText value="Verificador"/>
+                                <p:selectOneMenu id="cmbVerificadores" binding="#{solicitudVista.cmbVerificadores}">
+                                    <f:selectItem itemValue="Seleccione" itemLabel="Seleccione"/>
+                                    <f:selectItems value="#{solicitudVista.itemsVerificadores}"/>
+                                </p:selectOneMenu>                            
+
+                                <h:outputText value="Solicitante"/>
+                                <p:selectOneMenu id="cmbSolicitantes" binding="#{solicitudVista.cmbSolicitantes}">
+                                    <f:selectItem itemValue="Seleccione" itemLabel="Seleccione"/>
+                                    <f:selectItems value="#{solicitudVista.itemsSolicitantes}"/>
+                                </p:selectOneMenu>                            
+
+                                <h:outputText value="Tipo"/>
+                                <p:selectOneMenu id="cmbAreasAplicacion" binding="#{solicitudVista.cmbTipos}">
+                                    <f:selectItem itemValue="0" itemLabel="Seleccione"/>
+                                    <f:selectItem itemValue="Integración" itemLabel="Integración"/>
+                                    <f:selectItem itemValue="Eliminación" itemLabel="Eliminación"/>
+                                    <f:selectItem itemValue="Ampliación" itemLabel="Ampliación"/>
+                                    <f:selectItem itemValue="Reducción" itemLabel="Reducción"/>
+                                    <f:selectItem itemValue="Cambio" itemLabel="Cambio"/>
+                                </p:selectOneMenu>                  
+
+                                <h:outputText value="Titulo"/>
+                                <p:inputText id="txtTitulo" binding="#{solicitudVista.txtTitulo}"/>                            
+                                <h:outputText value="Fecha"/>
+                                <p:calendar id="txtFecha" value="#{solicitudVista.txtFecha}" pattern="yyyy-MM-dd" locale="es" navigator="true" readonlyInput="true"/>
+                                <h:outputText value="Origen"/>
+                                <p:inputText id="txtOrigen" binding="#{solicitudVista.txtOrigen}"/>  
+
+                                <h:outputText value="Estado"/>
+                                <p:selectOneMenu id="cmbEstados" binding="#{solicitudVista.cmbEstados}">
+                                    <f:selectItem itemValue="0" itemLabel="Seleccione"/>
+                                    <f:selectItem itemValue="Registrado" itemLabel="Registrado"/>
+                                    <f:selectItem itemValue="Evaluado" itemLabel="Evaluado"/>
+                                    <f:selectItem itemValue="Rechazado" itemLabel="Rechazado"/>
+                                    <f:selectItem itemValue="Aprobado" itemLabel="Aprobado"/>
+                                    <f:selectItem itemValue="Verificado" itemLabel="Verificado"/>
+                                    <f:selectItem itemValue="Finalizado" itemLabel="Finalizado"/>                                
+                                </p:selectOneMenu>                            
+
+                                <h:outputText value="Prioridad Solicitante"/>
+                                <p:inputText id="txtPrioridadSolicitante" binding="#{solicitudVista.txtPrioridadSolicitante}"/>
+                                <h:outputText value="Prioridad Realización"/>
+                                <p:inputText id="txtPrioridadRealizacion" binding="#{solicitudVista.txtPrioridadRealizacion}"/>                                                         
+                                <h:outputText value="Fecha de Última Actualización"/>
+                                <p:calendar id="txtFechaUltimaActualizacion" value="#{solicitudVista.txtFechaUltimaActualizacion}" pattern="yyyy-MM-dd" locale="es" navigator="true" readonlyInput="true"/>                                                       
+                                <h:outputText value="Lanzamiento"/>
+                                <p:inputText id="txtLanzamiento" binding="#{solicitudVista.txtLanzamiento}"/>
+                                <h:outputText value="Esfuerzo"/>
+                                <p:inputText id="txtEsfuerzo" binding="#{solicitudVista.txtEsfuerzo}"/>
+                                <h:outputText value="Descripción"/>
+                                <p:inputTextarea id="txtDescripcion" binding="#{solicitudVista.txtDescripcion}"/>                            
+                                <h:outputText value="Comentarios"/>
+                                <p:inputTextarea id="txtComentarios" binding="#{solicitudVista.txtComentarios}"/>                                                        
+                            </p:panelGrid>
+                            <p:panelGrid columns="4">
+                                <p:commandButton value="Registrar" binding="#{solicitudVista.btnRegistrar}" action="#{solicitudVista.action_registrar()}" update=":formulario"/> 
+                                <p:commandButton value="Modificar" binding="#{solicitudVista.btnModificar}" action="#{solicitudVista.action_modificar()}" update=":formulario"/>
+                                <p:commandButton value="Eliminar" binding="#{solicitudVista.btnEliminar}" action="#{solicitudVista.action_eliminar()}" update=":formulario"/>
+                                <p:commandButton value="Limpiar" binding="#{solicitudVista.btnLimpiar}" action="#{solicitudVista.limpiar()}" update=":formulario"/>
+                            </p:panelGrid>
+                            <p:dataTable id="eventsDT" var="solicitud" value="#{solicitudVista.listaSolicitudes}" selectionMode="single" selection="#{solicitudVista.selectedSolicitud}" rowKey="#{solicitud.numero}">
+                                <f:facet name="header">
+                                    Solicitudes de Cambios
+                                </f:facet>
+                                <p:ajax event="rowSelect" listener="#{solicitudVista.onRowSelect}" update=":formulario" />
+
+                                <p:column headerText="Número">
+                                    <h:outputText value="#{solicitud.numero}" />
+                                </p:column>
+                                <p:column headerText="Requisito">
+                                    <h:outputText value="#{solicitud.requisito.descripcion}" />
+                                </p:column>
+                                <p:column headerText="Verificador">
+                                    <h:outputText value="#{solicitud.verificador.ingsoftware.nombres} #{solicitud.verificador.ingsoftware.apellidos}" />
+                                </p:column>                            
+                                <p:column headerText="Solicitante">
+                                    <h:outputText value="#{solicitud.solicitante.nombres} #{solicitud.solicitante.apellidos}" />
+                                </p:column>
+                                <p:column headerText="Tipo">
+                                     <h:outputText value="#{solicitud.tipo}" />
+                                </p:column>
+                                <p:column headerText="Título">
+                                    <h:outputText value="#{solicitud.titulo}" />
+                                </p:column>
+                                <p:column headerText="Fecha">
+                                    <h:outputText value="#{solicitud.fecha}">
+                                        <f:convertDateTime type="date" pattern="yyyy-MM-dd" />
+                                    </h:outputText>
+                                </p:column>
+                                <p:column headerText="Origen">
+                                    <h:outputText value="#{solicitud.origen}" />
+                                </p:column>
+                                <p:column headerText="Estado">
+                                    <h:outputText value="#{solicitud.estado}" />
+                                </p:column>
+                                <p:column headerText="Prioridad Solicitante">
+                                    <h:outputText value="#{solicitud.prioridadsolicitante}" />
+                                </p:column>                            
+                                <p:column headerText="Prioridad Realización">
+                                    <h:outputText value="#{solicitud.prioridadrealizacion}" />
+                                </p:column>
+                                <p:column headerText="Fecha Última Actualización">
+                                    <h:outputText value="#{solicitud.fechaultimaactualizacion}">
+                                        <f:convertDateTime type="date" pattern="yyyy-MM-dd" />
+                                    </h:outputText>
+                                </p:column>                           
+                                <p:column headerText="Lanzamiento">
+                                    <h:outputText value="#{solicitud.lanzamiento}" />
+                                </p:column>
+                                <p:column headerText="Esfuerzo">
+                                    <h:outputText value="#{solicitud.esfuerzo}" />
+                                </p:column>
+                                <p:column headerText="Descripción">
+                                    <h:outputText value="#{solicitud.descripcion}" />
+                                </p:column>                            
+                                 <p:column headerText="Comentarios">
+                                     <h:outputText value="#{solicitud.comentarios}" />
+                                </p:column>                          
+                            </p:dataTable>                    
+                        </h:form>
+                    </p:scrollPanel>     
                 </p:layoutUnit>
 
             </p:layout>

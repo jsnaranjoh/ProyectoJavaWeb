@@ -11,7 +11,7 @@ import modelo.Ingsoftware;
 
 /**
  *
- * @author NOREÑA
+ * @author crisd
  */
 @Local
 public interface IngsoftwareFacadeLocal {

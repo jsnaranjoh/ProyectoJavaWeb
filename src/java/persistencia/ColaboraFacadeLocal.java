@@ -11,7 +11,7 @@ import modelo.Colabora;
 
 /**
  *
- * @author NOREÑA
+ * @author crisd
  */
 @Local
 public interface ColaboraFacadeLocal {

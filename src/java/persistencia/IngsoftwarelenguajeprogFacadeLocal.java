@@ -11,7 +11,7 @@ import modelo.Ingsoftwarelenguajeprog;
 
 /**
  *
- * @author NOREÑA
+ * @author crisd
  */
 @Local
 public interface IngsoftwarelenguajeprogFacadeLocal {

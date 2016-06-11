@@ -12,7 +12,7 @@ import modelo.Gradoacademico;
 
 /**
  *
- * @author NOREÑA
+ * @author crisd
  */
 @Stateless
 public class GradoacademicoFacade extends AbstractFacade<Gradoacademico> implements GradoacademicoFacadeLocal {

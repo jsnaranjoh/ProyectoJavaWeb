@@ -12,7 +12,7 @@ import modelo.Jefe;
 
 /**
  *
- * @author NOREÑA
+ * @author crisd
  */
 @Stateless
 public class JefeFacade extends AbstractFacade<Jefe> implements JefeFacadeLocal {

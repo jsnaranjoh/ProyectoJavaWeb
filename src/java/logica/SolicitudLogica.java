@@ -57,8 +57,8 @@ public class SolicitudLogica implements SolicitudLogicaLocal {
         if(solicitud.getFechaultimaactualizacion() == null){
             throw new Exception("Campo Fecha de Última Actualización de Solicitud Obligatorio.");
         }
-        if(solicitud.getRelease().equals("")){
-            throw new Exception("Campo Release de Solicitud Obligatorio.");
+        if(solicitud.getLanzamiento().equals("")){
+            throw new Exception("Campo Lanzamiento de Solicitud Obligatorio.");
         }
         if(solicitud.getEsfuerzo() == 0){
             throw new Exception("Campo Esfuerzo Solicitud Obligatorio.");
@@ -113,8 +113,8 @@ public class SolicitudLogica implements SolicitudLogicaLocal {
         if(solicitud.getFechaultimaactualizacion() == null){
             throw new Exception("Campo Fecha de Última Actualización de Solicitud Obligatorio.");
         }
-        if(solicitud.getRelease().equals("")){
-            throw new Exception("Campo Release de Solicitud Obligatorio.");
+        if(solicitud.getLanzamiento().equals("")){
+            throw new Exception("Campo Lanzamiento de Solicitud Obligatorio.");
         }
         if(solicitud.getEsfuerzo() == 0){
             throw new Exception("Campo Esfuerzo Solicitud Obligatorio.");
@@ -140,7 +140,7 @@ public class SolicitudLogica implements SolicitudLogicaLocal {
             objSolicitud.setPrioridadsolicitante(solicitud.getPrioridadsolicitante());
             objSolicitud.setPrioridadrealizacion(solicitud.getPrioridadrealizacion());
             objSolicitud.setFechaultimaactualizacion(solicitud.getFechaultimaactualizacion());
-            objSolicitud.setRelease(solicitud.getRelease());
+            objSolicitud.setLanzamiento(solicitud.getLanzamiento());
             objSolicitud.setEsfuerzo(solicitud.getEsfuerzo());
             objSolicitud.setDescripcion(solicitud.getDescripcion());
             objSolicitud.setComentarios(solicitud.getComentarios());

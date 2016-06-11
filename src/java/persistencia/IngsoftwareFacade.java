@@ -12,7 +12,7 @@ import modelo.Ingsoftware;
 
 /**
  *
- * @author NOREÑA
+ * @author crisd
  */
 @Stateless
 public class IngsoftwareFacade extends AbstractFacade<Ingsoftware> implements IngsoftwareFacadeLocal {

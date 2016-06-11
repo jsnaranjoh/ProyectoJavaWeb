@@ -11,7 +11,7 @@ import modelo.Requisitohistorial;
 
 /**
  *
- * @author NOREÑA
+ * @author crisd
  */
 @Local
 public interface RequisitohistorialFacadeLocal {

@@ -12,7 +12,7 @@ import modelo.Fase;
 
 /**
  *
- * @author NOREÑA
+ * @author crisd
  */
 @Stateless
 public class FaseFacade extends AbstractFacade<Fase> implements FaseFacadeLocal {

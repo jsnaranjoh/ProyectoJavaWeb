@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author NOREÑA
+ * @author crisd
  */
 @Entity
 @Table(name = "solicitud")
@@ -40,7 +40,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Solicitud.findByPrioridadsolicitante", query = "SELECT s FROM Solicitud s WHERE s.prioridadsolicitante = :prioridadsolicitante"),
     @NamedQuery(name = "Solicitud.findByPrioridadrealizacion", query = "SELECT s FROM Solicitud s WHERE s.prioridadrealizacion = :prioridadrealizacion"),
     @NamedQuery(name = "Solicitud.findByFechaultimaactualizacion", query = "SELECT s FROM Solicitud s WHERE s.fechaultimaactualizacion = :fechaultimaactualizacion"),
-    @NamedQuery(name = "Solicitud.findByRelease", query = "SELECT s FROM Solicitud s WHERE s.release = :release"),
+    @NamedQuery(name = "Solicitud.findByLanzamiento", query = "SELECT s FROM Solicitud s WHERE s.lanzamiento = :lanzamiento"),
     @NamedQuery(name = "Solicitud.findByEsfuerzo", query = "SELECT s FROM Solicitud s WHERE s.esfuerzo = :esfuerzo"),
     @NamedQuery(name = "Solicitud.findByDescripcion", query = "SELECT s FROM Solicitud s WHERE s.descripcion = :descripcion"),
     @NamedQuery(name = "Solicitud.findByComentarios", query = "SELECT s FROM Solicitud s WHERE s.comentarios = :comentarios")})
@@ -67,9 +67,7 @@ public class Solicitud implements Serializable {
     @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
     private Date fecha;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 100)
+    @Size(max = 100)
     @Column(name = "origen")
     private String origen;
     @Basic(optional = false)
@@ -93,8 +91,8 @@ public class Solicitud implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
-    @Column(name = "release")
-    private String release;
+    @Column(name = "lanzamiento")
+    private String lanzamiento;
     @Basic(optional = false)
     @NotNull
     @Column(name = "esfuerzo")
@@ -104,9 +102,7 @@ public class Solicitud implements Serializable {
     @Size(min = 1, max = 200)
     @Column(name = "descripcion")
     private String descripcion;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 200)
+    @Size(max = 200)
     @Column(name = "comentarios")
     private String comentarios;
     @JoinColumn(name = "solicitante", referencedColumnName = "cedula")
@@ -126,20 +122,18 @@ public class Solicitud implements Serializable {
         this.numero = numero;
     }
 
-    public Solicitud(Integer numero, String tipo, String titulo, Date fecha, String origen, String estado, int prioridadsolicitante, int prioridadrealizacion, Date fechaultimaactualizacion, String release, int esfuerzo, String descripcion, String comentarios) {
+    public Solicitud(Integer numero, String tipo, String titulo, Date fecha, String estado, int prioridadsolicitante, int prioridadrealizacion, Date fechaultimaactualizacion, String lanzamiento, int esfuerzo, String descripcion) {
         this.numero = numero;
         this.tipo = tipo;
         this.titulo = titulo;
         this.fecha = fecha;
-        this.origen = origen;
         this.estado = estado;
         this.prioridadsolicitante = prioridadsolicitante;
         this.prioridadrealizacion = prioridadrealizacion;
         this.fechaultimaactualizacion = fechaultimaactualizacion;
-        this.release = release;
+        this.lanzamiento = lanzamiento;
         this.esfuerzo = esfuerzo;
         this.descripcion = descripcion;
-        this.comentarios = comentarios;
     }
 
     public Integer getNumero() {
@@ -214,12 +208,12 @@ public class Solicitud implements Serializable {
         this.fechaultimaactualizacion = fechaultimaactualizacion;
     }
 
-    public String getRelease() {
-        return release;
+    public String getLanzamiento() {
+        return lanzamiento;
     }
 
-    public void setRelease(String release) {
-        this.release = release;
+    public void setLanzamiento(String lanzamiento) {
+        this.lanzamiento = lanzamiento;
     }
 
     public int getEsfuerzo() {

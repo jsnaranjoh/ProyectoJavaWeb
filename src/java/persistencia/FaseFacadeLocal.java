@@ -11,7 +11,7 @@ import modelo.Fase;
 
 /**
  *
- * @author NOREÑA
+ * @author crisd
  */
 @Local
 public interface FaseFacadeLocal {

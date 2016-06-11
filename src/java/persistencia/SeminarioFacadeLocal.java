@@ -11,7 +11,7 @@ import modelo.Seminario;
 
 /**
  *
- * @author NOREÑA
+ * @author crisd
  */
 @Local
 public interface SeminarioFacadeLocal {

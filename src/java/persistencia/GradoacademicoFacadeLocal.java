@@ -11,7 +11,7 @@ import modelo.Gradoacademico;
 
 /**
  *
- * @author NOREÑA
+ * @author crisd
  */
 @Local
 public interface GradoacademicoFacadeLocal {

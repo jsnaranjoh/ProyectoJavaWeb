@@ -11,7 +11,7 @@ import modelo.Junior;
 
 /**
  *
- * @author NOREÑA
+ * @author crisd
  */
 @Local
 public interface JuniorFacadeLocal {

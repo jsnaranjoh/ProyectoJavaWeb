@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `gradoacademico` (
   CONSTRAINT `FK_gradoacademico_ingsoftware` FOREIGN KEY (`ingeniero`) REFERENCES `ingsoftware` (`cedula`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla bdproyectojavaweb.gradoacademico: ~8 rows (aproximadamente)
+-- Volcando datos para la tabla bdproyectojavaweb.gradoacademico: ~7 rows (aproximadamente)
 /*!40000 ALTER TABLE `gradoacademico` DISABLE KEYS */;
 INSERT INTO `gradoacademico` (`numero`, `ingeniero`, `nivel`, `lugar`, `aniotitulacion`, `tituloobtenido`) VALUES
 	(3131, 54117430, 'Maestría', 'Universidad de la Sabana', 2000, 'Maestro en Diseño y Gestion de Procesos'),
@@ -293,10 +293,11 @@ CREATE TABLE IF NOT EXISTS `requisito` (
   CONSTRAINT `FK_requisito_proyecto` FOREIGN KEY (`proyecto`) REFERENCES `proyecto` (`codigo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla bdproyectojavaweb.requisito: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla bdproyectojavaweb.requisito: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `requisito` DISABLE KEYS */;
 INSERT INTO `requisito` (`codigo`, `proyecto`, `descripcion`, `tipo`, `estado`) VALUES
 	(2615, 501, 'Cambio de campos.', 'Calidad', 'No implementado'),
+	(2616, 501, 'El sistema debe permitir registrar facturación.', 'Funcional', 'No implementado'),
 	(3127, 750, 'Registrar empleados.', 'Funcional', 'No implementado');
 /*!40000 ALTER TABLE `requisito` ENABLE KEYS */;
 
@@ -388,15 +389,15 @@ CREATE TABLE IF NOT EXISTS `solicitud` (
   `tipo` varchar(20) NOT NULL,
   `titulo` varchar(50) NOT NULL,
   `fecha` date NOT NULL,
-  `origen` varchar(100) NOT NULL,
+  `origen` varchar(100) DEFAULT NULL,
   `estado` varchar(10) NOT NULL,
   `prioridadsolicitante` int(11) NOT NULL,
   `prioridadrealizacion` int(11) NOT NULL,
   `fechaultimaactualizacion` date NOT NULL,
-  `release` varchar(50) NOT NULL,
+  `lanzamiento` varchar(50) NOT NULL,
   `esfuerzo` int(11) NOT NULL,
   `descripcion` varchar(200) NOT NULL,
-  `comentarios` varchar(200) NOT NULL,
+  `comentarios` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`numero`),
   KEY `FK_solicitud_requisito` (`requisito`),
   KEY `FK_solicitud_jefe` (`verificador`),
@@ -408,10 +409,10 @@ CREATE TABLE IF NOT EXISTS `solicitud` (
 
 -- Volcando datos para la tabla bdproyectojavaweb.solicitud: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `solicitud` DISABLE KEYS */;
-INSERT INTO `solicitud` (`numero`, `requisito`, `verificador`, `solicitante`, `tipo`, `titulo`, `fecha`, `origen`, `estado`, `prioridadsolicitante`, `prioridadrealizacion`, `fechaultimaactualizacion`, `release`, `esfuerzo`, `descripcion`, `comentarios`) VALUES
+INSERT INTO `solicitud` (`numero`, `requisito`, `verificador`, `solicitante`, `tipo`, `titulo`, `fecha`, `origen`, `estado`, `prioridadsolicitante`, `prioridadrealizacion`, `fechaultimaactualizacion`, `lanzamiento`, `esfuerzo`, `descripcion`, `comentarios`) VALUES
 	(4012, 2615, 54117430, 84940812, 'Cambio', 'Corrección del requisito', '2016-05-01', '', 'Evaluado', 1, 2, '2016-04-24', '1.0', 1, 'Posible mala redacción del requisito.', ''),
-	(5312, 2615, 54117430, 596518122, 'Eliminación', 'Eliminación del requisito', '2016-05-01', '', 'Verificado', 1, 1, '2016-05-01', '1.0', 2, 'Innecesario requisito.', 'ola k ase'),
-	(6123, 3127, 54117430, 54117430, 'Ampliación', 'Ampliación del requisito', '2016-05-01', '', 'Aprobado', 1, 1, '2016-04-24', '1.0', 3, 'Validación de campos.', '');
+	(6123, 3127, 54117430, 54117430, 'Ampliación', 'Ampliación del requisito', '2016-05-01', '', 'Aprobado', 1, 1, '2016-04-24', '1.0', 3, 'Validación de campos.', ''),
+	(8934, 2616, 84940812, 4760491, 'Eliminación', 'Eliminación del requisito', '2016-06-10', '2', 'Rechazado', 2, 3, '2016-06-10', '1.0', 2, 'Requisito innecesario.', 'a');
 /*!40000 ALTER TABLE `solicitud` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

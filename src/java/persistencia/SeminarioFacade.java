@@ -12,7 +12,7 @@ import modelo.Seminario;
 
 /**
  *
- * @author NOREÑA
+ * @author crisd
  */
 @Stateless
 public class SeminarioFacade extends AbstractFacade<Seminario> implements SeminarioFacadeLocal {

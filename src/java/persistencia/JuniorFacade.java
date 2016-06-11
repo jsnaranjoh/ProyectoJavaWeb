@@ -12,7 +12,7 @@ import modelo.Junior;
 
 /**
  *
- * @author NOREÑA
+ * @author crisd
  */
 @Stateless
 public class JuniorFacade extends AbstractFacade<Junior> implements JuniorFacadeLocal {

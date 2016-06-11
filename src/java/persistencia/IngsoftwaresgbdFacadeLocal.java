@@ -11,7 +11,7 @@ import modelo.Ingsoftwaresgbd;
 
 /**
  *
- * @author NOREÑA
+ * @author crisd
  */
 @Local
 public interface IngsoftwaresgbdFacadeLocal {

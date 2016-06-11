@@ -12,7 +12,7 @@ import modelo.Requisito;
 
 /**
  *
- * @author NOREÑA
+ * @author crisd
  */
 @Stateless
 public class RequisitoFacade extends AbstractFacade<Requisito> implements RequisitoFacadeLocal {

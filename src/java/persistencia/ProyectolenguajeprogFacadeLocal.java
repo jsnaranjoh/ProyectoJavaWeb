@@ -11,7 +11,7 @@ import modelo.Proyectolenguajeprog;
 
 /**
  *
- * @author NOREÑA
+ * @author crisd
  */
 @Local
 public interface ProyectolenguajeprogFacadeLocal {

@@ -11,7 +11,7 @@ import modelo.Jefe;
 
 /**
  *
- * @author NOREÑA
+ * @author crisd
  */
 @Local
 public interface JefeFacadeLocal {

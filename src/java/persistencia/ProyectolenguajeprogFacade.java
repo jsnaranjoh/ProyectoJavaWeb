@@ -12,7 +12,7 @@ import modelo.Proyectolenguajeprog;
 
 /**
  *
- * @author NOREÑA
+ * @author crisd
  */
 @Stateless
 public class ProyectolenguajeprogFacade extends AbstractFacade<Proyectolenguajeprog> implements ProyectolenguajeprogFacadeLocal {

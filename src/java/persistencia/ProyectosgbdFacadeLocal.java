@@ -11,7 +11,7 @@ import modelo.Proyectosgbd;
 
 /**
  *
- * @author NOREÑA
+ * @author crisd
  */
 @Local
 public interface ProyectosgbdFacadeLocal {

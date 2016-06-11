@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 
 /**
  *
- * @author NOREÑA
+ * @author crisd
  */
 @Embeddable
 public class ColaboraPK implements Serializable {

@@ -12,7 +12,7 @@ import modelo.Colabora;
 
 /**
  *
- * @author NOREÑA
+ * @author crisd
  */
 @Stateless
 public class ColaboraFacade extends AbstractFacade<Colabora> implements ColaboraFacadeLocal {

@@ -12,7 +12,7 @@ import modelo.Requisitohistorial;
 
 /**
  *
- * @author NOREÑA
+ * @author crisd
  */
 @Stateless
 public class RequisitohistorialFacade extends AbstractFacade<Requisitohistorial> implements RequisitohistorialFacadeLocal {

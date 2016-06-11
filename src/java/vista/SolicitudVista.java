@@ -57,7 +57,7 @@ public class SolicitudVista {
     private InputText txtPrioridadSolicitante;
     private InputText txtPrioridadRealizacion;
     private Date txtFechaUltimaActualizacion;
-    private InputText txtRelease;
+    private InputText txtLanzamiento;
     private InputText txtEsfuerzo;
     private InputTextarea txtDescripcion;
     private InputTextarea txtComentarios;
@@ -130,7 +130,7 @@ public class SolicitudVista {
             itemsVerificadores = new ArrayList<>();
             
             for(Jefe jefe: listaVerificadores){
-                itemsRequisitos.add(new SelectItem(jefe.getCedula(), jefe.getIngsoftware().getNombres()));
+                itemsVerificadores.add(new SelectItem(jefe.getCedula(), jefe.getIngsoftware().getNombres() + " " + jefe.getIngsoftware().getApellidos()));
             }
         } catch (Exception ex) {
             Logger.getLogger(SolicitudVista.class.getName()).log(Level.SEVERE, null, ex);
@@ -156,7 +156,7 @@ public class SolicitudVista {
             itemsSolicitantes = new ArrayList<>();
             
             for(Ingsoftware solicitante: listaSolicitantes){
-                itemsSolicitantes.add(new SelectItem(solicitante.getCedula(), solicitante.getNombres()));
+                itemsSolicitantes.add(new SelectItem(solicitante.getCedula(), solicitante.getNombres() + " " + solicitante.getApellidos()));
             }
         } catch (Exception ex) {
             Logger.getLogger(SolicitudVista.class.getName()).log(Level.SEVERE, null, ex);
@@ -232,12 +232,12 @@ public class SolicitudVista {
         this.txtFechaUltimaActualizacion = txtFechaUltimaActualizacion;
     }
 
-    public InputText getTxtRelease() {
-        return txtRelease;
+    public InputText getTxtLanzamiento() {
+        return txtLanzamiento;
     }
 
-    public void setTxtRelease(InputText txtRelease) {
-        this.txtRelease = txtRelease;
+    public void setTxtLanzamiento(InputText txtLanzamiento) {
+        this.txtLanzamiento = txtLanzamiento;
     }
 
     public InputText getTxtEsfuerzo() {
@@ -334,7 +334,7 @@ public class SolicitudVista {
         this.txtPrioridadSolicitante.setValue(this.selectedSolicitud.getPrioridadsolicitante());
         this.txtPrioridadRealizacion.setValue(this.selectedSolicitud.getPrioridadrealizacion());
         this.txtFechaUltimaActualizacion = this.selectedSolicitud.getFechaultimaactualizacion();
-        this.txtRelease.setValue(this.selectedSolicitud.getRelease());
+        this.txtLanzamiento.setValue(this.selectedSolicitud.getLanzamiento());
         this.txtEsfuerzo.setValue(this.selectedSolicitud.getEsfuerzo());
         this.txtDescripcion.setValue(this.selectedSolicitud.getDescripcion());
         this.txtComentarios.setValue(this.selectedSolicitud.getComentarios());
@@ -358,10 +358,15 @@ public class SolicitudVista {
         this.txtPrioridadSolicitante.setValue("");
         this.txtPrioridadRealizacion.setValue("");
         this.txtFechaUltimaActualizacion = null;
-        this.txtRelease.setValue("");
+        this.txtLanzamiento.setValue("");
         this.txtEsfuerzo.setValue("");
         this.txtDescripcion.setValue("");
-        this.txtComentarios.setValue("");        
+        this.txtComentarios.setValue("");
+
+        this.btnRegistrar.setDisabled(false);
+        this.btnModificar.setDisabled(true);
+        this.btnEliminar.setDisabled(true);
+        this.txtNumero.setDisabled(false);         
     }
     
     public void action_registrar(){
@@ -388,7 +393,7 @@ public class SolicitudVista {
             try{ objSolicitud.setPrioridadsolicitante(Integer.parseInt(this.txtPrioridadSolicitante.getValue().toString())); } catch(Exception ex){}
             try{ objSolicitud.setPrioridadrealizacion(Integer.parseInt(this.txtPrioridadRealizacion.getValue().toString())); } catch(Exception ex){}
             objSolicitud.setFechaultimaactualizacion(txtFechaUltimaActualizacion);
-            objSolicitud.setRelease(this.txtRelease.getValue().toString());
+            objSolicitud.setLanzamiento(this.txtLanzamiento.getValue().toString());
             try{ objSolicitud.setEsfuerzo(Integer.parseInt(this.txtEsfuerzo.getValue().toString())); } catch(Exception ex){}
             objSolicitud.setDescripcion(this.txtDescripcion.getValue().toString());
             objSolicitud.setComentarios(this.txtComentarios.getValue().toString());
@@ -428,7 +433,7 @@ public class SolicitudVista {
             try{ objSolicitud.setPrioridadsolicitante(Integer.parseInt(this.txtPrioridadSolicitante.getValue().toString())); } catch(Exception ex){}
             try{ objSolicitud.setPrioridadrealizacion(Integer.parseInt(this.txtPrioridadRealizacion.getValue().toString())); } catch(Exception ex){}
             objSolicitud.setFechaultimaactualizacion(txtFechaUltimaActualizacion);
-            objSolicitud.setRelease(this.txtRelease.getValue().toString());
+            objSolicitud.setLanzamiento(this.txtLanzamiento.getValue().toString());
             try{ objSolicitud.setEsfuerzo(Integer.parseInt(this.txtEsfuerzo.getValue().toString())); } catch(Exception ex){}
             objSolicitud.setDescripcion(this.txtDescripcion.getValue().toString());
             objSolicitud.setComentarios(this.txtComentarios.getValue().toString());
@@ -468,7 +473,7 @@ public class SolicitudVista {
             try{ objSolicitud.setPrioridadsolicitante(Integer.parseInt(this.txtPrioridadSolicitante.getValue().toString())); } catch(Exception ex){}
             try{ objSolicitud.setPrioridadrealizacion(Integer.parseInt(this.txtPrioridadRealizacion.getValue().toString())); } catch(Exception ex){}
             objSolicitud.setFechaultimaactualizacion(txtFechaUltimaActualizacion);
-            objSolicitud.setRelease(this.txtRelease.getValue().toString());
+            objSolicitud.setLanzamiento(this.txtLanzamiento.getValue().toString());
             try{ objSolicitud.setEsfuerzo(Integer.parseInt(this.txtEsfuerzo.getValue().toString())); } catch(Exception ex){}
             objSolicitud.setDescripcion(this.txtDescripcion.getValue().toString());
             objSolicitud.setComentarios(this.txtComentarios.getValue().toString());

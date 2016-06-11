@@ -11,7 +11,7 @@ import modelo.Requisito;
 
 /**
  *
- * @author NOREÑA
+ * @author crisd
  */
 @Local
 public interface RequisitoFacadeLocal {
