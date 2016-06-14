@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Acceso Denegado!</title>
+                <link rel="shortcut icon" href="favicon.ico"/>
+            </f:facet>
+
+            <script>
+                //ingresa el tiempo en formato "minutos:segundos" El rango de minutos debe ser de 0 a infinito. El rango de segundos debe ser de 0 a 59
+                var limit="0:05";
+                if (document.images){
+                    var parselimit=limit.split(":");
+                    parselimit=parselimit[0]*60+parselimit[1]*1;
+                }
+                function begintimer(){
+                    if (!document.images)
+                        return;
+                    if (parselimit===1)
+                        window.location="../faces/index.xhtml";
+                    else{ 
+                        parselimit-=1;
+                        curmin=Math.floor(parselimit/60);
+                        cursec=parselimit%60;
+                        if (curmin===0)
+                        {
+                            curtime=cursec+" segundos.";
+                            document.getElementById("tiempo").innerHTML = curtime;
+                        }
+                        
+                        window.status=curtime;
+                        setTimeout("begintimer()",1000);
+                    }
+                }
+                //-->
+            </script>
+        </h:head>
+
+        <h:body onload='begintimer();'>
+            
+            <p:panel id="panel" header="Sesión Inválida">
+                <div align="center">
+                    <h:outputText value="No ha iniciado sesión, esta ya ha caducado o acceso a CRUD denegado."/>
+                    <br/><br/>
+                    <h:graphicImage url="/faces/imagen/advertencia.jpg" alt="Atención"  />
+                    <br/><br/>
+                    <h:outputText value="Será redireccionado a la página principal en "/><b><font color="#ff0000"><span id="tiempo"></span></font></b>                
+                </div>
+            </p:panel>
+
+        </h:body>
+
+    </f:view>
+</html>
