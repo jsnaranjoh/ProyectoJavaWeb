@@ -1,6 +1,6 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Versión del servidor:         10.0.17-MariaDB - mariadb.org binary distribution
+-- Versión del servidor:         10.1.13-MariaDB - mariadb.org binary distribution
 -- SO del servidor:              Win32
 -- HeidiSQL Versión:             9.3.0.4984
 -- --------------------------------------------------------
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `gradoacademico` (
   CONSTRAINT `FK_gradoacademico_ingsoftware` FOREIGN KEY (`ingeniero`) REFERENCES `ingsoftware` (`cedula`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla bdproyectojavaweb.gradoacademico: ~7 rows (aproximadamente)
+-- Volcando datos para la tabla bdproyectojavaweb.gradoacademico: ~4 rows (aproximadamente)
 /*!40000 ALTER TABLE `gradoacademico` DISABLE KEYS */;
 INSERT INTO `gradoacademico` (`numero`, `ingeniero`, `nivel`, `lugar`, `aniotitulacion`, `tituloobtenido`) VALUES
 	(3131, 54117430, 'Maestría', 'Universidad de la Sabana', 2000, 'Maestro en Diseño y Gestion de Procesos'),
@@ -183,8 +183,7 @@ CREATE TABLE IF NOT EXISTS `jefe` (
 -- Volcando datos para la tabla bdproyectojavaweb.jefe: ~2 rows (aproximadamente)
 /*!40000 ALTER TABLE `jefe` DISABLE KEYS */;
 INSERT INTO `jefe` (`cedula`, `presupuesto`) VALUES
-	(54117430, 100000000),
-	(84940812, 300000000);
+	(54117430, 100000000);
 /*!40000 ALTER TABLE `jefe` ENABLE KEYS */;
 
 
@@ -314,7 +313,7 @@ CREATE TABLE IF NOT EXISTS `requisitohistorial` (
   CONSTRAINT `FK_requisitohistorial_requisito` FOREIGN KEY (`requisito`) REFERENCES `requisito` (`codigo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla bdproyectojavaweb.requisitohistorial: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla bdproyectojavaweb.requisitohistorial: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `requisitohistorial` DISABLE KEYS */;
 INSERT INTO `requisitohistorial` (`codigo`, `requisito`, `descripcion`, `tipo`, `estado`) VALUES
 	(1234, 2615, 'Agregar campos.', 'Funcional', 'Implementado'),
@@ -334,7 +333,7 @@ CREATE TABLE IF NOT EXISTS `seencuentraen` (
   CONSTRAINT `FK_seencuentraen_proyecto` FOREIGN KEY (`proyecto`) REFERENCES `proyecto` (`codigo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla bdproyectojavaweb.seencuentraen: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla bdproyectojavaweb.seencuentraen: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `seencuentraen` DISABLE KEYS */;
 INSERT INTO `seencuentraen` (`proyecto`, `fase`, `fechainicio`, `fechafin`) VALUES
 	(501, 1003, '2016-04-30', '2016-07-13'),
@@ -355,7 +354,7 @@ CREATE TABLE IF NOT EXISTS `seminario` (
   CONSTRAINT `FK_seminario_ingsoftware` FOREIGN KEY (`ingeniero`) REFERENCES `ingsoftware` (`cedula`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla bdproyectojavaweb.seminario: ~3 rows (aproximadamente)
+-- Volcando datos para la tabla bdproyectojavaweb.seminario: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `seminario` DISABLE KEYS */;
 INSERT INTO `seminario` (`numero`, `ingeniero`, `nombre`, `lugar`, `fechainicio`, `fechafin`) VALUES
 	(4312, 54117430, 'Liderazgo en proyectos.', 'Me da igual', '2016-05-01', '2016-05-08'),
@@ -372,7 +371,7 @@ CREATE TABLE IF NOT EXISTS `senior` (
   CONSTRAINT `FK_senior_ingsoftware` FOREIGN KEY (`cedula`) REFERENCES `ingsoftware` (`cedula`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla bdproyectojavaweb.senior: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla bdproyectojavaweb.senior: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `senior` DISABLE KEYS */;
 INSERT INTO `senior` (`cedula`, `proyectosquelidera`) VALUES
 	(4760491, 0),
@@ -407,12 +406,12 @@ CREATE TABLE IF NOT EXISTS `solicitud` (
   CONSTRAINT `FK_solicitud_requisito` FOREIGN KEY (`requisito`) REFERENCES `requisito` (`codigo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla bdproyectojavaweb.solicitud: ~3 rows (aproximadamente)
+-- Volcando datos para la tabla bdproyectojavaweb.solicitud: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `solicitud` DISABLE KEYS */;
 INSERT INTO `solicitud` (`numero`, `requisito`, `verificador`, `solicitante`, `tipo`, `titulo`, `fecha`, `origen`, `estado`, `prioridadsolicitante`, `prioridadrealizacion`, `fechaultimaactualizacion`, `lanzamiento`, `esfuerzo`, `descripcion`, `comentarios`) VALUES
 	(4012, 2615, 54117430, 84940812, 'Cambio', 'Corrección del requisito', '2016-05-01', '', 'Evaluado', 1, 2, '2016-04-24', '1.0', 1, 'Posible mala redacción del requisito.', ''),
 	(6123, 3127, 54117430, 54117430, 'Ampliación', 'Ampliación del requisito', '2016-05-01', '', 'Aprobado', 1, 1, '2016-04-24', '1.0', 3, 'Validación de campos.', ''),
-	(8934, 2616, 84940812, 4760491, 'Eliminación', 'Eliminación del requisito', '2016-06-10', '2', 'Rechazado', 2, 3, '2016-06-10', '1.0', 2, 'Requisito innecesario.', 'a');
+	(8934, 2616, 54117430, 4760491, 'Eliminación', 'Eliminación del requisito', '2016-06-10', '2', 'Rechazado', 2, 3, '2016-06-10', '1.0', 2, 'Requisito innecesario.', 'a');
 /*!40000 ALTER TABLE `solicitud` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

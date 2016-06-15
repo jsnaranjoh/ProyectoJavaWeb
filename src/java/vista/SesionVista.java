@@ -68,61 +68,49 @@ public class SesionVista {
         this.btnIngresar = btnIngresar;
     }
     
-    public void funcion_ingresar() {
+    public void iniciarSesion() {
         try {
-            String urlJe, urlSe, urlJu;
+            String url;
             FacesContext context = FacesContext.getCurrentInstance();
             ExternalContext extContext = context.getExternalContext();
             
-            urlJe = extContext.encodeActionURL(context.getApplication().
-                    getViewHandler().getActionURL(context, "/gestionProyectos.xhtml"));
-            
-            urlSe = extContext.encodeActionURL(context.getApplication().
-                    getViewHandler().getActionURL(context, "/gestionRequisitos.xhtml"));
-            
-            urlJu = extContext.encodeActionURL(context.getApplication().
-                    getViewHandler().getActionURL(context, "/gestionSolicitudes.xhtml"));
+            url = extContext.encodeActionURL(context.getApplication().getViewHandler().getActionURL(context, "/index.xhtml"));
             
             Integer documento = null;
-            try {
-                documento = Integer.parseInt(txtUsuario.getValue().toString());
-            } catch (Exception ex) {}
+            try { documento = Integer.parseInt(txtUsuario.getValue().toString()); } catch (Exception ex) {}
             String clave = txtClave.getValue().toString();
             
             sesionLogica.buscarCamposInvalidosOVacios(documento, clave);
             Jefe je = sesionLogica.iniciarSesionJefe(documento, clave);
-            if(je!=null){
+            if(je!=null) {
                 extContext.getSessionMap().put("tipo", "jefe");
                 extContext.getSessionMap().put("usuario", je);
-                extContext.redirect(urlJe);
-            }else{
+            } else {
                 Senior se = sesionLogica.iniciarSesionSenior(documento, clave);
-                if(se!=null){
+                if(se!=null) {
                     extContext.getSessionMap().put("tipo", "senior");
                     extContext.getSessionMap().put("usuario", se);
-                    extContext.redirect(urlSe);
-                }else{
+                } else {
                     Junior ju = sesionLogica.iniciarSesionJunior(documento, clave);
-                    if(ju!=null){
+                    if(ju!=null) {
                         extContext.getSessionMap().put("tipo", "junior");
                         extContext.getSessionMap().put("usuario", ju);
-                        extContext.redirect(urlJu);
                     }
                 }
             }
+            extContext.redirect(url);
         } catch (Exception ex) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", ex.getMessage()));
         }
     }
     
-    public void cerrarSesion_action()
-    {
+    public void cerrarSesion() {
         try {
             FacesContext context = FacesContext.getCurrentInstance();
             ExternalContext extContext= context.getExternalContext();
             extContext.getSessionMap().remove("tipo");
             extContext.getSessionMap().remove("usuario");
-            String url=extContext.encodeActionURL(context.getApplication().getViewHandler().getActionURL(context,"/index.xhtml"));
+            String url = extContext.encodeActionURL(context.getApplication().getViewHandler().getActionURL(context, "/index.xhtml"));
             extContext.redirect(url);
         } catch (IOException ex) {
             Logger.getLogger(SesionVista.class.getName()).log(Level.SEVERE, null, ex);
