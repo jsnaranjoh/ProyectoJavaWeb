@@ -20,5 +20,5 @@ public interface ProyectoLogicaLocal {
     public void modificarProyecto(Proyecto proyecto) throws Exception;
     public void eliminarProyecto(Proyecto proyecto) throws Exception;
     public List<Proyecto> consultarTodos() throws Exception;
-    
+    public String importarProyectos(String archivo) throws Exception;
 }

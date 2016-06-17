@@ -132,11 +132,12 @@
                             </p:inputText>   
                             
                         </p:panelGrid>
-                        <p:panelGrid columns="4">
+                        <p:panelGrid columns="5">
                             <p:commandButton value="Registrar" binding="#{proyectoVista.btnRegistrar}" action="#{proyectoVista.action_registrar()}" update=":formulario"/> 
                             <p:commandButton value="Modificar" binding="#{proyectoVista.btnModificar}" action="#{proyectoVista.action_modificar()}" update=":formulario"/>
                             <p:commandButton value="Eliminar" binding="#{proyectoVista.btnEliminar}" action="#{proyectoVista.action_eliminar()}" update=":formulario"/>
                             <p:commandButton value="Limpiar" binding="#{proyectoVista.btnLimpiar}" action="#{proyectoVista.limpiar()}" update=":formulario"/>
+                            <p:fileUpload label="Importar Proyectos" invalidFileMessage="El archivo debe ser de extensión .xls" fileUploadListener="#{proyectoVista.handleFileUpload}" mode="advanced"  update="formulario" auto="true" allowTypes="/(\.|\/)(xls)$/"/>
                         </p:panelGrid>
                         <p:dataTable id="eventsDT" var="proyecto" value="#{proyectoVista.listaProyectos}" selectionMode="single" selection="#{proyectoVista.selectedProyecto}" rowKey="#{proyecto.codigo}">
                             <f:facet name="header">

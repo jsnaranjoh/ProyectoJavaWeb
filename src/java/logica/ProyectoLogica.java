@@ -5,11 +5,18 @@
  */
 package logica;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import jxl.Sheet;
+import jxl.Workbook;
 import modelo.Proyecto;
+import modelo.Senior;
 import persistencia.ProyectoFacadeLocal;
+import persistencia.SeniorFacadeLocal;
 
 /**
  *
@@ -20,6 +27,9 @@ public class ProyectoLogica implements ProyectoLogicaLocal {
 
     @EJB
     ProyectoFacadeLocal proyectoDAO;
+
+    @EJB
+    SeniorFacadeLocal seniorDAO;
     
     @Override
     public void registrarProyecto(Proyecto proyecto) throws Exception {
@@ -149,6 +159,52 @@ public class ProyectoLogica implements ProyectoLogicaLocal {
         return proyectoDAO.findAll();
     }
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+    @Override
+    public String importarProyectos(String archivo) throws Exception {
+        Workbook archivoExcel = Workbook.getWorkbook(new File(archivo));
+        Sheet hoja = archivoExcel.getSheet(0);
+        int numFilas = hoja.getRows();
+        
+        Integer proyectosRegistrados = 0;
+        Integer proyectosExistentes = 0;
+        
+        for(int fila = 1; fila < numFilas; fila++){
+            Proyecto proyecto = new Proyecto();
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");            
+
+            proyecto.setCodigo(Integer.parseInt(hoja.getCell(0, fila).getContents()));
+            
+            int cedulaLider = Integer.parseInt(hoja.getCell(1, fila).getContents());
+            Senior lider = seniorDAO.find(cedulaLider);            
+            proyecto.setLider(lider);
+            
+            proyecto.setNombre(hoja.getCell(2, fila).getContents());
+            proyecto.setAreaaplicacion(hoja.getCell(3, fila).getContents());
+            
+            String fechaI = hoja.getCell(4, fila).getContents();            
+            Date fechaIngreso = formatoFecha.parse(fechaI);
+            proyecto.setFechaingreso(fechaIngreso);
+            
+            String fechaA = hoja.getCell(5, fila).getContents();            
+            Date fechaAsignacion = formatoFecha.parse(fechaA);
+            proyecto.setFechaasignacion(fechaAsignacion);            
+
+            String fechaP = hoja.getCell(6, fila).getContents();            
+            Date fechaPrevistaLiberacion = formatoFecha.parse(fechaP);
+            proyecto.setFechaprevistaliberacion(fechaPrevistaLiberacion);
+            
+            proyecto.setVersionprograma(hoja.getCell(7, fila).getContents());
+            proyecto.setCostototal(Integer.parseInt(hoja.getCell(8, fila).getContents()));
+
+            if(proyectoDAO.find(proyecto.getCodigo()) == null){
+                proyectoDAO.create(proyecto);
+                proyectosRegistrados++;
+            }            
+            else{
+                proyectosExistentes++;
+            }
+        }
+        return "Se importaron " + proyectosRegistrados + " proyectos, ya existían " + proyectosExistentes + ".";
+
+    }
 }
