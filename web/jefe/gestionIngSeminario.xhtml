@@ -110,7 +110,7 @@
                             <p:column headerText="Número">
                                 <h:outputText value="#{seminario.numero}" />
                             </p:column>                            
-                            <p:column headerText="Ingeniero">
+                            <p:column headerText="Ingeniero" filterBy="#{seminario.ingeniero.nombres}">
                                 <h:outputText value="#{seminario.ingeniero.nombres} #{seminario.ingeniero.apellidos}" />
                             </p:column>
                              <p:column headerText="Nombre">

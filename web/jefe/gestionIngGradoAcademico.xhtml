@@ -97,7 +97,7 @@
                             <p:column headerText="Número">
                                 <h:outputText value="#{gradoacademico.numero}" />
                             </p:column>                            
-                            <p:column headerText="Ingeniero">
+                            <p:column headerText="Ingeniero" filterBy="#{gradoacademico.ingeniero.nombres}">
                                 <h:outputText value="#{gradoacademico.ingeniero.nombres} #{gradoacademico.ingeniero.apellidos}" />
                             </p:column>
                              <p:column headerText="Nivel">
