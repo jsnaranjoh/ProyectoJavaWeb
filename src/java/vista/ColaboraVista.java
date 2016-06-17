@@ -5,18 +5,28 @@
  */
 package vista;
 
-import javax.inject.Named;
+import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 import logica.ColaboraLogicaLocal;
 import logica.JuniorLogicaLocal;
 import logica.ProyectoLogicaLocal;
@@ -24,6 +34,10 @@ import modelo.Colabora;
 import modelo.ColaboraPK;
 import modelo.Junior;
 import modelo.Proyecto;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
 import org.primefaces.component.commandbutton.CommandButton;
 import org.primefaces.component.inputtext.InputText;
 import org.primefaces.component.selectonemenu.SelectOneMenu;
@@ -33,8 +47,8 @@ import org.primefaces.event.SelectEvent;
  *
  * @author crisd
  */
-@Named(value = "colaboraVista")
-@RequestScoped
+@ManagedBean
+@ViewScoped
 public class ColaboraVista implements Serializable {
 
     private SelectOneMenu cmbJuniors;
@@ -55,6 +69,9 @@ public class ColaboraVista implements Serializable {
     private CommandButton btnEliminar;
     private CommandButton btnLimpiar;    
 
+    private CommandButton btnGenerarReportePDF;
+    private CommandButton btnGenerarReporteODS;
+    
     @EJB
     ColaboraLogicaLocal colaboraLogica;
 
@@ -198,6 +215,22 @@ public class ColaboraVista implements Serializable {
         this.btnLimpiar = btnLimpiar;
     }
 
+    public CommandButton getBtnGenerarReportePDF() {
+        return btnGenerarReportePDF;
+    }
+
+    public void setBtnGenerarReportePDF(CommandButton btnGenerarReportePDF) {
+        this.btnGenerarReportePDF = btnGenerarReportePDF;
+    }
+
+    public CommandButton getBtnGenerarReporteODS() {
+        return btnGenerarReporteODS;
+    }
+
+    public void setBtnGenerarReporteODS(CommandButton btnGenerarReporteODS) {
+        this.btnGenerarReporteODS = btnGenerarReporteODS;
+    }
+
     public void onRowSelect(SelectEvent event){
         this.selectedColaboracion = (Colabora) event.getObject();
         
@@ -319,6 +352,42 @@ public class ColaboraVista implements Serializable {
         } catch (Exception ex) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error.", ex.getMessage()));
         }        
+    }
+
+    public void generarReportesPDF(){
+        try {
+            Connection conn = null;
+            Context initContext = new InitialContext();
+            DataSource ds = (DataSource) initContext.lookup("java:app/jdbc/bdproyectojavaweb");
+            conn = ds.getConnection();
+            File jasper = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("reportes/reporteColaboraciones.jasper"));
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasper.getPath(), null, conn);
+            HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+            response.addHeader("Content-disposition", "attachment; filename=reporteColaboraciones.pdf");
+            ServletOutputStream stream = response.getOutputStream();
+            JasperExportManager.exportReportToPdfStream(jasperPrint, stream);
+            FacesContext.getCurrentInstance().responseComplete();
+        } catch (NamingException | SQLException | JRException | IOException ex) {
+            Logger.getLogger(ColaboraVista.class.getName()).log(Level.SEVERE, null, ex);
+        }        
+    }
+    
+    public void generarReportesODS(){
+        try {
+            Connection conn = null;
+            Context initContext = new InitialContext();
+            DataSource ds = (DataSource) initContext.lookup("java:app/jdbc/bdproyectojavaweb");
+            conn = ds.getConnection();
+            File jasper = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("reportes/reporteColaboraciones.jasper"));
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasper.getPath(), null, conn);
+            HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+            response.addHeader("Content-disposition", "attachment; filename=reporteColaboraciones.ods");
+            ServletOutputStream stream = response.getOutputStream();
+            JasperExportManager.exportReportToPdfStream(jasperPrint, stream);
+            FacesContext.getCurrentInstance().responseComplete();
+        } catch (NamingException | SQLException | JRException | IOException ex) {
+            Logger.getLogger(ColaboraVista.class.getName()).log(Level.SEVERE, null, ex);
+        }         
     }
     
     /**

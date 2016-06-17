@@ -65,11 +65,13 @@
                             <h:outputText value="Fecha de Fin"/>
                             <p:calendar id="txtFechaFin" value="#{colaboraVista.txtFechaFin}" pattern="yyyy-MM-dd" locale="es" navigator="true" readonlyInput="true"/>                            
                         </p:panelGrid>
-                        <p:panelGrid columns="4">
+                        <p:panelGrid columns="6">
                             <p:commandButton value="Registrar" binding="#{colaboraVista.btnRegistrar}" action="#{colaboraVista.action_registrar()}" update=":formulario"/> 
                             <p:commandButton value="Modificar" binding="#{colaboraVista.btnModificar}" action="#{colaboraVista.action_modificar()}" update=":formulario"/>
                             <p:commandButton value="Eliminar" binding="#{colaboraVista.btnEliminar}" action="#{colaboraVista.action_eliminar()}" update=":formulario"/>
                             <p:commandButton value="Limpiar" binding="#{colaboraVista.btnLimpiar}" action="#{colaboraVista.limpiar()}" update=":formulario"/>
+                            <p:commandButton ajax="false" value="Generar Reporte PDF" action="#{colaboraVista.generarReportesPDF()}" immediate="true"/>
+                            <p:commandButton ajax="false" value="Generar Reporte ODS" action="#{colaboraVista.generarReportesODS()}" immediate="true"/>
                         </p:panelGrid>
                         <p:dataTable id="eventsDT" var="colabora" value="#{colaboraVista.listaColaboraciones}" selectionMode="single" selection="#{colaboraVista.selectedColaboracion}" rowKey="#{colabora.colaboraPK}">
                             <f:facet name="header">
