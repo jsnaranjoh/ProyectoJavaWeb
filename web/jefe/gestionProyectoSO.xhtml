@@ -71,7 +71,7 @@
                             <p:column headerText="Código">
                                 <h:outputText value="#{proyectosistemaoperativo.proyectosistemaoperativoPK.codigo}" />
                             </p:column>
-                            <p:column headerText="Ingeniero Software">
+                            <p:column headerText="Proyecto" filterBy="#{proyectosistemaoperativo.proyecto.nombre}">
                                 <h:outputText value="#{proyectosistemaoperativo.proyecto.nombre}" />
                             </p:column>                             
                             <p:column headerText="Sistema Operativo">

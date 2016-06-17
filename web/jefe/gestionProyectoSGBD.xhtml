@@ -71,7 +71,7 @@
                             <p:column headerText="Código">
                                 <h:outputText value="#{proyectosgbd.proyectosgbdPK.codigo}" />
                             </p:column>
-                            <p:column headerText="Proyecto">
+                            <p:column headerText="Proyecto" filterBy="#{proyectosgbd.proyecto.nombre}">
                                 <h:outputText value="#{proyectosgbd.proyecto.nombre}" />
                             </p:column>                             
                             <p:column headerText="SGBD">

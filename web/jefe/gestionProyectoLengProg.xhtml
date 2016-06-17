@@ -71,7 +71,7 @@
                             <p:column headerText="Código">
                                 <h:outputText value="#{proyectolenguajeprog.proyectolenguajeprogPK.codigo}" />
                             </p:column>
-                            <p:column headerText="Proyecto">
+                            <p:column headerText="Proyecto" filterBy="#{proyectolenguajeprog.proyecto.nombre}">
                                 <h:outputText value="#{proyectolenguajeprog.proyecto.nombre}" />
                             </p:column>                             
                             <p:column headerText="Lenguaje de Programación">
