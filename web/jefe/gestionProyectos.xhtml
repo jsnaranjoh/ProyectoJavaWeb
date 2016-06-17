@@ -58,10 +58,21 @@
                     <h:form>
                         <p:menu>
                             <p:submenu label="Menú">
-                                <p:menuitem value="Demo" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
-                                <p:menuitem value="Documentation" url="http://www.primefaces.org/documentation.html" />
-                                <p:menuitem value="Forum" url="http://forum.primefaces.org/" />
-                                <p:menuitem value="Themes" url="http://www.primefaces.org/themes.html" />
+                                <p:menuitem value="Proyectos" url="../jefe/gestionProyectos.xhtml"/>
+                            </p:submenu>
+                            <p:submenu label="Mantenimiento">
+                                <p:menuitem value="Ingenieros de Software" url="../jefe/gestionIngSoftware.xhtml"/>
+                                <p:menuitem value="Jefe" url="../jefe/gestionIngJefe.xhtml"/>
+                                <p:menuitem value="Senior" url="../jefe/gestionIngSenior.xhtml"/>
+                                <p:menuitem value="Junior" url="../jefe/gestionIngJunior.xhtml"/>
+                                <p:menuitem value="Grados académicos" url="../jefe/gestionIngGradoAcademico.xhtml"/>
+                                <p:menuitem value="Seminarios" url="../jefe/gestionIngSeminario.xhtml"/>
+                                <p:menuitem value="Ing. Leng de programación" url="../jefe/gestionIngSoftwareLengProg.xhtml"/>
+                                <p:menuitem value="Ing. Sistemas operativos" url="../jefe/gestionIngSoftwareSO.xhtml"/>
+                                <p:menuitem value="Ing. Sistemas de gestión BD" url="../jefe/gestionIngSoftwareSGBD.xhtml"/>
+                                <p:menuitem value="Proy. Leng de programación" url="../jefe/gestionProyectoLengProg.xhtml"/>
+                                <p:menuitem value="Proy. Sistemas operativos" url="../jefe/gestionProyectoSO.xhtml"/>
+                                <p:menuitem value="Proy. Sistemas de gestión BD" url="../jefe/gestionProyectoSGBD.xhtml"/>
                             </p:submenu>
                         </p:menu>
                         <p:commandButton value="Cerrar Sesión" action="#{sesionVista.cerrarSesion()}"/>
