@@ -71,7 +71,7 @@
                             <p:column headerText="Cédula">
                                 <h:outputText value="#{ingsoftwaresistemaoperativo.ingsoftwaresistemaoperativoPK.cedula}" />
                             </p:column>
-                            <p:column headerText="Ingeniero Software">
+                            <p:column headerText="Ingeniero Software" filterBy="#{ingsoftwaresistemaoperativo.ingsoftware.nombres}">
                                 <h:outputText value="#{ingsoftwaresistemaoperativo.ingsoftware.nombres} #{ingsoftwaresistemaoperativo.ingsoftware.apellidos}" />
                             </p:column>                             
                             <p:column headerText="Sistema Operativo">

@@ -71,7 +71,7 @@
                             <p:column headerText="Cédula">
                                 <h:outputText value="#{ingsoftwarelenguajeprog.ingsoftwarelenguajeprogPK.cedula}" />
                             </p:column>
-                            <p:column headerText="Ingeniero Software">
+                            <p:column headerText="Ingeniero Software" filterBy="#{ingsoftwarelenguajeprog.ingsoftware.nombres}">
                                 <h:outputText value="#{ingsoftwarelenguajeprog.ingsoftware.nombres} #{ingsoftwarelenguajeprog.ingsoftware.apellidos}" />
                             </p:column>                             
                             <p:column headerText="Lenguaje de Programación">

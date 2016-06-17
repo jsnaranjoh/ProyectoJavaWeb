@@ -71,7 +71,7 @@
                             <p:column headerText="Cédula">
                                 <h:outputText value="#{ingsoftwaresgbd.ingsoftwaresgbdPK.cedula}" />
                             </p:column>
-                            <p:column headerText="Ingeniero Software">
+                            <p:column headerText="Ingeniero Software" filterBy="#{ingsoftwaresgbd.ingsoftware.nombres}">
                                 <h:outputText value="#{ingsoftwaresgbd.ingsoftware.nombres} #{ingsoftwaresgbd.ingsoftware.apellidos}" />
                             </p:column>                             
                             <p:column headerText="SGBD">
