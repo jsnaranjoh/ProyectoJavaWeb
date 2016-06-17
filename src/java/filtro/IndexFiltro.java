@@ -38,7 +38,7 @@ public class IndexFiltro implements Filter {
                    ((HttpServletResponse) response).sendRedirect("/ProyectoJavaWeb/faces/jefe/gestionProyectos.xhtml");
                 } else {
                     if(tipo.equals("senior")) {
-                        ((HttpServletResponse) response).sendRedirect("/ProyectoJavaWeb/faces/senior/");
+                        ((HttpServletResponse) response).sendRedirect("/ProyectoJavaWeb/faces/senior/gestionSolicitudes.xhtml");
                     } else {
                         if(tipo.equals("junior")) {
                             ((HttpServletResponse) response).sendRedirect("/ProyectoJavaWeb/faces/junior/");
