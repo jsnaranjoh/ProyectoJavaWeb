@@ -36,18 +36,18 @@ public class JuniorFiltro implements Filter {
             String tipo = ((HttpServletRequest) request).getSession().getAttribute("tipo").toString();
             if(tipo!=null) {
                 if(!tipo.equals("junior")) {
-                   ((HttpServletResponse) response).sendRedirect("../faces/sesionInvalida.xhtml");
+                   ((HttpServletResponse) response).sendRedirect("../sesionInvalida.xhtml");
                 } else {
                     Junior junior =(Junior) ((HttpServletRequest) request).getSession().getAttribute("usuario");
                     if(junior!=null) {                    
                         chain.doFilter(request, response);
                     } else {
-                        ((HttpServletResponse) response).sendRedirect("../faces/sesionInvalida.xhtml");
+                        ((HttpServletResponse) response).sendRedirect("../sesionInvalida.xhtml");
                     }
                 }
             }
         } catch(NullPointerException e) {
-            ((HttpServletResponse) response).sendRedirect("../faces/sesionInvalida.xhtml");
+            ((HttpServletResponse) response).sendRedirect("../sesionInvalida.xhtml");
         }
     }
 

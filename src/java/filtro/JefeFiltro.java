@@ -36,18 +36,18 @@ public class JefeFiltro implements Filter {
             String tipo = ((HttpServletRequest) request).getSession().getAttribute("tipo").toString();
             if(tipo!=null) {
                 if(!tipo.equals("jefe")) {
-                   ((HttpServletResponse) response).sendRedirect("../faces/sesionInvalida.xhtml");
+                   ((HttpServletResponse) response).sendRedirect("../sesionInvalida.xhtml");
                 } else {
                     Jefe jefe = (Jefe)((HttpServletRequest) request).getSession().getAttribute("usuario");
                     if(jefe!=null) {                    
                         chain.doFilter(request, response);
                     } else {
-                        ((HttpServletResponse) response).sendRedirect("../faces/sesionInvalida.xhtml");
+                        ((HttpServletResponse) response).sendRedirect("../sesionInvalida.xhtml");
                     }
                 }
             }
         } catch(NullPointerException e) {
-            ((HttpServletResponse) response).sendRedirect("../faces/sesionInvalida.xhtml");
+            ((HttpServletResponse) response).sendRedirect("../sesionInvalida.xhtml");
         }
     }
 

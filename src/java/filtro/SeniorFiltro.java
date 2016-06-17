@@ -36,18 +36,18 @@ public class SeniorFiltro implements Filter {
             String tipo = ((HttpServletRequest) request).getSession().getAttribute("tipo").toString();
             if(tipo!=null) {
                 if(!tipo.equals("senior")) {
-                   ((HttpServletResponse) response).sendRedirect("../faces/sesionInvalida.xhtml");
+                   ((HttpServletResponse) response).sendRedirect("../sesionInvalida.xhtml");
                 } else {
                     Senior senior = (Senior)((HttpServletRequest) request).getSession().getAttribute("usuario");
                     if(senior!=null) {                    
                         chain.doFilter(request, response);
                     } else {
-                        ((HttpServletResponse) response).sendRedirect("../faces/sesionInvalida.xhtml");
+                        ((HttpServletResponse) response).sendRedirect("../sesionInvalida.xhtml");
                     }
                 }
             }
         } catch(NullPointerException e) {
-            ((HttpServletResponse) response).sendRedirect("../faces/sesionInvalida.xhtml");
+            ((HttpServletResponse) response).sendRedirect("../sesionInvalida.xhtml");
         }
     }
 
